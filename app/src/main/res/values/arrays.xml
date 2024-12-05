@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- STT start -->
+    <string-array name="stt_config_title">
+        <item>@string/stt_config_item_default</item>
+        <item>@string/stt_config_item_cn</item>
+        <item>@string/stt_config_item_en</item>
+        <item>@string/stt_config_item_ja</item>
+    </string-array>
+
+    <integer-array name="stt_config_key">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </integer-array>
+
+    <string-array name="IFlyTek_stt_config_title">
+        <item>@string/stt_config_item_default</item>
+        <item>@string/stt_config_item_ja</item>
+    </string-array>
+
+    <integer-array name="IFlyTek_stt_config_key">
+        <item>0</item>
+        <item>3</item>
+    </integer-array>
+    <!-- STT end -->
+
+    <!-- TRANS start -->
+    <string-array name="trans_config_title">
+        <item>@string/trans_config_item_default</item>
+    </string-array>
+
+    <integer-array name="trans_config_key">
+        <item>0</item>
+    </integer-array>
+
+    <string-array name="IFlyTek_trans_config_title">
+        <item>@string/trans_config_item_default</item>
+    </string-array>
+
+    <integer-array name="IFlyTek_trans_config_key">
+        <item>0</item>
+    </integer-array>
+    <!-- TRANS end -->
+
+    <!-- Language start -->
+    <string-array name="language_config_title">
+        <item>@string/language_config_item_zh</item>
+        <item>@string/language_config_item_en</item>
+        <item>@string/language_config_item_ja</item>
+    </string-array>
+
+    <string-array name="language_config_key">
+        <item>"zh-rCN"</item>
+        <item>"en"</item>
+        <item>"ja"</item>
+    </string-array>
+    <!-- Language end -->
+
+    <!-- Trans Show Mode start -->
+    <string-array name="trans_show_mode_config_title">
+        <item>@string/title_app_settings_trans_show_mode_only</item>
+        <item>@string/title_app_settings_trans_show_mode_all</item>
+    </string-array>
+
+    <integer-array name="trans_show_mode_config_key">
+        <item>0</item>
+        <item>1</item>
+    </integer-array>
+    <!-- Trans Show Mode end -->
+
+    <!-- Audio Input start -->
+    <string-array name="audio_input_config_title">
+        <item>@string/title_app_settings_audio_input_phone</item>
+        <item>@string/title_app_settings_audio_input_sco</item>
+    </string-array>
+
+    <integer-array name="audio_input_config_key">
+        <item>0</item>
+        <item>1</item>
+    </integer-array>
+    <!-- Audio Input end -->
+
+    <!-- Prompter FontSize start -->
+    <integer-array name="prompter_font_size_config_key">
+        <item>11</item>
+        <item>14</item>
+        <item>17</item>
+    </integer-array>
+    <!-- Prompter FontSize end -->
+
+    <!-- Asr engine start -->
+    <string-array name="asr_engine_config_title">
+        <item>"Azure"</item>
+        <item>"AiSpeech"</item>
+        <item>"IFlyTek"</item>
+        <item>"Mock"</item>
+    </string-array>
+
+    <string-array name="asr_engine_config_key">
+        <item>"Azure"</item>
+        <item>"AiSpeech"</item>
+        <item>"IFlyTek"</item>
+        <item>"Mock"</item>
+    </string-array>
+    <!-- Asr engine end -->
+</resources>

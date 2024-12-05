@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/fragment_bottom_padding"
+    android:background="@color/gray_200"
+    tools:context=".ui.history.HistoryFragment">
+
+    <TextView
+        android:id="@+id/text_history"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <RelativeLayout
+        android:id="@+id/rl_container_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="10dp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textStyle="bold"
+            android:textSize="25dip"
+            android:text="聆听记录" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_below="@id/tv_title"
+            android:orientation="horizontal">
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:cardCornerRadius="10dp">
+
+                    <RelativeLayout
+                        android:layout_width="@dimen/history_statistics_width"
+                        android:layout_height="@dimen/history_statistics_height">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginTop="18dp"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                            android:textStyle="bold"
+                            android:textSize="45dp"
+                            android:text="59"
+                            android:textColor="@android:color/darker_gray" />
+
+                        <RelativeLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentBottom="true"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginBottom="20dp">
+
+                            <ImageView
+                                android:id="@+id/iv_seq"
+                                android:layout_width="22dp"
+                                android:layout_height="22dp"
+                                android:layout_centerVertical="true"
+                                android:src="@drawable/baseline_sticky_note_2_24" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_toEndOf="@id/iv_seq"
+                                android:layout_centerVertical="true"
+                                android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                                android:textStyle="bold"
+                                android:text="会话/次" />
+                        </RelativeLayout>
+                    </RelativeLayout>
+                </com.google.android.material.card.MaterialCardView>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    app:cardCornerRadius="10dp">
+
+
+                    <RelativeLayout
+                        android:layout_width="@dimen/history_statistics_width"
+                        android:layout_height="@dimen/history_statistics_height">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginTop="18dp"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                            android:textStyle="bold"
+                            android:textSize="40dp"
+                            android:text="2K+"
+                            android:textColor="@android:color/darker_gray" />
+
+                        <RelativeLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentBottom="true"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginBottom="20dp">
+
+                            <ImageView
+                                android:id="@+id/iv_word"
+                                android:layout_width="22dp"
+                                android:layout_height="22dp"
+                                android:layout_centerVertical="true"
+                                android:src="@drawable/baseline_streetview_24" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_toEndOf="@id/iv_word"
+                                android:layout_centerVertical="true"
+                                android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                                android:textStyle="bold"
+                                android:text="字数/个" />
+                        </RelativeLayout>
+                    </RelativeLayout>
+                </com.google.android.material.card.MaterialCardView>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    app:cardCornerRadius="10dp">
+
+                    <RelativeLayout
+                        android:layout_width="@dimen/history_statistics_width"
+                        android:layout_height="@dimen/history_statistics_height">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginTop="18dp"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                            android:textStyle="bold"
+                            android:textSize="45dp"
+                            android:text="2"
+                            android:textColor="@android:color/darker_gray" />
+
+                        <RelativeLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentBottom="true"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginBottom="20dp">
+
+                            <ImageView
+                                android:id="@+id/iv_hour"
+                                android:layout_width="22dp"
+                                android:layout_height="22dp"
+                                android:layout_centerVertical="true"
+                                android:src="@drawable/baseline_punch_clock_24" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_toEndOf="@id/iv_hour"
+                                android:layout_centerVertical="true"
+                                android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                                android:textStyle="bold"
+                                android:text="时长/时" />
+                        </RelativeLayout>
+                    </RelativeLayout>
+                </com.google.android.material.card.MaterialCardView>
+            </RelativeLayout>
+        </LinearLayout>
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="10dp">
+        </com.google.android.material.card.MaterialCardView>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/rl_container_header">
+
+        <ImageView
+            android:id="@+id/iv_empty"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_centerInParent="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/ic_empty" />
+    </RelativeLayout>
+</RelativeLayout>

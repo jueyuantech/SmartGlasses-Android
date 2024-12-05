@@ -1,0 +1,10 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+
+    <dimen name="fragment_bottom_padding">57dp</dimen>
+
+    <dimen name="history_statistics_width">105dp</dimen>
+    <dimen name="history_statistics_height">130dp</dimen>
+</resources>

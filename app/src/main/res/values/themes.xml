@@ -1,0 +1,25 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.Glasses" parent="Theme.MaterialComponents.DayNight.NoActionBar.Bridge">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/venus_green</item>
+        <item name="colorPrimaryVariant">@color/venus_green_66</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/teal_200</item>
+        <item name="colorSecondaryVariant">@color/teal_700</item>
+        <item name="colorOnSecondary">@color/black</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor">@color/gray_700</item>
+        <!-- Customize your theme here. -->
+    </style>
+
+    <!-- 实现BottomSheetDialog圆角效果 -->
+    <style name="FuncConfigDialog" parent="Theme.Design.Light.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/FuncConfigDialogStyleWrapper</item>
+        <item name="android:backgroundDimEnabled">true</item>
+    </style>
+    <style name="FuncConfigDialogStyleWrapper" parent="Widget.Design.BottomSheet.Modal">
+        <item name="android:background">@android:color/transparent</item>
+    </style>
+</resources>
