@@ -86,7 +86,7 @@ android {
         outputs.all {
             if (this is com.android.build.gradle.internal.api.ApkVariantOutputImpl) {
                 this.outputFileName =
-                    "Glasses-${defaultConfig.versionName}-" + getCurTime() + "_${buildType}" + ".apk"
+                    "SmartGlasses-${defaultConfig.versionName}-" + getCurTime() + "_${buildType}" + ".apk"
             }
         }
     }
