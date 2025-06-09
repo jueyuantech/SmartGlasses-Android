@@ -1,0 +1,350 @@
+<resources>
+    <string name="app_name">SmartGlasses</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="title_history">History</string>
+    <string name="title_profile">我的</string>
+
+    <string name="tips_more">了解更多</string>
+
+    <string name="connect_device">连接</string>
+    <string name="disconnect_device">断开</string>
+
+    <string name="listen_start">开始转写</string>
+    <string name="listen_stop">停止转写</string>
+
+    <string name="device_manager">设备管理</string>
+
+    <string name="device_add">添加设备</string>
+    <string name="device_connect">连接设备</string>
+    <string name="device_remove">移除设备</string>
+
+    <string name="bt_state_connected">已连接</string>
+    <string name="bt_state_disconnected">未连接</string>
+    <string name="bt_state_connecting">连接中…</string>
+
+    <string name="btn_search">搜索</string>
+    <string name="btn_searching">搜索中…</string>
+
+    <string name="tips_power_on">请将设备开机，等待中…</string>
+    <string name="tips_no_device_found">设备未找到，请开机后重试！</string>
+    <string name="tips_no_device_connected">设备未连接</string>
+    <string name="tips_no_device_selected">未选中设备</string>
+    <string name="tips_no_device_bound">未绑定设备</string>
+    <string name="tips_connect">是否连接到 %1$s ?</string>
+    <string name="tips_connecting">连接中…</string>
+    <string name="tips_connected">连接到 %1$s 成功</string>
+    <string name="tips_connect_failed">连接失败，请重试</string>
+    <string name="tips_remove">是否将设备移除?</string>
+    <string name="tips_removed">已将设备移除</string>
+    <string name="tips_coming">敬请期待</string>
+    <string name="tips_switched">已切换至%1$s</string>
+    <string name="tips_switched_and_restart">已切换至%1$s，重启生效</string>
+
+    <string name="tips_stt_err_device_connection_lost">设备已断开，请连接后重试</string>
+    <string name="tips_stt_err_permission_not_granted">请授权应用访问麦克风后重试，用于语音识别</string>
+    <string name="tips_stt_err_recorder_illegal_arg">音频参数异常，请重试</string>
+    <string name="tips_stt_err_recorder_illegal_state">音频状态异常，请重试</string>
+    <string name="tips_stt_err_no_network_connection">无网络连接，请检查后重试</string>
+    <string name="tips_stt_err_hfp_lost">连接麦克风失败，请检查手机蓝牙与设备的媒体音频已连接后重试</string>
+    <string name="tips_stt_err_hfp_mismatch">连接麦克风失败，当前手机蓝牙连接了其他设备的媒体音频，请检查后重试</string>
+    <string name="tips_stt_err_hfp_check_timeout">连接麦克风失败，请检查设备蓝牙连接状态超时，请重试</string>
+    <string name="tips_stt_err_service_req_timeout">连接服务超时，请重试</string>
+    <string name="tips_stt_err_service_auth_failed">登录信息已过期，请登录后重试</string>
+    <string name="tips_stt_err_service_req_failed">连接服务失败，请重试</string>
+    <string name="tips_stt_err_key_not_found">连接服务失败（4002），请在‘用户反馈’中提交该问题</string>
+    <string name="tips_stt_err_key_empty">连接服务失败（4003），请在‘用户反馈’中提交该问题</string>
+    <string name="tips_stt_err_key_parser">连接服务失败（4004），请在‘用户反馈’中提交该问题</string>
+    <string name="tips_stt_err_unknown">未知异常，请重试</string>
+
+    <string name="tips_stt_err_loading">服务加载中...(%1$d/%2$d)</string>
+
+    <string name="notification_title_device_not_connected">智能眼镜未连接</string>
+    <string name="notification_content_device_not_connected">连接后体验更多功能</string>
+    <string name="notification_title_device_connected">智能眼镜已连接</string>
+    <string name="notification_content_device_connected">欢迎使用SmartGlasses</string>
+
+    <string name="tips_venus_file_remove">是否移除 %1$s ?</string>
+    <string name="tips_venus_file_removed">已移除</string>
+    <string name="tips_venus_folder_create">Create a new folder under %1$s</string>
+
+    <string name="btn_sure">确定</string>
+    <string name="btn_cancel">取消</string>
+
+    <string name="str_listening">正在听...</string>
+
+    <string name="title_touch_pad">触摸板</string>
+    <string name="title_touch_pad_single">单击：确认</string>
+    <string name="title_touch_pad_double">双击：返回</string>
+    <string name="title_touch_pad_long">长按：主界面</string>
+    <string name="title_touch_pad_slip">滑动：切换</string>
+
+    <string name="title_touch_pad_event_single">单击</string>
+    <string name="title_touch_pad_event_double">双击</string>
+    <string name="title_touch_pad_event_long">长按</string>
+    <string name="title_touch_pad_event_slip_left">左滑</string>
+    <string name="title_touch_pad_event_slip_right">右滑</string>
+    <string name="title_touch_pad_event_slip_up">上滑</string>
+    <string name="title_touch_pad_event_slip_down">下滑</string>
+
+    <string name="title_speech_session_list">会话</string>
+
+    <string name="title_activity_device_settings">设置</string>
+    <string name="title_brightness">屏幕亮度</string>
+    <string name="title_brightness_auto">自动调节亮度</string>
+    <string name="summery_brightness_auto">根据周围环境自动调节亮度，有效减少电量消耗</string>
+
+    <string name="title_simplified_mode">简洁模式</string>
+    <string name="summery_simplified_mode">眼镜界面以较小的区域显示内容</string>
+    <string name="title_wear_detection">佩戴检测</string>
+    <string name="summery_wear_detection">佩戴眼镜时自动连接手机，摘下后自动断连</string>
+    <string name="title_device_notification">显示通知</string>
+    <string name="summery_device_notification">显示由手机流转至眼镜的通知和提醒</string>
+    <string name="title_touchpad">触控板</string>
+    <string name="summery_touchpad">通过镜腿触控区域操作眼镜</string>
+    <string name="title_idle_detection">静置休眠</string>
+    <string name="summery_idle_detection">当设备静置时自动进入休眠状态</string>
+
+    <string name="title_font">字体设置</string>
+    <string name="title_font_small">小</string>
+    <string name="title_font_regular">常规</string>
+    <string name="title_font_large">大</string>
+
+    <string name="title_volume">音量</string>
+
+    <string name="title_notification">通知提醒</string>
+    <string name="summery_notification">将通知流转至AR眼镜</string>
+    <string name="state_enabled">已开启</string>
+    <string name="state_disabled">已关闭</string>
+    <string name="label_app_list">应用列表</string>
+    <string name="btn_select_default">恢复默认</string>
+    <string name="btn_select_all">全选</string>
+    <string name="btn_unselect_all">清除</string>
+
+    <string name="title_languages">语言设置</string>
+
+    <string name="title_home_menus">主菜单设置</string>
+    <string name="home_menus_selected">已选</string>
+    <string name="home_menus_unselected">待选</string>
+
+    <string name="title_device_demo">场景演示</string>
+    <string name="demo_current">当前显示</string>
+    <string name="demo_list">请选择：</string>
+    <string name="tips_demo_exit">退出演示模式?</string>
+
+    <string name="tips_stt_exit">退出服务或在后台运行？</string>
+    <string name="btn_stt_exit">退出</string>
+    <string name="btn_stt_run_background">后台运行</string>
+    <string name="tips_stt_running">语音服务正在进行中，请停止后重试</string>
+    <string name="tips_stt_engine_err">语音服务异常停止（%1$d），请重试</string>
+
+    <string name="title_firmware_version">固件版本</string>
+
+    <string name="title_activity_device_info">设备信息</string>
+    <string name="title_vendor">厂商</string>
+    <string name="title_model">型号</string>
+    <string name="title_edition">发行版</string>
+    <string name="title_mac">MAC地址</string>
+    <string name="title_sn">序列号</string>
+
+    <string name="func_stt">转写</string>
+    <string name="func_trans">翻译</string>
+    <string name="func_touch_panel">触摸板</string>
+    <string name="func_nav">导航</string>
+    <string name="func_prompter">提词器</string>
+    <string name="func_ai">语音助手</string>
+    <string name="func_book">阅读</string>
+
+    <string name="prompter_slide_top_reached">已到顶部</string>
+    <string name="prompter_slide_bottom_reached">已到底部</string>
+    <string name="prompter_file_size_oom">文件大小超出限制（50kB）</string>
+    <string name="prompter_file_loading">加载中...</string>
+    <string name="prompter_file_load_err_1">文档加载错误（1）</string>
+    <string name="prompter_file_load_err_2">文档加载错误（2）</string>
+    <string name="prompter_cache_load_err_1">历史文档加载错误（1），请重新选择题词文档</string>
+
+    <string name="prompter_init_tip">提词器是一款实用的辅助工具，在您演讲、录制视频或直播过程中，为用户提供实时滚动显示的文稿内容，帮助用户更好地记忆和表达。\n通过导入手机中存储的TXT格式文档，提词器能够展示预先准备好的题词内容，用户只需跟随屏幕上的文字进行朗读，即可避免忘词或重复，确保演出的流畅性和准确性，轻松实现高效演讲。</string>
+
+    <string name="prompter_config_row">显示行数</string>
+    <string name="prompter_config_show_pre">显示上一句</string>
+    <string name="prompter_config_font_size">字号</string>
+    <string name="prompter_config_load_history">自动加载历史</string>
+    <string name="prompter_config_tip">修改配置将在重新进入后生效，配置变化会重置当前题词位置。</string>
+    <string name="prompter_config_close">关闭</string>
+
+    <string name="stt_config_item_default">中文（普通话）</string>
+    <string name="stt_config_item_cn">中文（only）</string>
+    <string name="stt_config_item_en">英语</string>
+    <string name="stt_config_item_ja">日语</string>
+
+    <string name="trans_config_item_default">中文 -> 英文</string>
+
+    <string name="language_config_item_zh">中文</string>
+    <string name="language_config_item_en">English</string>
+    <string name="language_config_item_ja">日本語</string>
+
+    <string name="title_app_login">登录</string>
+    <string name="title_app_account">账户中心</string>
+    <string name="title_app_devices">我的设备</string>
+    <string name="title_app_permission">权限管理</string>
+    <string name="title_app_background_permission">后台运行设置</string>
+    <string name="title_app_guide">帮助与指南</string>
+    <string name="title_app_feedback">用户反馈</string>
+    <string name="title_app_about">关于</string>
+    <string name="title_app_settings">应用设置</string>
+    <string name="title_app_ring">智能戒指</string>
+    <string name="title_app_terms">用户协议</string>
+    <string name="title_app_policy">隐私政策</string>
+    <string name="title_app_upgrade">版本更新</string>
+    <string name="title_app_sw_version">软件版本</string>
+    <string name="title_app_sw_new_version">有新版本</string>
+    <string name="title_app_withdraw_policy">撤回同意隐私政策</string>
+    <string name="title_app_improvement">加入用户体验改善计划</string>
+    <string name="summery_app_improvement">开启此功能表示您同意加入用户体验改善计划，我们将收集分析数据以提升产品性能</string>
+    <string name="title_app_debug_settings">调试设置</string>
+
+    <string name="label_feedback_title">标题</string>
+    <string name="label_feedback_content">内容</string>
+    <string name="btn_feedback_commit">提交</string>
+
+    <string name="agreement_dialog_title">欢迎使用SmartGlasses</string>
+    <string name="agreement_dialog_content">为正常使用我们的产品和服务，请您仔细阅读并同意《用户协议》和《隐私政策》，上述协议将帮助您了解我们在收集、使用、存储和共享您个人信息的情况以及您享有的相关权利。</string>
+    <string name="agreement_dialog_accept">同意并继续</string>
+    <string name="agreement_dialog_reject">不同意</string>
+
+    <string name="label_not_logged_in">未登录</string>
+    <string name="label_go_login">去登录</string>
+    <string name="phone_number_login_hint">请输入手机号</string>
+    <string name="phone_number_login_agreement_content">我已阅读并同意《用户协议》和《隐私政策》，未注册用户登陆后将自动注册。</string>
+    <string name="phone_number_login_btn_send_code">发送验证码</string>
+
+    <string name="login_agreement_dialog_title">提示</string>
+    <string name="login_agreement_dialog_content">请您阅读《用户协议》和《隐私政策》，同意并勾选后继续。</string>
+
+    <string name="phone_number_verify_title">输入验证码</string>
+    <string name="phone_number_verify_sent_to">验证码已发送至 （%1$s）%2$s</string>
+    <string name="phone_number_verify_code_sent_successfully">验证码发送成功</string>
+    <string name="phone_number_verify_code_invalid">验证码无效</string>
+    <string name="phone_number_verify_code_failed">验证码失败</string>
+    <string name="phone_number_verify_count_down">%1$d秒后重新获取</string>
+    <string name="phone_number_verify_send_retry">重新获取</string>
+    <string name="phone_number_verify_logging">正在登录</string>
+    <string name="phone_number_verify_logged_successfully">登录成功</string>
+    <string name="phone_number_verify_syncing">正在同步</string>
+    <string name="phone_number_verify_synced_successfully">同步成功</string>
+
+    <string name="background_permission_lock_title">锁定应用</string>
+    <string name="background_permission_lock_summery">进入后台任务管理页面，长按SmartGlasses后点击锁住图标</string>
+    <string name="background_permission_battery_optimization_title">电源管理</string>
+    <string name="background_permission_battery_optimization_summery">将SmartGlasses加入到电池优化白名单中</string>
+    <string name="background_permission_persistent_notification_title">常驻通知栏</string>
+    <string name="background_permission_persistent_notification_summery">将SmartGlasses常驻通知栏可以让设备连接更稳定</string>
+
+    <string name="normal_permission_discover_title">发现附近设备</string>
+    <string name="normal_permission_discover_summery">用于发现、绑定、连接智能眼镜设备</string>
+    <string name="normal_permission_microphone_title">访问麦克风</string>
+    <string name="normal_permission_microphone_summery">访问麦克风用于语音相关功能</string>
+    <string name="normal_permission_location_title">位置</string>
+    <string name="normal_permission_location_summery">用于定位、导航、天气、语音服务等功能</string>
+    <string name="normal_permission_file_title">访问文件</string>
+    <string name="normal_permission_file_summery">访问手机文档用于加载题词文档和功能配置</string>
+
+    <string name="btn_login">登录</string>
+    <string name="btn_logout">退出登录</string>
+    <string name="label_user_info_phone">手机</string>
+    <string name="label_user_info_email">邮箱</string>
+    <string name="label_user_info_delete_account">注销账号</string>
+    <string name="dialog_delete_account_title">注销账号</string>
+    <string name="dialog_delete_account_message">注销账号是不可恢复的操作，重要信息请提前备份，账号注销后数据无法找回。</string>
+    <string name="dialog_delete_account_positive">我知道，仍要注销</string>
+    <string name="toast_delete_account_succeed">注销成功</string>
+    <string name="toast_delete_account_failed">注销失败</string>
+
+    <string name="withdraw_dialog_title">撤回同意</string>
+    <string name="withdraw_dialog_content">如果你撤回同意《隐私政策》中有关个人信息处理的规则，我们将无法向你提供服务，并停止收集，处理您的个人信息。</string>
+    <string name="withdraw_dialog_cancel">取消</string>
+    <string name="withdraw_dialog_withdraw">撤回同意</string>
+
+    <string name="permission_dialog_discover_title">请开启‘附近设备’权限</string>
+    <string name="permission_dialog_discover_content">用于发现、绑定、连接智能眼镜设备。</string>
+    <string name="permission_dialog_stt_title">允许访问麦克风</string>
+    <string name="permission_dialog_stt_content">请授权应用访问麦克风后重试，用于语音识别。</string>
+    <string name="permission_dialog_map_title">请开启‘位置’权限</string>
+    <string name="permission_dialog_map_content">用于定位、导航、天气、语音服务等功能。</string>
+    <string name="permission_dialog_prompter_title">请开启‘访问文件’权限</string>
+    <string name="permission_dialog_prompter_content">访问手机文档用于加载题词文档和功能配置。</string>
+    <string name="permission_dialog_notification_title">请开启 ‘通知使用权’ 权限</string>
+    <string name="permission_dialog_notification_content">用于将通知流转至AR眼镜。</string>
+
+    <string name="title_app_settings_channel">会话通道</string>
+    <string name="title_app_settings_audio_input">声音输入</string>
+    <string name="title_app_settings_audio_input_phone">手机收声</string>
+    <string name="title_app_settings_audio_input_sco">眼镜收声</string>
+    <string name="title_app_settings_mic_directional">拾音模式</string>
+    <string name="title_app_settings_mic_directional_omni">全向</string>
+    <string name="title_app_settings_mic_directional_front">定向</string>
+    <string name="title_app_settings_touchpad_enabled">触摸板</string>
+    <string name="title_app_settings_protocol_ver">协议版本</string>
+    <string name="title_app_settings_stt">STT引擎</string>
+    <string name="title_app_settings_voice_recognition">声纹识别</string>
+    <string name="title_app_settings_text_mode">文本显示模式</string>
+    <string name="title_app_settings_text_mode_current_only">仅显示最新</string>
+    <string name="title_app_settings_text_mode_current_historical">显示历史</string>
+    <string name="title_app_settings_trans_show_mode">翻译显示模式</string>
+    <string name="title_app_settings_trans_show_mode_all">原文 - 译文</string>
+    <string name="title_app_settings_trans_show_mode_only">仅译文</string>
+    <string name="title_app_settings_trans_tts">译文播报</string>
+    <string name="title_app_settings_trans_tts_enabled">已开启</string>
+    <string name="title_app_settings_trans_tts_disabled">已关闭</string>
+    <string name="title_app_settings_audio_record">AudioRecord</string>
+    <string name="title_app_settings_audio_record_enabled">已开启</string>
+    <string name="title_app_settings_audio_record_disabled">已关闭</string>
+    <string name="title_app_settings_heartbeat">心跳检测</string>
+    <string name="title_app_settings_heartbeat_enabled">已开启</string>
+    <string name="title_app_settings_heartbeat_disabled">已关闭</string>
+    <string name="title_app_settings_ttm_test">透传模式测试</string>
+    <string name="title_app_settings_file_explorer">文件管理</string>
+    <string name="title_app_settings_ota_local">OTA LOCAL</string>
+    <string name="title_app_settings_ota_id">OTA ID</string>
+    <string name="title_app_settings_ftp">Ftp</string>
+    <string name="title_app_settings_write_bt_name">BT Name</string>
+    <string name="title_app_settings_write_bt_mac">BT Mac</string>
+    <string name="title_app_settings_write_ble_name">BLE Name</string>
+    <string name="title_app_settings_write_ble_mac">BLE Mac</string>
+    <string name="title_app_settings_log">会话日志</string>
+    <string name="title_app_settings_azure">Azure Test</string>
+    <string name="title_app_settings_ota">OTA</string>
+
+    <string name="ota_check_updates">检查更新</string>
+    <string name="ota_start_upgrade">开始升级</string>
+    <string name="ota_upgrading">升级中…</string>
+    <string name="ota_start_download">开始下载</string>
+    <string name="ota_downloading">下载中…</string>
+    <string name="ota_found_new">发现新版本</string>
+    <string name="ota_btn_new">去升级</string>
+    <string name="ota_latest_already">当前已是最新版本</string>
+    <string name="ota_local_file_update">本地升级</string>
+    <string name="ota_battery_low">电量低于%1$d%%，升级启动失败</string>
+    <string name="ota_processing_title">警告</string>
+    <string name="ota_processing_message">设备正在升级过程中，请勿关机或者退出</string>
+    <string name="ota_processing_negative">取消</string>
+    <string name="ota_processing_positive">仍然退出</string>
+
+    <string name="ota_successfully">OTA 成功</string>
+    <string name="ota_upgrade_type">升级方式</string>
+    <string name="ota_is_bth">是否是BTH的bin</string>
+
+    <string name="ota_error_image_size">设备空间不足，无法下载升级包，请清理空间后再升级。</string>
+
+    <string name="ota_config">OTA配置</string>
+    <string name="ota_config_folder_tips">将升级文件放在路径下：\n %1$s</string>
+    <string name="ota_config_user">USER</string>
+    <string name="ota_config_file">FILE</string>
+
+    <string name="ttm_hint_hex">请输入Hex字符</string>
+    <string name="ttm_btn_send">发送</string>
+    <string name="ttm_label_received">接收:</string>
+    <string name="ttm_sent">已发送</string>
+    <string name="ttm_invalid_data">无效数据</string>
+</resources>

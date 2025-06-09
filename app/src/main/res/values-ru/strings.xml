@@ -1,0 +1,350 @@
+<resources>
+    <string name="app_name">SmartGlasses</string>
+    <string name="title_home">Домой</string>
+    <string name="title_dashboard">Панель управления</string>
+    <string name="title_notifications">Уведомления</string>
+    <string name="title_history">История</string>
+    <string name="title_profile">Мой профиль</string>
+
+    <string name="tips_more">Узнать больше</string>
+
+    <string name="connect_device">Подключить</string>
+    <string name="disconnect_device">Отключить</string>
+
+    <string name="listen_start">Начать транскрибирование</string>
+    <string name="listen_stop">Остановить транскрибирование</string>
+
+    <string name="device_manager">Управление устройствами</string>
+
+    <string name="device_add">Добавить устройство</string>
+    <string name="device_connect">Подключить устройство</string>
+    <string name="device_remove">Удалить устройство</string>
+
+    <string name="bt_state_connected">Подключено</string>
+    <string name="bt_state_disconnected">Не подключено</string>
+    <string name="bt_state_connecting">Подключение…</string>
+
+    <string name="btn_search">Поиск</string>
+    <string name="btn_searching">Поиск…</string>
+
+    <string name="tips_power_on">Включите устройство, ожидание…</string>
+    <string name="tips_no_device_found">Устройство не найдено, включите его и попробуйте снова!</string>
+    <string name="tips_no_device_connected">Устройство не подключено</string>
+    <string name="tips_no_device_selected">Устройство не выбрано</string>
+    <string name="tips_no_device_bound">Устройство не привязано</string>
+    <string name="tips_connect">Подключиться к %1$s?</string>
+    <string name="tips_connecting">Подключение…</string>
+    <string name="tips_connected">Подключение к %1$s успешно</string>
+    <string name="tips_connect_failed">Подключение неудачно, попробуйте снова</string>
+    <string name="tips_remove">Удалить устройство?</string>
+    <string name="tips_removed">Устройство удалено</string>
+    <string name="tips_coming">Ожидайте</string>
+    <string name="tips_switched">Переключено на %1$s</string>
+    <string name="tips_switched_and_restart">Переключено на %1$s, перезагрузите для применения</string>
+
+    <string name="tips_stt_err_device_connection_lost">Соединение с устройством потеряно, подключитесь и попробуйте снова</string>
+    <string name="tips_stt_err_permission_not_granted">Дайте разрешение на доступ к микрофону, чтобы попробовать снова</string>
+    <string name="tips_stt_err_recorder_illegal_arg">Аудиопараметры неправильны, попробуйте снова</string>
+    <string name="tips_stt_err_recorder_illegal_state">Состояние аудио неправильное, попробуйте снова</string>
+    <string name="tips_stt_err_no_network_connection">Нет соединения с сетью, проверьте и попробуйте снова</string>
+    <string name="tips_stt_err_hfp_lost">Не удалось подключить микрофон, проверьте подключение Bluetooth-аудио на телефоне и устройстве и попробуйте снова</string>
+    <string name="tips_stt_err_hfp_mismatch">Не удалось подключить микрофон, Bluetooth-аудио на телефоне подключено к другому устройству, проверьте и попробуйте снова</string>
+    <string name="tips_stt_err_hfp_check_timeout">Не удалось подключить микрофон, проверьте состояние подключения Bluetooth устройства, время ожидания истекло, попробуйте снова</string>
+    <string name="tips_stt_err_service_req_timeout">Время ожидания соединения с сервисом истекло, попробуйте снова</string>
+    <string name="tips_stt_err_service_auth_failed">Срок действия данных входа истек, войдите и попробуйте снова</string>
+    <string name="tips_stt_err_service_req_failed">Соединение с сервисом неудачно, попробуйте снова</string>
+    <string name="tips_stt_err_key_not_found">Соединение с сервисом неудачно (4002), отправьте вопрос в раздел "Обратная связь"</string>
+    <string name="tips_stt_err_key_empty">Соединение с сервисом неудачно (4003), отправьте вопрос в раздел "Обратная связь"</string>
+    <string name="tips_stt_err_key_parser">Соединение с сервисом неудачно (4004), отправьте вопрос в раздел "Обратная связь"</string>
+    <string name="tips_stt_err_unknown">Неизвестная ошибка, попробуйте снова</string>
+
+    <string name="tips_stt_err_loading">Загрузка сервиса… (%1$d/%2$d)</string>
+
+    <string name="notification_title_device_not_connected">Умные очки не подключены</string>
+    <string name="notification_content_device_not_connected">Подключите для доступа к дополнительным функциям</string>
+    <string name="notification_title_device_connected">Умные очки подключены</string>
+    <string name="notification_content_device_connected">Добро пожаловать в SmartGlasses</string>
+
+    <string name="tips_venus_file_remove">Удалить %1$s?</string>
+    <string name="tips_venus_file_removed">Удалено</string>
+    <string name="tips_venus_folder_create">Создать новую папку в %1$s</string>
+
+    <string name="btn_sure">ОК</string>
+    <string name="btn_cancel">Отмена</string>
+
+    <string name="str_listening">Слушаю…</string>
+
+    <string name="title_touch_pad">Тачпад</string>
+    <string name="title_touch_pad_single">Одиночный клик: подтвердить</string>
+    <string name="title_touch_pad_double">Двойной клик: вернуться</string>
+    <string name="title_touch_pad_long">Долгое нажатие: главный экран</string>
+    <string name="title_touch_pad_slip">Свайп: переключить</string>
+
+    <string name="title_touch_pad_event_single">Одиночный клик</string>
+    <string name="title_touch_pad_event_double">Двойной клик</string>
+    <string name="title_touch_pad_event_long">Долгое нажатие</string>
+    <string name="title_touch_pad_event_slip_left">Свайп влево</string>
+    <string name="title_touch_pad_event_slip_right">Свайп вправо</string>
+    <string name="title_touch_pad_event_slip_up">Свайп вверх</string>
+    <string name="title_touch_pad_event_slip_down">Свайп вниз</string>
+
+    <string name="title_speech_session_list">Сессии</string>
+
+    <string name="title_activity_device_settings">Настройки</string>
+    <string name="title_brightness">Яркость экрана</string>
+    <string name="title_brightness_auto">Автоматическая регулировка яркости</string>
+    <string name="summery_brightness_auto">Автоматически регулирует яркость в зависимости от окружающей среды, эффективно сокращает потребление энергии</string>
+
+    <string name="title_simplified_mode">Простой режим</string>
+    <string name="summery_simplified_mode">Интерфейс очков отображает контент в меньшей области</string>
+    <string name="title_wear_detection">Обнаружение ношения</string>
+    <string name="summery_wear_detection">Автоматически подключает к смартфону при ношении очков, отключается при снятии</string>
+    <string name="title_device_notification">Показывать уведомления</string>
+    <string name="summery_device_notification">Показывает уведомления и напоминания, передаваемые с телефона на очки</string>
+    <string name="title_touchpad">Тачпад</string>
+    <string name="summery_touchpad">Управление очками через сенсорную область на дужке</string>
+    <string name="title_idle_detection">Автосон в бездействии</string>
+    <string name="summery_idle_detection">Автоматически переводит устройство в спящий режим при бездействии</string>
+
+    <string name="title_font">Настойки шрифта</string>
+    <string name="title_font_small">Маленький</string>
+    <string name="title_font_regular">Обычный</string>
+    <string name="title_font_large">Большой</string>
+
+    <string name="title_volume">Громкость</string>
+
+    <string name="title_notification">Уведомления</string>
+    <string name="summery_notification">Передает уведомления на AR-очки</string>
+    <string name="state_enabled">Включен</string>
+    <string name="state_disabled">Выключен</string>
+    <string name="label_app_list">Список приложений</string>
+    <string name="btn_select_default">Вернуть настройки по умолчанию</string>
+    <string name="btn_select_all">Выбрать все</string>
+    <string name="btn_unselect_all">Снять выбор</string>
+
+    <string name="title_languages">Языковые настройки</string>
+
+    <string name="title_home_menus">Настройки главного меню</string>
+    <string name="home_menus_selected">Выбрано</string>
+    <string name="home_menus_unselected">Не выбрано</string>
+
+    <string name="title_device_demo">Демонстрация сценария</string>
+    <string name="demo_current">Текущий показ</string>
+    <string name="demo_list">Выберите:</string>
+    <string name="tips_demo_exit">Выйти из режима демонстрации?</string>
+
+    <string name="tips_stt_exit">Выйти из сервиса или продолжить в фоновом режиме?</string>
+    <string name="btn_stt_exit">Выйти</string>
+    <string name="btn_stt_run_background">Продолжить в фоне</string>
+    <string name="tips_stt_running">Голосовой сервис работает, остановите его и попробуйте снова</string>
+    <string name="tips_stt_engine_err">Голосовой сервис остановлен с ошибкой (%1$d), попробуйте снова</string>
+
+    <string name="title_firmware_version">Версия прошивки</string>
+
+    <string name="title_activity_device_info">Информация о устройстве</string>
+    <string name="title_vendor">Производитель</string>
+    <string name="title_model">Модель</string>
+    <string name="title_edition">Версия выпуска</string>
+    <string name="title_mac">MAC-адрес</string>
+    <string name="title_sn">Сериный номер</string>
+
+    <string name="func_stt">Транскрибирование</string>
+    <string name="func_trans">Перевод</string>
+    <string name="func_touch_panel">Тачпад</string>
+    <string name="func_nav">Навигация</string>
+    <string name="func_prompter">Телепромптер</string>
+    <string name="func_ai">Голосовой ассистент</string>
+    <string name="func_book">Чтение</string>
+
+    <string name="prompter_slide_top_reached">Достигнут верх</string>
+    <string name="prompter_slide_bottom_reached">Достигнут низ</string>
+    <string name="prompter_file_size_oom">Превышен лимит размера файла (50 kB)</string>
+    <string name="prompter_file_loading">loading...</string>
+    <string name="prompter_file_load_err_1">Ошибка загрузки документа (1)</string>
+    <string name="prompter_file_load_err_2">Ошибка загрузки документа (2)</string>
+    <string name="prompter_cache_load_err_1">Ошибка загрузки исторических документов (1), выберите файл заново</string>
+
+    <string name="prompter_init_tip">Телепромптер - это полезный инструмент, который в режиме реального времени отображает текст для чтения во время презентаций, видео- или трансляций, помогая избежать ошибок и повторений, обеспечивая плавность и точность выступления.\nИмпортируйте текстовые файлы (TXT) с телефона, чтобы телепромптер отобразил заранее подготовленный текст, который вы можете читать, следуя за текстом на экране.</string>
+
+    <string name="prompter_config_row">Количество строк</string>
+    <string name="prompter_config_show_pre">Показать предыдущую строку</string>
+    <string name="prompter_config_font_size">Размер шрифта</string>
+    <string name="prompter_config_load_history">Автоматически загружать историю</string>
+    <string name="prompter_config_tip">Изменения вступят в силу после перезагрузки, текущее положение текста будет сброшено.</string>
+    <string name="prompter_config_close">Закрыть</string>
+
+    <string name="stt_config_item_default">Китайский (путунхуа)</string>
+    <string name="stt_config_item_cn">Китайский (только)</string>
+    <string name="stt_config_item_en">Английский</string>
+    <string name="stt_config_item_ja">Японский</string>
+
+    <string name="trans_config_item_default">Китайский -> Английский</string>
+
+    <string name="language_config_item_zh">Китайский</string>
+    <string name="language_config_item_en">Английский</string>
+    <string name="language_config_item_ja">Японский</string>
+
+    <string name="title_app_login">Вход</string>
+    <string name="title_app_account">Центр аккаунта</string>
+    <string name="title_app_devices">Мои устройства</string>
+    <string name="title_app_permission">Управление разрешениями</string>
+    <string name="title_app_background_permission">Настройки фонового режима</string>
+    <string name="title_app_guide">Помощь и руководства</string>
+    <string name="title_app_feedback">Обратная связь</string>
+    <string name="title_app_about">О нас</string>
+    <string name="title_app_settings">Настройки приложения</string>
+    <string name="title_app_ring">Умное кольцо</string>
+    <string name="title_app_terms">Пользовательское соглашение</string>
+    <string name="title_app_policy">Политика конфиденциальности</string>
+    <string name="title_app_upgrade">Обновление версии</string>
+    <string name="title_app_sw_version">Версия программного обеспечения</string>
+    <string name="title_app_sw_new_version">Доступно обновление</string>
+    <string name="title_app_withdraw_policy">Отозвать согласие на политику конфиденциальности</string>
+    <string name="title_app_improvement">Присоединиться к программе улучшения пользовательского опыта</string>
+    <string name="summery_app_improvement">Включая эту функцию, вы соглашаетесь присоединиться к программе улучшения пользовательского опыта, мы будем собирать и анализировать данные для улучшения продукта</string>
+    <string name="title_app_debug_settings">Настройки отладки</string>
+
+    <string name="label_feedback_title">Заголовок</string>
+    <string name="label_feedback_content">Содержание</string>
+    <string name="btn_feedback_commit">Отправить</string>
+
+    <string name="agreement_dialog_title">Добро пожаловать в SmartGlasses</string>
+    <string name="agreement_dialog_content">Для нормального использования наших продуктов и услуг, пожалуйста, внимательно прочитайте и согласитесь с "Пользовательским соглашением" и "Политикой конфиденциальности", которые помогут вам понять, как мы собираем, используем, храним и обмениваемся вашей личной информацией, а также ваши права.</string>
+    <string name="agreement_dialog_accept">Согласиться и продолжить</string>
+    <string name="agreement_dialog_reject">Отказаться</string>
+
+    <string name="label_not_logged_in">Не вошли в систему</string>
+    <string name="label_go_login">Войти</string>
+    <string name="phone_number_login_hint">Введите номер телефона</string>
+    <string name="phone_number_login_agreement_content">Я прочитал и согласен с "Пользовательским соглашением" и "Политикой конфиденциальности", не зарегистрированные пользователи будут зарегистрированы автоматически после входа.</string>
+    <string name="phone_number_login_btn_send_code">Отправить код подтверждения</string>
+
+    <string name="login_agreement_dialog_title">Уведомление</string>
+    <string name="login_agreement_dialog_content">Пожалуйста, прочитайте "Пользовательское соглашение" и "Политика конфиденциальности", согласитесь с ними и продолжайте.</string>
+
+    <string name="phone_number_verify_title">Введите код подтверждения</string>
+    <string name="phone_number_verify_sent_to">Код подтверждения отправлен на (%1$s) %2$s</string>
+    <string name="phone_number_verify_code_sent_successfully">Код подтверждения отправлен успешно</string>
+    <string name="phone_number_verify_code_invalid">Код подтверждения недействителен</string>
+    <string name="phone_number_verify_code_failed">Код подтверждения неудачный</string>
+    <string name="phone_number_verify_count_down">Получить заново через %1$d секунд</string>
+    <string name="phone_number_verify_send_retry">Получить заново</string>
+    <string name="phone_number_verify_logging">Вход в систему…</string>
+    <string name="phone_number_verify_logged_successfully">Успешный вход</string>
+    <string name="phone_number_verify_syncing">Синхронизация…</string>
+    <string name="phone_number_verify_synced_successfully">Синхронизация успешна</string>
+
+    <string name="background_permission_lock_title">Заблокировать приложение</string>
+    <string name="background_permission_lock_summery">Войдите в менеджер задач в фоновом режиме, нажмите и удерживайте SmartGlasses, затем нажмите на иконку блокировки</string>
+    <string name="background_permission_battery_optimization_title">Управление питанием</string>
+    <string name="background_permission_battery_optimization_summery">Добавьте SmartGlasses в белый список оптимизации батареи</string>
+    <string name="background_permission_persistent_notification_title">Постоянное уведомление</string>
+    <string name="background_permission_persistent_notification_summery">Постоянное уведомление SmartGlasses в панели уведомлений сделает соединение устройства более стабильным</string>
+
+    <string name="normal_permission_discover_title">Обнаружение nearby устройств</string>
+    <string name="normal_permission_discover_summery">Используется для обнаружения, привязки и подключения умных очков</string>
+    <string name="normal_permission_microphone_title">Доступ к микрофону</string>
+    <string name="normal_permission_microphone_summery">Доступ к микрофону для функций, связанных с голосом</string>
+    <string name="normal_permission_location_title">Местоположение</string>
+    <string name="normal_permission_location_summery">Используется для определения местоположения, навигации, погоды, голосовых сервисов и других функций</string>
+    <string name="normal_permission_file_title">Доступ к файлам</string>
+    <string name="normal_permission_file_summery">Доступ к файлам на телефоне для загрузки текстовых документов и настройки функций</string>
+
+    <string name="btn_login">Вход</string>
+    <string name="btn_logout">Выйти из системы</string>
+    <string name="label_user_info_phone">Телефон</string>
+    <string name="label_user_info_email">Электронная почта</string>
+    <string name="label_user_info_delete_account">Удалить аккаунт</string>
+    <string name="dialog_delete_account_title">Удаление аккаунта</string>
+    <string name="dialog_delete_account_message">Удаление аккаунта является необратимым действием, пожалуйста, сделайте резервную копию важных данных, восстановить данные после удаления аккаунта невозможно.</string>
+    <string name="dialog_delete_account_positive">Я понимаю, удалить аккаунт</string>
+    <string name="toast_delete_account_succeed">Аккаунт удален успешно</string>
+    <string name="toast_delete_account_failed">Не удалось удалить аккаунт</string>
+
+    <string name="withdraw_dialog_title">Отозвать согласие</string>
+    <string name="withdraw_dialog_content">Если вы откажетесь от согласия на обработку личной информации в соответствии с "Политикой конфиденциальности", мы не сможем предоставлять вам услуги и прекратим сбор и обработку вашей личной информации.</string>
+    <string name="withdraw_dialog_cancel">Отменить</string>
+    <string name="withdraw_dialog_withdraw">Отозвать согласие</string>
+
+    <string name="permission_dialog_discover_title">Пожалуйста, включите разрешение на обнаружение nearby устройств</string>
+    <string name="permission_dialog_discover_content">Используется для обнаружения, привязки и подключения умных очков.</string>
+    <string name="permission_dialog_stt_title">Разрешить доступ к микрофону</string>
+    <string name="permission_dialog_stt_content">Дайте разрешение на доступ к микрофону, чтобы попробовать снова, это необходимо для распознавания речи.</string>
+    <string name="permission_dialog_map_title">Пожалуйста, включите разрешение на местоположение</string>
+    <string name="permission_dialog_map_content">Используется для определения местоположения, навигации, погоды, голосовых сервисов и других функций.</string>
+    <string name="permission_dialog_prompter_title">Пожалуйста, включите разрешение на доступ к файлам</string>
+    <string name="permission_dialog_prompter_content">Доступ к файлам на телефоне для загрузки текстовых документов и настройки функций.</string>
+    <string name="permission_dialog_notification_title">Пожалуйста, включите разрешение на использование уведомлений</string>
+    <string name="permission_dialog_notification_content">Используется для передачи уведомлений на AR-очки.</string>
+
+    <string name="title_app_settings_channel">Канал сеанса</string>
+    <string name="title_app_settings_audio_input">Вход аудио</string>
+    <string name="title_app_settings_audio_input_phone">Звук с телефона</string>
+    <string name="title_app_settings_audio_input_sco">Звук с очков</string>
+    <string name="title_app_settings_mic_directional">Режим записи звука</string>
+    <string name="title_app_settings_mic_directional_omni">Оmnинаправленный</string>
+    <string name="title_app_settings_mic_directional_front">Направленный</string>
+    <string name="title_app_settings_touchpad_enabled">Тачпад</string>
+    <string name="title_app_settings_protocol_ver">Версия протокола</string>
+    <string name="title_app_settings_stt">STT-двигатель</string>
+    <string name="title_app_settings_voice_recognition">Распознавание голоса</string>
+    <string name="title_app_settings_text_mode">Режим отображения текста</string>
+    <string name="title_app_settings_text_mode_current_only">Показать только последний</string>
+    <string name="title_app_settings_text_mode_current_historical">Показать историю</string>
+    <string name="title_app_settings_trans_show_mode">Режим отображения перевода</string>
+    <string name="title_app_settings_trans_show_mode_all">Оригинал - Перевод</string>
+    <string name="title_app_settings_trans_show_mode_only">Только перевод</string>
+    <string name="title_app_settings_trans_tts">Озвучивание перевода</string>
+    <string name="title_app_settings_trans_tts_enabled">Включен</string>
+    <string name="title_app_settings_trans_tts_disabled">Выключен</string>
+    <string name="title_app_settings_audio_record">Запись аудио</string>
+    <string name="title_app_settings_audio_record_enabled">Включен</string>
+    <string name="title_app_settings_audio_record_disabled">Выключен</string>
+    <string name="title_app_settings_heartbeat">Проверка "пульса"</string>
+    <string name="title_app_settings_heartbeat_enabled">Включен</string>
+    <string name="title_app_settings_heartbeat_disabled">Выключен</string>
+    <string name="title_app_settings_ttm_test">Тест режима прозрачной передачи</string>
+    <string name="title_app_settings_file_explorer">Файловый менеджер</string>
+    <string name="title_app_settings_ota_local">OTA LOCAL</string>
+    <string name="title_app_settings_ota_id">OTA ID</string>
+    <string name="title_app_settings_ftp">Ftp</string>
+    <string name="title_app_settings_write_bt_name">BT Name</string>
+    <string name="title_app_settings_write_bt_mac">BT Mac</string>
+    <string name="title_app_settings_write_ble_name">BLE Name</string>
+    <string name="title_app_settings_write_ble_mac">BLE Mac</string>
+    <string name="title_app_settings_log">Журнал сеансов</string>
+    <string name="title_app_settings_azure">Azure Test</string>
+    <string name="title_app_settings_ota">OTA</string>
+
+    <string name="ota_check_updates">Проверить обновления</string>
+    <string name="ota_start_upgrade">Начать обновление</string>
+    <string name="ota_upgrading">Обновление…</string>
+    <string name="ota_start_download">Начать скачивание</string>
+    <string name="ota_downloading">Скачивание…</string>
+    <string name="ota_found_new">Обнаружена новая версия</string>
+    <string name="ota_btn_new">Обновить</string>
+    <string name="ota_latest_already">У вас уже установлена последняя версия</string>
+    <string name="ota_local_file_update">Локальное обновление</string>
+    <string name="ota_battery_low">Уровень заряда ниже %1$d%%, не удалось начать обновление</string>
+    <string name="ota_processing_title">Предупреждение</string>
+    <string name="ota_processing_message">Устройство в процессе обновления, пожалуйста, не выключайте его или не выходите из системы</string>
+    <string name="ota_processing_negative">Отменить</string>
+    <string name="ota_processing_positive">Все же выйти</string>
+
+    <string name="ota_successfully">OTA успешна</string>
+    <string name="ota_upgrade_type">Способ обновления</string>
+    <string name="ota_is_bth">Это bin-файл для BTH?</string>
+
+    <string name="ota_error_image_size">Недостаточно места на устройстве для загрузки пакета обновления. Освободите место и повторите попытку.</string>
+
+    <string name="ota_config">OTA-настройки</string>
+    <string name="ota_config_folder_tips">Поместите файлы обновления в следующий путь:\n%1$s</string>
+    <string name="ota_config_user">USER</string>
+    <string name="ota_config_file">FILE</string>
+
+    <string name="ttm_hint_hex">Введите шестнадцатеричные символы</string>
+    <string name="ttm_btn_send">Отправить</string>
+    <string name="ttm_label_received">Получено:</string>
+    <string name="ttm_sent">Отправлено</string>
+    <string name="ttm_invalid_data">Недействительные данные</string>
+</resources>

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_dialog_func_config"
+    android:minHeight="360dp"
+    android:orientation="vertical"
+    tools:context=".ui.main.FuncConfigFragment">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/iv_close"
+            android:layout_width="@dimen/iv_close_width"
+            android:layout_height="@dimen/iv_close_height"
+            android:layout_alignParentEnd="true"
+            android:layout_marginHorizontal="15dp"
+            android:layout_marginVertical="15dp"
+            android:paddingHorizontal="@dimen/iv_close_padding_horizontal"
+            android:paddingVertical="@dimen/iv_close_padding_vertical"
+            android:scaleType="fitXY"
+            android:src="@drawable/baseline_close_24" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal">
+
+        <TextView
+            android:id="@+id/tv_func_stt"
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+            android:gravity="center"
+            android:paddingVertical="3dp"
+            android:text="@string/func_stt"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tv_func_trans"
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:gravity="center"
+            android:paddingVertical="3dp"
+            android:text="@string/func_trans"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ListView
+            android:id="@+id/lv_source_config"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginVertical="25dp"
+            android:layout_weight="1"/>
+
+        <ListView
+            android:id="@+id/lv_target_config"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginVertical="25dp"
+            android:layout_weight="1"/>
+    </LinearLayout>
+</LinearLayout>

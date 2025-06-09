@@ -1,0 +1,350 @@
+<resources>
+    <string name="app_name">SmartGlasses</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="title_history">History</string>
+    <string name="title_profile">Profile</string>
+
+    <string name="tips_more">More</string>
+
+    <string name="connect_device">Connect Device</string>
+    <string name="disconnect_device">Disconnect Device</string>
+
+    <string name="listen_start">Start Listen</string>
+    <string name="listen_stop">Stop Listen</string>
+
+    <string name="device_manager">Device Manager</string>
+
+    <string name="device_add">Add glasses</string>
+    <string name="device_connect">Connect</string>
+    <string name="device_remove">Remove</string>
+
+    <string name="bt_state_connected">Connected</string>
+    <string name="bt_state_disconnected">Disconnected</string>
+    <string name="bt_state_connecting">Connecting…</string>
+
+    <string name="btn_search">Search</string>
+    <string name="btn_searching">Searching…</string>
+
+    <string name="tips_power_on">Make sure the glasses is powered on.</string>
+    <string name="tips_no_device_found">No glasses found.</string>
+    <string name="tips_no_device_connected">Glasses is not connected</string>
+    <string name="tips_no_device_selected">No device selected.</string>
+    <string name="tips_no_device_bound">No device has been bound</string>
+    <string name="tips_connect">Connect to %1$s ?</string>
+    <string name="tips_connecting">Connecting…</string>
+    <string name="tips_connected">Connected to %1$s successfully</string>
+    <string name="tips_connect_failed">Connection failed</string>
+    <string name="tips_remove">Remove?</string>
+    <string name="tips_removed">Removed</string>
+    <string name="tips_coming">Coming soon</string>
+    <string name="tips_switched">Switched to %1$s</string>
+    <string name="tips_switched_and_restart">Switched to %1$s, restart to take effect</string>
+
+    <string name="tips_stt_err_device_connection_lost">Device disconnected. Please reconnect and try again.</string>
+    <string name="tips_stt_err_permission_not_granted">Please grant the app microphone access and try again.</string>
+    <string name="tips_stt_err_recorder_illegal_arg">Abnormal audio parameters. Please try again.</string>
+    <string name="tips_stt_err_recorder_illegal_state">Abnormal audio state. Please try again.</string>
+    <string name="tips_stt_err_no_network_connection">No network connection. Please check and try again.</string>
+    <string name="tips_stt_err_hfp_lost">Failed to connect microphone. Please ensure your phone\'s Bluetooth media audio is connected to the device and try again.</string>
+    <string name="tips_stt_err_hfp_mismatch">Failed to connect microphone. Your phone\'s Bluetooth is connected to another device\'s media audio. Please check and try again.</string>
+    <string name="tips_stt_err_hfp_check_timeout">Failed to connect microphone. Bluetooth connection status check timed out. Please try again.</string>
+    <string name="tips_stt_err_service_req_timeout">Service connection timed out. Please try again.</string>
+    <string name="tips_stt_err_service_auth_failed">Login information expired. Please log in and try again.</string>
+    <string name="tips_stt_err_service_req_failed">Failed to connect to the service. Please try again.</string>
+    <string name="tips_stt_err_key_not_found">Failed to connect to service (4002). Please report this issue via \'User Feedback\'.</string>
+    <string name="tips_stt_err_key_empty">Failed to connect to service (4003). Please report this issue via \'User Feedback\'.</string>
+    <string name="tips_stt_err_key_parser">Failed to connect to service (4004). Please report this issue via \'User Feedback\'.</string>
+    <string name="tips_stt_err_unknown">Unknown error occurred. Please try again.</string>
+
+    <string name="tips_stt_err_loading">Service Loading...(%1$d/%2$d)</string>
+
+    <string name="notification_title_device_not_connected">SmartGlasses not connected</string>
+    <string name="notification_content_device_not_connected">More features on SmartGlasses</string>
+    <string name="notification_title_device_connected">SmartGlasses connected</string>
+    <string name="notification_content_device_connected">Welcome</string>
+
+    <string name="tips_venus_file_remove">Remove %1$s ?</string>
+    <string name="tips_venus_file_removed">Removed</string>
+    <string name="tips_venus_folder_create">Create a new folder under %1$s</string>
+
+    <string name="btn_sure">Sure</string>
+    <string name="btn_cancel">Cancel</string>
+
+    <string name="str_listening">Listening...</string>
+
+    <string name="title_touch_pad">TouchPad</string>
+    <string name="title_touch_pad_single">Single Tap\nSure</string>
+    <string name="title_touch_pad_double">Double Tap\nBack</string>
+    <string name="title_touch_pad_long">Long Press\nHome</string>
+    <string name="title_touch_pad_slip">Slip\nSwitch</string>
+
+    <string name="title_touch_pad_event_single">Single Tap</string>
+    <string name="title_touch_pad_event_double">Double Tap</string>
+    <string name="title_touch_pad_event_long">Long Press</string>
+    <string name="title_touch_pad_event_slip_left">Slip Left</string>
+    <string name="title_touch_pad_event_slip_right">Slip Right</string>
+    <string name="title_touch_pad_event_slip_up">Slip Up</string>
+    <string name="title_touch_pad_event_slip_down">Slip Down</string>
+
+    <string name="title_speech_session_list">Sessions</string>
+
+    <string name="title_activity_device_settings">Settings</string>
+    <string name="title_brightness">Screen brightness</string>
+    <string name="title_brightness_auto">Auto brightness</string>
+    <string name="summery_brightness_auto">Adjust brightness to ambient light to save battery</string>
+
+    <string name="title_simplified_mode">Simplified Mode</string>
+    <string name="summery_simplified_mode">Display content in a smaller view box</string>
+    <string name="title_wear_detection">Wear Detection</string>
+    <string name="summery_wear_detection">Automatically connect with your phone when put on, and disconnect when taken off</string>
+    <string name="title_device_notification">Show Notification</string>
+    <string name="summery_device_notification">Show Notification from phone</string>
+    <string name="title_touchpad">Touchpad</string>
+    <string name="summery_touchpad">Operate the glasses through the touch area on the temple</string>
+    <string name="title_idle_detection">Idle Sleep</string>
+    <string name="summery_idle_detection">Automatically enter sleep mode when device left idle</string>
+
+    <string name="title_font">Font settings</string>
+    <string name="title_font_small">Small</string>
+    <string name="title_font_regular">Regular</string>
+    <string name="title_font_large">Large</string>
+
+    <string name="title_volume">Volume</string>
+
+    <string name="title_notification">Reminder</string>
+    <string name="summery_notification">Bring messages to your eyes</string>
+    <string name="state_enabled">Enabled</string>
+    <string name="state_disabled">Disabled</string>
+    <string name="label_app_list">Application List</string>
+    <string name="btn_select_default">Default</string>
+    <string name="btn_select_all">All</string>
+    <string name="btn_unselect_all">Clear</string>
+
+    <string name="title_languages">Languages</string>
+
+    <string name="title_home_menus">Home menus</string>
+    <string name="home_menus_selected">Selected</string>
+    <string name="home_menus_unselected">Unselected</string>
+
+    <string name="title_device_demo">Demo of features</string>
+    <string name="demo_current">Current show</string>
+    <string name="demo_list">Demo List</string>
+    <string name="tips_demo_exit">Exit?</string>
+
+    <string name="tips_stt_exit">Exit or Run in the background?</string>
+    <string name="btn_stt_exit">Exit</string>
+    <string name="btn_stt_run_background">Run in the background</string>
+    <string name="tips_stt_running">transcribe is running, please stop and retry</string>
+    <string name="tips_stt_engine_err">service stopped（%1$d）, retry please</string>
+
+    <string name="title_firmware_version">Firmware version</string>
+
+    <string name="title_activity_device_info">Device Info</string>
+    <string name="title_vendor">Vendor</string>
+    <string name="title_model">Model</string>
+    <string name="title_edition">Edition</string>
+    <string name="title_mac">Mac</string>
+    <string name="title_sn">SN</string>
+
+    <string name="func_stt">Transcribe</string>
+    <string name="func_trans">Translator</string>
+    <string name="func_touch_panel">TouchPad</string>
+    <string name="func_nav">Navigation</string>
+    <string name="func_prompter">Prompter</string>
+    <string name="func_ai">Voice Assistant</string>
+    <string name="func_book">Reading</string>
+
+    <string name="prompter_slide_top_reached">Top reached</string>
+    <string name="prompter_slide_bottom_reached">Bottom reached</string>
+    <string name="prompter_file_size_oom">The file exceeds the size limit(50kB)</string>
+    <string name="prompter_file_loading">loading...</string>
+    <string name="prompter_file_load_err_1">load file error (1)</string>
+    <string name="prompter_file_load_err_2">load file error (2)</string>
+    <string name="prompter_cache_load_err_1">历史文档加载错误（1），请重新选择题词文档</string>
+
+    <string name="prompter_init_tip">提词器是一款实用的辅助工具，在您演讲、录制视频或直播过程中，为用户提供实时滚动显示的文稿内容，帮助用户更好地记忆和表达。\n通过导入手机中存储的TXT格式文档，提词器能够展示预先准备好的题词内容，用户只需跟随屏幕上的文字进行朗读，即可避免忘词或重复，确保演出的流畅性和准确性，轻松实现高效演讲。</string>
+
+    <string name="prompter_config_row">Rows</string>
+    <string name="prompter_config_show_pre">Show Pre</string>
+    <string name="prompter_config_font_size">FontSize</string>
+    <string name="prompter_config_load_history">Load History Auto</string>
+    <string name="prompter_config_tip">Effect after restart, cache will be removed</string>
+    <string name="prompter_config_close">Close</string>
+
+    <string name="stt_config_item_default">cn</string>
+    <string name="stt_config_item_cn">cn(only)</string>
+    <string name="stt_config_item_en">en</string>
+    <string name="stt_config_item_ja">ja</string>
+
+    <string name="trans_config_item_default">cn -> en</string>
+
+    <string name="language_config_item_zh">中文</string>
+    <string name="language_config_item_en">English</string>
+    <string name="language_config_item_ja">日本語</string>
+
+    <string name="title_app_login">Login</string>
+    <string name="title_app_account">Account</string>
+    <string name="title_app_devices">Devices</string>
+    <string name="title_app_permission">Permissions</string>
+    <string name="title_app_background_permission">Background Permission</string>
+    <string name="title_app_guide">Guide</string>
+    <string name="title_app_feedback">Feedback</string>
+    <string name="title_app_about">About</string>
+    <string name="title_app_settings">Settings</string>
+    <string name="title_app_ring">Ring</string>
+    <string name="title_app_terms">Terms of Service</string>
+    <string name="title_app_policy">Privacy Policy</string>
+    <string name="title_app_upgrade">Upgrade</string>
+    <string name="title_app_sw_version">Version</string>
+    <string name="title_app_sw_new_version">New version found</string>
+    <string name="title_app_withdraw_policy">Withdraw consent to policy</string>
+    <string name="title_app_improvement">Join the User Experience Improvement Program Switch</string>
+    <string name="summery_app_improvement">Enabling this feature means that you agree to join our user experience improvement program.</string>
+    <string name="title_app_debug_settings">Debug Settings</string>
+
+    <string name="label_feedback_title">Title</string>
+    <string name="label_feedback_content">Content</string>
+    <string name="btn_feedback_commit">Commit</string>
+
+    <string name="agreement_dialog_title">Welcome to using SmartGlasses</string>
+    <string name="agreement_dialog_content">Please carefully read and agree to the 《User Agreement》 and 《Privacy Policy》. These agreements will help you understand how we collect, use, store, and share your personal information, as well as the rights you are entitled to.</string>
+    <string name="agreement_dialog_accept">Agree</string>
+    <string name="agreement_dialog_reject">Disagree</string>
+
+    <string name="label_not_logged_in">Not logged in</string>
+    <string name="label_go_login">Login</string>
+    <string name="phone_number_login_hint">Phone</string>
+    <string name="phone_number_login_agreement_content">I have read and agree 《User Agreement》 And 《Privacy Policy》, unregistered user will be registered automatically after logging in.</string>
+    <string name="phone_number_login_btn_send_code">SEND CODE</string>
+
+    <string name="login_agreement_dialog_title">Prompt</string>
+    <string name="login_agreement_dialog_content">Please read the 《User Agreement》 and 《Privacy Policy》, agree and check the boxes before proceeding.</string>
+
+    <string name="phone_number_verify_title">Input Code</string>
+    <string name="phone_number_verify_sent_to">Code sent to （%1$s）%2$s</string>
+    <string name="phone_number_verify_code_sent_successfully">Code sent successfully</string>
+    <string name="phone_number_verify_code_invalid">Code invalid</string>
+    <string name="phone_number_verify_code_failed">Code failed</string>
+    <string name="phone_number_verify_count_down">%1$d Retry</string>
+    <string name="phone_number_verify_send_retry">Retry</string>
+    <string name="phone_number_verify_logging">Logging</string>
+    <string name="phone_number_verify_logged_successfully">Logged successfully</string>
+    <string name="phone_number_verify_syncing">Syncing</string>
+    <string name="phone_number_verify_synced_successfully">Synced successfully</string>
+
+    <string name="background_permission_lock_title">Lock App</string>
+    <string name="background_permission_lock_summery">Lock SmartGlasses in recently opened</string>
+    <string name="background_permission_battery_optimization_title">Exclude from Battery Optimization</string>
+    <string name="background_permission_battery_optimization_summery">Add SmartGlasses App to the battery optimization whitelist to prevent system power-saving settings</string>
+    <string name="background_permission_persistent_notification_title">Persistent notification bar</string>
+    <string name="background_permission_persistent_notification_summery">Keep device connections stable</string>
+
+    <string name="normal_permission_discover_title">Nearby devices</string>
+    <string name="normal_permission_discover_summery">Discover and connect to the devices nearby</string>
+    <string name="normal_permission_microphone_title">Microphone</string>
+    <string name="normal_permission_microphone_summery">Allow app to use Microphone for recording audio</string>
+    <string name="normal_permission_location_title">Location</string>
+    <string name="normal_permission_location_summery">It is used to judge or record the position of navigation, stt, or weather</string>
+    <string name="normal_permission_file_title">Files Access</string>
+    <string name="normal_permission_file_summery">Read the mobile phone documents for prompter and configs</string>
+
+    <string name="btn_login">Login</string>
+    <string name="btn_logout">Logout</string>
+    <string name="label_user_info_phone">Phone</string>
+    <string name="label_user_info_email">Email</string>
+    <string name="label_user_info_delete_account">Delete Account</string>
+    <string name="dialog_delete_account_title">Delete Account</string>
+    <string name="dialog_delete_account_message">Deleting an account is an irreversible operation. Please backup important information in advance. Relevant data cannot be retrieved after the account is deleted.</string>
+    <string name="dialog_delete_account_positive">I confirm deleting this Account</string>
+    <string name="toast_delete_account_succeed">Delete succeed</string>
+    <string name="toast_delete_account_failed">Delete failed</string>
+
+    <string name="withdraw_dialog_title">Withdraw consent</string>
+    <string name="withdraw_dialog_content">If you withdraw your consent to the personal information processing rules, we will not be able to provide you with services and will stop collecting and processing your personal information.</string>
+    <string name="withdraw_dialog_cancel">Cancel</string>
+    <string name="withdraw_dialog_withdraw">Withdraw</string>
+
+    <string name="permission_dialog_discover_title">Enable ‘Nearby devices’ Permissions</string>
+    <string name="permission_dialog_discover_content">It is used to discover, bind and connect to smart glasses.</string>
+    <string name="permission_dialog_stt_title">Enable ‘Microphone‘ Permission</string>
+    <string name="permission_dialog_stt_content">Allow app to use Microphone for recording audio, and retry.</string>
+    <string name="permission_dialog_map_title">Enable ‘Location’ Permissions</string>
+    <string name="permission_dialog_map_content">Used for positioning and navigation.</string>
+    <string name="permission_dialog_prompter_title">Enable ‘Access Files’ Permissions</string>
+    <string name="permission_dialog_prompter_content">Used for accessing and importing prompter files.</string>
+    <string name="permission_dialog_notification_title">Enable ‘Allow notification access’ Permissions</string>
+    <string name="permission_dialog_notification_content">Used for bring messages to your eyes.</string>
+
+    <string name="title_app_settings_channel">Channel</string>
+    <string name="title_app_settings_audio_input">Audio Input</string>
+    <string name="title_app_settings_audio_input_phone">Phone</string>
+    <string name="title_app_settings_audio_input_sco">Glasses</string>
+    <string name="title_app_settings_mic_directional">Pickup Mode</string>
+    <string name="title_app_settings_mic_directional_omni">360° Pickup</string>
+    <string name="title_app_settings_mic_directional_front">Front-Focused Pickup</string>
+    <string name="title_app_settings_touchpad_enabled">Touchpad</string>
+    <string name="title_app_settings_protocol_ver">Protocol Version</string>
+    <string name="title_app_settings_stt">STT engine</string>
+    <string name="title_app_settings_voice_recognition">Voice Recognition</string>
+    <string name="title_app_settings_text_mode">Text mode</string>
+    <string name="title_app_settings_text_mode_current_only">Show current only</string>
+    <string name="title_app_settings_text_mode_current_historical">Show previous</string>
+    <string name="title_app_settings_trans_show_mode">Translator mode</string>
+    <string name="title_app_settings_trans_show_mode_all">Original-Translation</string>
+    <string name="title_app_settings_trans_show_mode_only">Translation only</string>
+    <string name="title_app_settings_trans_tts">Translate TTS</string>
+    <string name="title_app_settings_trans_tts_enabled">Enabled</string>
+    <string name="title_app_settings_trans_tts_disabled">Disabled</string>
+    <string name="title_app_settings_audio_record">AudioRecord</string>
+    <string name="title_app_settings_audio_record_enabled">Enabled</string>
+    <string name="title_app_settings_audio_record_disabled">Disabled</string>
+    <string name="title_app_settings_heartbeat">Heartbeat</string>
+    <string name="title_app_settings_heartbeat_enabled">Enabled</string>
+    <string name="title_app_settings_heartbeat_disabled">Disabled</string>
+    <string name="title_app_settings_ttm_test">TTM Test</string>
+    <string name="title_app_settings_file_explorer">File Explorer</string>
+    <string name="title_app_settings_ota_local">OTA LOCAL</string>
+    <string name="title_app_settings_ota_id">OTA ID</string>
+    <string name="title_app_settings_ftp">Ftp</string>
+    <string name="title_app_settings_write_bt_name">BT Name</string>
+    <string name="title_app_settings_write_bt_mac">BT Mac</string>
+    <string name="title_app_settings_write_ble_name">BLE Name</string>
+    <string name="title_app_settings_write_ble_mac">BLE Mac</string>
+    <string name="title_app_settings_log">Log</string>
+    <string name="title_app_settings_azure">Azure Test</string>
+    <string name="title_app_settings_ota">OTA</string>
+
+    <string name="ota_check_updates">Check for Updates</string>
+    <string name="ota_start_upgrade">Start Upgrade</string>
+    <string name="ota_upgrading">Upgrading…</string>
+    <string name="ota_start_download">Start Download</string>
+    <string name="ota_downloading">Downloading…</string>
+    <string name="ota_found_new">New version found</string>
+    <string name="ota_btn_new">Go</string>
+    <string name="ota_latest_already">Already on the latest version</string>
+    <string name="ota_local_file_update">Local File Update</string>
+    <string name="ota_battery_low">Battery below %1$d%%, upgrade failed to start</string>
+    <string name="ota_processing_title">Warning</string>
+    <string name="ota_processing_message">Device is currently being upgraded. Please do not turn off the power or exit</string>
+    <string name="ota_processing_negative">Cancel</string>
+    <string name="ota_processing_positive">Exit Anyway</string>
+
+    <string name="ota_successfully">Successful</string>
+    <string name="ota_upgrade_type">Upgrade Type</string>
+    <string name="ota_is_bth">Is BTH bin</string>
+
+    <string name="ota_error_image_size">Insufficient device storage to download the upgrade package. Please free up space and try again.</string>
+
+    <string name="ota_config">OTA Config</string>
+    <string name="ota_config_folder_tips">Place the upgrade file in the following path: \n %1$s</string>
+    <string name="ota_config_user">USER</string>
+    <string name="ota_config_file">FILE</string>
+
+    <string name="ttm_hint_hex">Input Hex String</string>
+    <string name="ttm_btn_send">Send</string>
+    <string name="ttm_label_received">Received:</string>
+    <string name="ttm_sent">Sent</string>
+    <string name="ttm_invalid_data">Invalid data</string>
+</resources>

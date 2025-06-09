@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Language start -->
+    <string-array name="language_config_title">
+        <item>"中文（简体）"</item>
+        <item>"中文（繁体）"</item>
+        <item>"English（美国）"</item>
+        <item>"日本語"</item>
+        <item>"한국어"</item>
+        <item>"Deutsch"</item>
+        <item>"Français"</item>
+        <item>"Русский"</item>
+        <item>"italiano"</item>
+        <item>"português(Brasil)"</item>
+        <item>"español（Spain）"</item>
+        <item>"Tiếng Việt"</item>
+        <item>"ภาษาไทย"</item>
+        <item>"中文（简体）"</item>
+        <item>"English"</item>
+    </string-array>
+
+    <string-array name="language_config_key">
+        <item>"zh-CN"</item>
+        <item>"zh-TW"</item>
+        <item>"en-US"</item>
+        <item>"ja"</item>
+        <item>"ko"</item>
+        <item>"de"</item>
+        <item>"fr-FR"</item>
+        <item>"ru"</item>
+        <item>"it"</item>
+        <item>"pt-BR"</item>
+        <item>"es-ES"</item>
+        <item>"vi"</item>
+        <item>"th"</item>
+        <item>"zh-rCN"</item>
+        <item>"en"</item>
+    </string-array>
+    <!-- Language end -->
+
+    <!-- Translate Show Mode start -->
+    <string-array name="trans_show_mode_config_title">
+        <item>@string/title_app_settings_trans_show_mode_only</item>
+        <item>@string/title_app_settings_trans_show_mode_all</item>
+    </string-array>
+
+    <integer-array name="trans_show_mode_config_key">
+        <item>0</item>
+        <item>1</item>
+    </integer-array>
+    <!-- Translate Show Mode end -->
+
+    <!-- Text Mode start -->
+    <string-array name="text_mode_config_title">
+        <item>@string/title_app_settings_text_mode_current_only</item>
+        <item>@string/title_app_settings_text_mode_current_historical</item>
+    </string-array>
+
+    <integer-array name="text_mode_config_key">
+        <item>0</item>
+        <item>1</item>
+    </integer-array>
+    <!-- Text Mode end -->
+
+    <!-- Audio Input start -->
+    <string-array name="audio_input_config_title">
+        <item>@string/title_app_settings_audio_input_phone</item>
+        <item>@string/title_app_settings_audio_input_sco</item>
+    </string-array>
+
+    <integer-array name="audio_input_config_key">
+        <item>0</item>
+        <item>1</item>
+    </integer-array>
+    <!-- Audio Input end -->
+
+    <!-- Mic Directional start -->
+    <string-array name="mic_directional_config_title">
+        <item>@string/title_app_settings_mic_directional_omni</item>
+        <item>@string/title_app_settings_mic_directional_front</item>
+    </string-array>
+
+    <integer-array name="mic_directional_config_key">
+        <item>0</item>
+        <item>1</item>
+    </integer-array>
+    <!-- Mic Directional end -->
+
+    <!-- Prompter FontSize start -->
+    <integer-array name="prompter_font_size_config_key">
+        <item>11</item>
+        <item>14</item>
+        <item>17</item>
+    </integer-array>
+    <!-- Prompter FontSize end -->
+
+    <!-- STT engine start -->
+    <string-array name="stt_engine_config_title">
+        <item>"Azure"</item>
+        <item>"AzureWestUS"</item>
+        <item>"AzureSwedenCentral"</item>
+        <item>"AiSpeech"</item>
+        <item>"IFlyTek"</item>
+        <item>"IFlyTekWebAsr"</item>
+        <item>"IFlyTekWebIatMul"</item>
+        <item>"Mock"</item>
+    </string-array>
+
+    <string-array name="stt_engine_config_key">
+        <item>"Azure"</item>
+        <item>"AzureWestUS"</item>
+        <item>"AzureSwedenCentral"</item>
+        <item>"AiSpeech"</item>
+        <item>"IFlyTek"</item>
+        <item>"IFlyTekWebAsr"</item>
+        <item>"IFlyTekWebIatMul"</item>
+        <item>"Mock"</item>
+    </string-array>
+    <!-- STT engine end -->
+</resources>

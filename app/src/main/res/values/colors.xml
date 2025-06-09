@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <color name="gray_200">#FFF5F5F5</color>
+    <color name="gray_500">#FFD3D3D3</color>
+    <color name="gray_700">#FFC7C7C7</color>
+    <color name="gray_700_66">#66C7C7C7</color>
+
+    <color name="blue_sky">#FF50D2FF</color>
+    <color name="blue_sky_66">#6650D2FF</color>
+
+    <color name="bg_record">@color/blue_sky</color>
+
+    <color name="green">#32cd32</color>
+
+    <color name="time_bg_color">#f4cac7c7</color>
+
+    <color name="title_color_dark"> #ff2c4662 </color>
+    <color name="title_color_light"> #ffafb8c3 </color>
+    <color name="ffff5d5d">#ffff5d5d</color>
+
+    <color name="venus_green">#FF68bc9b</color>
+    <color name="venus_green_66">#6668bc9b</color>
+    <color name="bg_main_gradient_start">#ccf4ec</color>
+    <color name="bg_main_gradient_end">#f5f5f5</color>
+</resources>
