@@ -18,6 +18,7 @@ import android.text.TextUtils;
 import android.text.method.ScrollingMovementMethod;
 import android.text.style.ForegroundColorSpan;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -58,6 +59,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PrompterActivity extends VenusAppBaseActivity implements View.OnClickListener {
+
+    private static final String TAG = "_PrompterActivity";
 
     private static long FILE_SIZE_MAX = 1024 * 50;
 
@@ -101,6 +104,8 @@ public class PrompterActivity extends VenusAppBaseActivity implements View.OnCli
         prompterInitTipStr = getString(R.string.prompter_init_tip);
 
         prompterFilesDir = getExternalFilesDir("VenusPrompterTemp");
+
+        Log.d(TAG, "onCreate: prompterFilesDir=" + prompterFilesDir.getAbsolutePath());
         if (!prompterFilesDir.exists()) {
             prompterFilesDir.mkdirs();
         }

@@ -237,6 +237,20 @@
             </intent-filter>
         </activity>
 
+        <!-- 推荐使用 AndroidX 版本 -->
+        <!-- 替换为你的包名 + .fileprovider -->
+        <!-- 必须为 false，否则会有安全风险 -->
+        <!-- 允许临时授予 URI 权限 -->
+        <provider
+            android:name="androidx.core.content.FileProvider"
+        android:authorities="com.jueyuantech.glasses.fileprovider"
+        android:exported="false"
+        android:grantUriPermissions="true">
+        <meta-data
+            android:name="android.support.FILE_PROVIDER_PATHS"
+            android:resource="@xml/file_paths" />  <!-- 指向文件路径配置 -->
+    </provider>
+
         <meta-data
             android:name="com.amap.api.v2.apikey"
             android:value="${amap_key}" />
