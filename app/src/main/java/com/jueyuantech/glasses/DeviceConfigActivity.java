@@ -19,6 +19,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.CompoundButton;
@@ -36,6 +37,7 @@ import androidx.appcompat.widget.SwitchCompat;
 import com.google.gson.Gson;
 import com.jueyuantech.glasses.bean.LatestFwInfo;
 import com.jueyuantech.glasses.device.DeviceManager;
+import com.jueyuantech.glasses.stt.SttConfigManager;
 import com.jueyuantech.glasses.stt.SttWorker;
 import com.jueyuantech.glasses.util.LogUtil;
 import com.jueyuantech.glasses.util.MmkvUtil;
@@ -47,6 +49,7 @@ import com.jueyuantech.venussdk.cb.VNSystemConfigCallBack;
 
 public class DeviceConfigActivity extends AppCompatActivity implements View.OnClickListener {
 
+    private static final String TAG = "_DeviceConfigActivity";
     private Gson gson = new Gson();
 
     private String[] LANGUAGE_CONFIG_TITLE;
@@ -79,8 +82,8 @@ public class DeviceConfigActivity extends AppCompatActivity implements View.OnCl
     private SwitchCompat mWearDetectionEnabledSwitchBtn;
     private SwitchCompat mTouchpadEnabledSwitchBtn;
     private SwitchCompat mIdleDetectionEnabledSwitchBtn;
-    private RelativeLayout mLanguageRl, mTextModeRl, mTransShowModeRl, mAudioInputRl, mMicDirectionalRl;
-    private TextView mLanguageTv, mTextModeTv, mTransShowModeTv, mAudioInputTv, mMicDirectionalTv;
+    private RelativeLayout mLanguageRl, mSttEngineRl, mTextModeRl, mTransShowModeRl, mAudioInputRl, mMicDirectionalRl;
+    private TextView mLanguageTv, mSttEngineTv, mTextModeTv, mTransShowModeTv, mAudioInputTv, mMicDirectionalTv;
     private RelativeLayout mMenuRl;
     private RelativeLayout mFuncDeviceDemoRl;
     private TextView mDeviceNameTv;
@@ -132,6 +135,10 @@ public class DeviceConfigActivity extends AppCompatActivity implements View.OnCl
 
         mLanguageRl = findViewById(R.id.rl_container_language);
         mLanguageRl.setOnClickListener(this);
+
+        mSttEngineRl = findViewById(R.id.rl_container_stt_engine);
+        mSttEngineRl.setOnClickListener(this);
+
         mTextModeRl = findViewById(R.id.rl_container_text_mode);
         mTextModeRl.setOnClickListener(this);
         mTransShowModeRl = findViewById(R.id.rl_container_trans_show_mode);
@@ -158,6 +165,7 @@ public class DeviceConfigActivity extends AppCompatActivity implements View.OnCl
         }
         mFontSizeTv = findViewById(R.id.tv_font_size);
         mLanguageTv = findViewById(R.id.tv_language);
+        mSttEngineTv = findViewById(R.id.tv_stt_engine);
         mTextModeTv = findViewById(R.id.tv_text_mode);
         mTransShowModeTv = findViewById(R.id.tv_trans_show_mode);
         mAudioInputTv = findViewById(R.id.tv_audio_input);
@@ -266,6 +274,7 @@ public class DeviceConfigActivity extends AppCompatActivity implements View.OnCl
     protected void onResume() {
         super.onResume();
 
+        refreshSttEngineTitle();
         refreshSimplifiedMode();
         refreshTextMode();
         refreshTransShowMode();
@@ -298,6 +307,11 @@ public class DeviceConfigActivity extends AppCompatActivity implements View.OnCl
                 break;
             case R.id.rl_container_language:
                 showLanguageConfigDialog();
+                Log.d(TAG, "onClick: language");
+                break;
+            case R.id.rl_container_stt_engine:
+                showSttEngineConfigDialog();
+                Log.d(TAG, "onClick: stt_engine");
                 break;
             case R.id.rl_container_text_mode:
                 showTextModeConfigDialog();
@@ -364,6 +378,18 @@ public class DeviceConfigActivity extends AppCompatActivity implements View.OnCl
         languageConfigFragment.show(getSupportFragmentManager(), "languageConfig");
     }
 
+    private void showSttEngineConfigDialog() {
+
+        SttEngineConfigFragment sttEngineConfigFragment = new SttEngineConfigFragment();
+        sttEngineConfigFragment.setListener(new SttEngineConfigFragment.Listener() {
+            @Override
+            public void onDestroyView() {
+                refreshSttEngineTitle();
+            }
+        });
+        sttEngineConfigFragment.show(getSupportFragmentManager(), "sttEngineConfig");
+    }
+
     private void showTextModeConfigDialog() {
         TextModeConfigFragment textModeConfigFragment = new TextModeConfigFragment();
         textModeConfigFragment.setListener(new TextModeConfigFragment.Listener() {
@@ -417,6 +443,11 @@ public class DeviceConfigActivity extends AppCompatActivity implements View.OnCl
             }
         }
         mLanguageTv.setText(title);
+    }
+
+    private void refreshSttEngineTitle() {
+        String sttEngine = SttConfigManager.getInstance().getEngine();
+        mSttEngineTv.setText(sttEngine);
     }
 
     private void refreshSimplifiedMode() {

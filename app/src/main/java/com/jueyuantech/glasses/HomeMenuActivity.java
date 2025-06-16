@@ -79,6 +79,7 @@ public class HomeMenuActivity extends AppCompatActivity implements View.OnClickL
         mCommitBtn.setOnClickListener(this);
         mResetBtn = findViewById(R.id.btn_reset);
         mResetBtn.setOnClickListener(this);
+        findViewById(R.id.iv_back).setOnClickListener(this);
     }
 
     @Override
@@ -96,6 +97,9 @@ public class HomeMenuActivity extends AppCompatActivity implements View.OnClickL
                 break;
             case R.id.btn_commit:
                 setMenus();
+                break;
+            case R.id.iv_back:
+                onBackPressed();
                 break;
         }
     }

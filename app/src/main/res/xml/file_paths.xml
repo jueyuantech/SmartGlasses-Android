@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<paths>
+    <!-- 外部存储的应用私有目录（对应 getExternalFilesDir()） -->
+    <!-- 路径别名，代码中使用 -->
+    <!-- 具体子路径（你的提词器文件目录） -->
+    <external-files-path
+        name="prompter_files"
+        path="VenusPrompterTemp" />
+</paths>

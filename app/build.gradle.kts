@@ -20,7 +20,7 @@ android {
     }
 
     defaultConfig {
-        applicationId = "com.jueyuantech.glasses"
+        applicationId = "com.nolo.ai.arglass"
         minSdk = 24
         targetSdk = 33
         versionCode = 6
@@ -35,6 +35,15 @@ android {
         }
     }
 
+    signingConfigs {
+        create("keyStore") {
+            keyAlias = "keystore"
+            keyPassword = "123456"
+            storeFile = file("keystore.jks")
+            storePassword = "123456"
+        }
+    }
+
     buildTypes {
         release {
             isMinifyEnabled = false
@@ -42,7 +51,7 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
-
+            signingConfig = signingConfigs.getByName("keyStore")
             manifestPlaceholders["amap_key"] = localProp.getProperty("LOCAL_PROP_AMAP_KEY")
             buildConfigField("String", "PROP_SPARK40_APP_ID", "\"${localProp.getProperty("LOCAL_PROP_SPARK40_APP_ID")}\"")
             buildConfigField("String", "PROP_SPARK40_API_SECRET", "\"${localProp.getProperty("LOCAL_PROP_SPARK40_API_SECRET")}\"")
@@ -50,7 +59,7 @@ android {
             buildConfigField("String", "PROP_ICP_NUMBER", "\"${localProp.getProperty("LOCAL_PROP_ICP_NUMBER")}\"")
         }
         debug {
-
+            signingConfig = signingConfigs.getByName("keyStore")
             manifestPlaceholders["amap_key"] = localProp.getProperty("LOCAL_PROP_AMAP_KEY")
             buildConfigField("String", "PROP_SPARK40_APP_ID", "\"${localProp.getProperty("LOCAL_PROP_SPARK40_APP_ID")}\"")
             buildConfigField("String", "PROP_SPARK40_API_SECRET", "\"${localProp.getProperty("LOCAL_PROP_SPARK40_API_SECRET")}\"")

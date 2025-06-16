@@ -245,7 +245,7 @@
                     android:layout_height="wrap_content"
                     android:paddingHorizontal="@dimen/device_setting_item_padding_horizontal"
                     android:paddingVertical="@dimen/device_setting_item_padding_vertical"
-                    android:visibility="gone">
+                    android:visibility="visible">
 
                     <TextView
                         android:id="@+id/tv_label_volume"
@@ -379,6 +379,37 @@
                         android:textColor="@color/venus_green"
                         android:textSize="18dp" />
                 </RelativeLayout>
+
+                <!--    stt 引擎     -->
+                <RelativeLayout
+                    android:id="@+id/rl_container_stt_engine"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/ripple_effect"
+                    android:clickable="true"
+                    android:paddingHorizontal="@dimen/device_setting_item_padding_horizontal"
+                    android:paddingVertical="@dimen/device_setting_item_padding_vertical_large">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:text="@string/title_app_settings_stt"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tv_stt_engine"
+                        android:text="请设置"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:textColor="@color/venus_green"
+                        android:textSize="18dp" />
+                </RelativeLayout>
+
+                <!--    stt 引擎  结束    -->
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -671,7 +702,7 @@
                     android:clickable="true"
                     android:paddingHorizontal="@dimen/device_setting_item_padding_horizontal"
                     android:paddingVertical="@dimen/device_setting_item_padding_vertical_large"
-                    android:visibility="gone">
+                    android:visibility="visible">
 
                     <TextView
                         android:layout_width="wrap_content"
