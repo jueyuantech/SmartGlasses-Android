@@ -191,11 +191,12 @@ public class DeviceOtaActivity extends AppCompatActivity implements View.OnClick
         } else if (OTA_TYPE_2 == mCurType) {
 
         } else if (OTA_TYPE_3 == mCurType) {
-            mVersionInfoTv.setText("Local upgrade");
             user = intent.getStringExtra("user");
             filePath = intent.getStringExtra("filePath");
             mDownloadBtn.setVisibility(View.GONE);
             mUpgradeBtn.setVisibility(View.VISIBLE);
+
+            mVersionInfoTv.setText("Local upgrade" + "\n" + filePath);
         }
     }
 

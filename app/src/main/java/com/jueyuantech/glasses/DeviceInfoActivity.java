@@ -15,6 +15,13 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import java.io.IOException;
+import java.io.File;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.io.FileOutputStream;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -107,7 +114,8 @@ public class DeviceInfoActivity extends AppCompatActivity implements View.OnClic
                 showRemoveConfirmDialog();
                 break;
             case R.id.rl_container_firmware:
-                getLatestFw();
+                //getLatestFw();
+                getTestFw();
                 break;
             default:
         }
@@ -214,6 +222,45 @@ public class DeviceInfoActivity extends AppCompatActivity implements View.OnClic
         startActivity(deviceOtaIntent);
     }
 
+    private void toTestOtaAct(String fileName) {
+        File otaFilesDir = getExternalFilesDir("VenusOTATemp");
+        if (!otaFilesDir.exists()) {
+            otaFilesDir.mkdir();
+        }
+
+        File targetFile = new File(otaFilesDir, fileName);
+        targetFile.deleteOnExit();
+        try {
+            targetFile.createNewFile();
+        } catch (Exception e) {
+            e.printStackTrace();
+            Toast.makeText(this, "Failed to copy firmware file: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        try (InputStream inputStream = getAssets().open("VenusOTA/" + fileName);
+             OutputStream outputStream = new FileOutputStream(targetFile)) {
+            byte[] buffer = new byte[1024];
+            int length;
+            while ((length = inputStream.read(buffer)) > 0) {
+                outputStream.write(buffer, 0, length);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+            Toast.makeText(this, "Failed to copy firmware file: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        String filePath = targetFile.getAbsolutePath();
+
+        Intent deviceOtaIntent = new Intent(this, DeviceOtaActivity.class);
+        deviceOtaIntent.putExtra("ota_type", DeviceOtaActivity.OTA_TYPE_3);
+        deviceOtaIntent.putExtra("user", "firmware");
+        deviceOtaIntent.putExtra("filePath", filePath);
+        startActivity(deviceOtaIntent);
+        finish();
+    }
+
     private void getFwById(int firmwareId) {
         if (null == mDeviceInfo) {
             return;
@@ -228,6 +275,42 @@ public class DeviceInfoActivity extends AppCompatActivity implements View.OnClic
         }
 
         // TODO backend service
+    }
+
+    private void getTestFw() {
+        try {
+            String[] otaFiles = getAssets().list("VenusOTA");
+            if (otaFiles == null || otaFiles.length == 0) {
+                Toast.makeText(this, "No firmware file found", Toast.LENGTH_SHORT).show();
+                return;
+            }
+            showFirmwareSelectionDialog(otaFiles);
+        } catch (IOException e) {
+            e.printStackTrace();
+            Toast.makeText(this, "Failed to read firmware file list", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private void showFirmwareSelectionDialog(String[] otaFiles) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Select Firmware File");
+        builder.setItems(otaFiles, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                String selectedFile = otaFiles[which];
+                toTestOtaAct(selectedFile);
+            }
+        });
+        builder.setNegativeButton(R.string.btn_cancel, null);
+
+        Dialog mAlertDialog = builder.create();
+        mAlertDialog.show();
+        if (mAlertDialog.getWindow() != null) {
+            WindowManager.LayoutParams lp = mAlertDialog.getWindow().getAttributes();
+            lp.width = getWindowManager().getDefaultDisplay().getWidth() / 10 * 8;
+            lp.gravity = Gravity.CENTER;
+            mAlertDialog.getWindow().setAttributes(lp);
+        }
     }
 
     private void showNewFirmwareDialog(LatestFwInfo latestFwInfo) {
