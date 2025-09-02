@@ -60,8 +60,7 @@
             android:layout_width="45dp"
             android:layout_height="45dp"
             android:layout_centerVertical="true"
-            android:src="@mipmap/ic_pre"
-            android:visibility="gone" />
+            android:src="@mipmap/ic_pre" />
 
         <ImageView
             android:id="@+id/iv_next"
@@ -69,8 +68,7 @@
             android:layout_height="45dp"
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
-            android:src="@mipmap/ic_next"
-            android:visibility="gone" />
+            android:src="@mipmap/ic_next" />
 
         <ImageView
             android:id="@+id/iv_text"
@@ -105,14 +103,7 @@
                 android:scrollbars="vertical"
                 android:singleLine="false"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                android:visibility="invisible" />
-
-            <com.jueyuantech.glasses.PrompterTextView
-                android:id="@+id/ptv_content"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginHorizontal="10dp"
-                android:layout_marginVertical="10dp" />
+                android:text="Empty"/>
         </RelativeLayout>
 
         <View

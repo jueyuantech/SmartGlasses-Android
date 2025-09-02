@@ -152,7 +152,9 @@
     <string name="func_trans">翻訳</string>
     <string name="func_touch_panel">タッチパネル</string>
     <string name="func_nav">ナビゲーションします</string>
+    <string name="func_prompter_legacy">プレゼンテーター(Legacy)</string>
     <string name="func_prompter">プレゼンテーター</string>
+    <string name="func_reader">Reader</string>
     <string name="func_ai">音声アシスタント</string>
     <string name="func_book">読みます</string>
 
@@ -274,6 +276,8 @@
     <string name="permission_dialog_map_content">Used for positioning and navigation.</string>
     <string name="permission_dialog_prompter_title">Enable ‘Access Files’ Permissions</string>
     <string name="permission_dialog_prompter_content">Used for accessing and importing prompter files.</string>
+    <string name="permission_dialog_reader_title">Enable ‘Access Files’ Permissions</string>
+    <string name="permission_dialog_reader_content">Used for accessing and importing reader files.</string>
     <string name="permission_dialog_notification_title">Enable ‘Allow notification access’ Permissions</string>
     <string name="permission_dialog_notification_content">Used for bring messages to your eyes.</string>
 
@@ -284,6 +288,17 @@
     <string name="title_app_settings_mic_directional">Pickup Mode</string>
     <string name="title_app_settings_mic_directional_omni">360° Pickup</string>
     <string name="title_app_settings_mic_directional_front">Front-Focused Pickup</string>
+    <string name="title_app_settings_auto_sleep">Auto Sleep</string>
+    <string name="title_app_settings_auto_sleep_never">Never</string>
+    <string name="title_app_settings_auto_sleep_3min">3 minutes</string>
+    <string name="title_app_settings_auto_sleep_5min">5 minutes</string>
+    <string name="summery_auto_sleep">Auto sleep after no operation</string>
+    <string name="title_app_settings_auto_poweroff">Auto Poweroff</string>
+    <string name="title_app_settings_auto_poweroff_never">Never</string>
+    <string name="title_app_settings_auto_poweroff_10min">10 minutes</string>
+    <string name="title_app_settings_auto_poweroff_30min">30 minutes</string>
+    <string name="title_app_settings_auto_poweroff_60min">60 minutes</string>
+    <string name="summery_auto_poweroff">Auto Poweroff after no operation</string>
     <string name="title_app_settings_touchpad_enabled">Touchpad</string>
     <string name="title_app_settings_protocol_ver">プロトコル版</string>
     <string name="title_app_settings_stt">STTエンジン</string>

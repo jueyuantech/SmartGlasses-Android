@@ -3,15 +3,15 @@ package com.jueyuantech.glasses.bean;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-public class PrompterCache implements Parcelable {
+public class PrompterLegacyCache implements Parcelable {
 
-    public static final Creator<PrompterCache> CREATOR = new Creator<PrompterCache>() {
-        public PrompterCache createFromParcel(Parcel var1) {
-            return new PrompterCache(var1);
+    public static final Creator<PrompterLegacyCache> CREATOR = new Creator<PrompterLegacyCache>() {
+        public PrompterLegacyCache createFromParcel(Parcel var1) {
+            return new PrompterLegacyCache(var1);
         }
 
-        public PrompterCache[] newArray(int var1) {
-            return new PrompterCache[var1];
+        public PrompterLegacyCache[] newArray(int var1) {
+            return new PrompterLegacyCache[var1];
         }
     };
 
@@ -19,11 +19,11 @@ public class PrompterCache implements Parcelable {
     private long fileSize;
     private int curPage;
 
-    public PrompterCache() {
+    public PrompterLegacyCache() {
 
     }
 
-    public PrompterCache(Parcel var1) {
+    public PrompterLegacyCache(Parcel var1) {
         this.fileName = var1.readString();
         this.fileSize = var1.readLong();
         this.curPage = var1.readInt();

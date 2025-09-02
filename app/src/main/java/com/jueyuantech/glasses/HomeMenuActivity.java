@@ -111,7 +111,7 @@ public class HomeMenuActivity extends AppCompatActivity implements View.OnClickL
         for (int i = 0; i < mShownMenus.size(); i++) {
             mShownMenus.get(i).setOrderCustom(i + 1);
         }
-        VNCommon.setHomeMenus(mShownMenus, null);
+        //VNCommon.setHomeMenus(mShownMenus, null);
     }
 
     private List<VNHomeMenu> genShownMenus() {

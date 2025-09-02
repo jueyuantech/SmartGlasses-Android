@@ -41,7 +41,7 @@ import com.jueyuantech.glasses.DeviceInfoActivity;
 import com.jueyuantech.glasses.GestureActivity;
 import com.jueyuantech.glasses.NotificationPushConfigActivity;
 import com.jueyuantech.glasses.NotificationPushManager;
-import com.jueyuantech.glasses.PrompterActivity;
+import com.jueyuantech.glasses.PrompterLegacyActivity;
 import com.jueyuantech.glasses.R;
 import com.jueyuantech.glasses.RecorderActivity;
 import com.jueyuantech.glasses.ScanActivity;
@@ -90,10 +90,9 @@ public class MainFragment extends Fragment implements View.OnClickListener, View
     private RelativeLayout mTouchPanelRl;
     private RelativeLayout mDeviceSettingRl;
     private RelativeLayout mFuncMapRl;
-    private RelativeLayout mFuncPrompterRl;
+    private RelativeLayout mFuncPrompterLegacyRl;
     private RelativeLayout mFuncNotificationRl;
     private RelativeLayout mFuncAiRl;
-    private RelativeLayout mFuncBookRl;
     private RelativeLayout mDeviceBoundContainerRl;
     private RelativeLayout mBtStateContainerRl;
     private ImageView mBtStateIv;
@@ -146,9 +145,9 @@ public class MainFragment extends Fragment implements View.OnClickListener, View
         mFuncMapRl.setOnClickListener(this);
         mFuncMapRl.setOnTouchListener(this);
 
-        mFuncPrompterRl = binding.rlFuncPrompter;
-        mFuncPrompterRl.setOnClickListener(this);
-        mFuncPrompterRl.setOnTouchListener(this);
+        mFuncPrompterLegacyRl = binding.rlFuncPrompterLegacy;
+        mFuncPrompterLegacyRl.setOnClickListener(this);
+        mFuncPrompterLegacyRl.setOnTouchListener(this);
 
         mFuncNotificationRl = binding.rlContainerNotificationPush;
         mFuncNotificationRl.setOnClickListener(this);
@@ -160,10 +159,6 @@ public class MainFragment extends Fragment implements View.OnClickListener, View
         mFuncAiRl = binding.rlFuncAi;
         mFuncAiRl.setOnClickListener(this);
         mFuncAiRl.setOnTouchListener(this);
-
-        mFuncBookRl = binding.rlFuncBook;
-        mFuncBookRl.setOnClickListener(this);
-        mFuncBookRl.setOnTouchListener(this);
 
         mTouchPanelRl = binding.rlContainerTouchPanel;
         mTouchPanelRl.setOnClickListener(this);
@@ -251,9 +246,9 @@ public class MainFragment extends Fragment implements View.OnClickListener, View
                     }, PERMISSION_REQUEST_CODE_MAP);
                 }
                 break;
-            case R.id.rl_func_prompter:
+            case R.id.rl_func_prompter_legacy:
                 if (isPrompterPermissionGranted()) {
-                    toPrompterAct();
+                    toPrompterLegacyAct();
                 } else {
                     requestPermissions(new String[]{
                             Manifest.permission.READ_EXTERNAL_STORAGE,
@@ -280,9 +275,6 @@ public class MainFragment extends Fragment implements View.OnClickListener, View
                 } else {
                     toSpark40Act();
                 }
-                break;
-            case R.id.rl_func_book:
-                ToastUtil.toast(getActivity(), R.string.tips_coming);
                 break;
             case R.id.rl_container_touch_panel:
                 toTouchPanelAct();
@@ -416,7 +408,7 @@ public class MainFragment extends Fragment implements View.OnClickListener, View
                 break;
             case PERMISSION_REQUEST_CODE_PROMPTER:
                 if (granted) {
-                    toPrompterAct();
+                    toPrompterLegacyAct();
                 } else {
                     showGrantPermissionDialog(requestCode);
                 }
@@ -630,9 +622,9 @@ public class MainFragment extends Fragment implements View.OnClickListener, View
                 NaviActivity.class);
     }
 
-    private void toPrompterAct() {
-        Intent prompterIntent = new Intent(getActivity(), PrompterActivity.class);
-        getActivity().startActivity(prompterIntent);
+    private void toPrompterLegacyAct() {
+        Intent prompterLegacyIntent = new Intent(getActivity(), PrompterLegacyActivity.class);
+        getActivity().startActivity(prompterLegacyIntent);
     }
 
     private void toNotificationConfigAct() {

@@ -152,7 +152,9 @@
     <string name="func_trans">翻译</string>
     <string name="func_touch_panel">触摸板</string>
     <string name="func_nav">导航</string>
+    <string name="func_prompter_legacy">提词器（旧版）</string>
     <string name="func_prompter">提词器</string>
+    <string name="func_reader">阅读</string>
     <string name="func_ai">语音助手</string>
     <string name="func_book">阅读</string>
 
@@ -274,6 +276,8 @@
     <string name="permission_dialog_map_content">用于定位、导航、天气、语音服务等功能。</string>
     <string name="permission_dialog_prompter_title">请开启‘访问文件’权限</string>
     <string name="permission_dialog_prompter_content">访问手机文档用于加载题词文档和功能配置。</string>
+    <string name="permission_dialog_reader_title">请开启‘访问文件’权限</string>
+    <string name="permission_dialog_reader_content">访问手机文档用于加载阅读文档和功能配置。</string>
     <string name="permission_dialog_notification_title">请开启 ‘通知使用权’ 权限</string>
     <string name="permission_dialog_notification_content">用于将通知流转至AR眼镜。</string>
 
@@ -284,6 +288,17 @@
     <string name="title_app_settings_mic_directional">拾音模式</string>
     <string name="title_app_settings_mic_directional_omni">全向</string>
     <string name="title_app_settings_mic_directional_front">定向</string>
+    <string name="title_app_settings_auto_sleep">自动休眠</string>
+    <string name="title_app_settings_auto_sleep_never">从不</string>
+    <string name="title_app_settings_auto_sleep_3min">3分钟</string>
+    <string name="title_app_settings_auto_sleep_5min">5分钟</string>
+    <string name="summery_auto_sleep">无操作后自动息屏进入休眠状态</string>
+    <string name="title_app_settings_auto_poweroff">自动关机</string>
+    <string name="title_app_settings_auto_poweroff_never">从不</string>
+    <string name="title_app_settings_auto_poweroff_10min">10分钟</string>
+    <string name="title_app_settings_auto_poweroff_30min">30分钟</string>
+    <string name="title_app_settings_auto_poweroff_60min">60分钟</string>
+    <string name="summery_auto_poweroff">无操作后自动关机</string>
     <string name="title_app_settings_touchpad_enabled">触摸板</string>
     <string name="title_app_settings_protocol_ver">协议版本</string>
     <string name="title_app_settings_stt">STT引擎</string>

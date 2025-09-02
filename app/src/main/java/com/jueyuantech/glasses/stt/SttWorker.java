@@ -23,6 +23,7 @@ import static com.jueyuantech.glasses.common.Constants.STT_ENGINE_AZURE_WESTUS;
 import static com.jueyuantech.glasses.common.Constants.STT_ENGINE_IFLYTEK;
 import static com.jueyuantech.glasses.common.Constants.STT_ENGINE_IFLYTEK_WEB_ASR;
 import static com.jueyuantech.glasses.common.Constants.STT_ENGINE_IFLYTEK_WEB_IAT_MUL;
+import static com.jueyuantech.glasses.common.Constants.STT_ENGINE_IFLYTEK_WEB_NIU_ASR;
 import static com.jueyuantech.glasses.common.Constants.STT_ENGINE_MOCK;
 import static com.jueyuantech.glasses.common.Constants.STT_FUNC_TRANSCRIBE;
 import static com.jueyuantech.glasses.common.Constants.STT_FUNC_TRANSLATE;
@@ -70,6 +71,7 @@ import com.jueyuantech.glasses.stt.azure.AzureStt;
 import com.jueyuantech.glasses.stt.azure.AzureSwedenCentralStt;
 import com.jueyuantech.glasses.stt.azure.AzureWestUSStt;
 import com.jueyuantech.glasses.stt.iflytek.IFlyTekStt;
+import com.jueyuantech.glasses.stt.iflytek.IFlyTekWebAsrNiuStt;
 import com.jueyuantech.glasses.stt.iflytek.IFlyTekWebAsrStt;
 import com.jueyuantech.glasses.stt.iflytek.IFlyTekWebIatMulStt;
 import com.jueyuantech.glasses.stt.mock.MockStt;
@@ -77,6 +79,7 @@ import com.jueyuantech.glasses.util.LogUtil;
 import com.jueyuantech.glasses.util.MmkvUtil;
 import com.jueyuantech.venussdk.VNConstant;
 import com.jueyuantech.venussdk.VNCommon;
+import com.jueyuantech.venussdk.bean.LanguageHint;
 import com.jueyuantech.venussdk.bean.VNSttInfo;
 
 import java.io.File;
@@ -221,8 +224,9 @@ public class SttWorker {
          * 6. MaxLine :
          * 7. Audio Source :
          * 8. Mic Directional :
-         * 9. Listening String :
-         * 10. Reset to Silence and Listening... :
+         * 9. Language Hint:
+         * 10. Listening String :
+         * 11. Reset to Silence and Listening... :
          */
 
         // STEP 1:
@@ -248,6 +252,8 @@ public class SttWorker {
             mSttEngine = new IFlyTekStt(sttFunc);
         } else if (STT_ENGINE_IFLYTEK_WEB_ASR.equals(sttEngine)) {
             mSttEngine = new IFlyTekWebAsrStt(sttFunc);
+        } else if (STT_ENGINE_IFLYTEK_WEB_NIU_ASR.equals(sttEngine)) {
+            mSttEngine = new IFlyTekWebAsrNiuStt(sttFunc);
         } else if (STT_ENGINE_IFLYTEK_WEB_IAT_MUL.equals(sttEngine)) {
             mSttEngine = new IFlyTekWebIatMulStt(sttFunc);
         } else if (STT_ENGINE_MOCK.equals(sttEngine)) {
@@ -276,9 +282,9 @@ public class SttWorker {
         // STEP 6:
         int simplified = (int) MmkvUtil.decode(MMKV_SIMPLIFIED_MODE_KEY, SIMPLIFIED_MODE_DEFAULT);
         if (simplified == SIMPLIFIED_MODE_ENABLED) {
-            VNCommon.setMaxLine(mVenusApp, 3, null);
+            //VNCommon.setMaxLine(mVenusApp, 3, null);
         } else {
-            VNCommon.setMaxLine(mVenusApp, 6, null);
+            //VNCommon.setMaxLine(mVenusApp, 6, null);
         }
 
         // STEP 7: 设置音频输入源
@@ -289,7 +295,7 @@ public class SttWorker {
         } else if (mAudioInput == AUDIO_INPUT_PHONE) {
             venusAudioInput = VNConstant.SttConfig.AudioSource.PHONE;
         }
-        VNCommon.setAudioSource(mVenusApp, venusAudioInput, null);
+        VNCommon.setAudioSourceIndicator(mVenusApp, venusAudioInput, null);
 
         // STEP 8: 设置麦克风方向性
         int micDirectional = (int) MmkvUtil.decode(MMKV_MIC_DIRECTIONAL_KEY, MIC_DIRECTIONAL_DEFAULT);
@@ -302,9 +308,23 @@ public class SttWorker {
         VNCommon.setMicDirectional(mVenusApp, venusMicDirectional, null);
 
         // STEP 9:
-        initListeningStr(sttFunc);
+        LanguageHint languageHint = new LanguageHint();
+        if (STT_FUNC_TRANSCRIBE.equals(sttFunc)) {
+            mVenusApp = VNConstant.View.TRANSCRIBE;
+            languageHint.setMode(0);
+            languageHint.setSource(mSttEngine.getSourceLanguageHint());
+        } else if (STT_FUNC_TRANSLATE.equals(sttFunc)) {
+            mVenusApp = VNConstant.View.TRANSLATE;
+            languageHint.setMode(1);
+            languageHint.setSource(mSttEngine.getSourceLanguageHint());
+            languageHint.setTarget(mSttEngine.getTargetLanguageHint());
+        }
+        VNCommon.setLanguageHint(mVenusApp, languageHint, null);
 
         // STEP 10:
+        initListeningStr(sttFunc);
+
+        // STEP 11:
         switchSilenceState(true);
 
         isAudioRecordEnabled = (int) MmkvUtil.decode(MMKV_AUDIO_RECORD_KEY, AUDIO_RECORD_DEFAULT);
@@ -735,11 +755,7 @@ public class SttWorker {
         sttInfo.setMsgType(VNConstant.SttInfo.MsgType.STT);
         sttInfo.setCreatedAt(System.currentTimeMillis() / 1000);
 
-        if (VNConstant.View.TRANSCRIBE == mVenusApp) {
-            VNCommon.updateTranscribe(sttInfo, null);
-        } else if (VNConstant.View.TRANSLATE == mVenusApp) {
-            VNCommon.updateTranslate(sttInfo, null);
-        }
+        VNCommon.updateSttInfo(mVenusApp, sttInfo, null);
     }
 
     private void sendSysMessageToDevice(String msg) {
@@ -749,11 +765,7 @@ public class SttWorker {
         sttInfo.setTranscribe(msg);
         sttInfo.setCreatedAt(System.currentTimeMillis() / 1000);
 
-        if (VNConstant.View.TRANSCRIBE == mVenusApp) {
-            VNCommon.updateTranscribe(sttInfo, null);
-        } else if (VNConstant.View.TRANSLATE == mVenusApp) {
-            VNCommon.updateTranslate(sttInfo, null);
-        }
+        VNCommon.updateSttInfo(mVenusApp, sttInfo, null);
     }
 
     private void sendHintMessageToDevice(String transcribeHintStr, String translateHintStr) {
@@ -764,11 +776,7 @@ public class SttWorker {
         sttInfo.setTranslate(translateHintStr);
         sttInfo.setCreatedAt(System.currentTimeMillis() / 1000);
 
-        if (VNConstant.View.TRANSCRIBE == mVenusApp) {
-            VNCommon.updateTranscribe(sttInfo, null);
-        } else if (VNConstant.View.TRANSLATE == mVenusApp) {
-            VNCommon.updateTranslate(sttInfo, null);
-        }
+        VNCommon.updateSttInfo(mVenusApp, sttInfo, null);
     }
 
     private void initListeningStr(String func) {

@@ -72,6 +72,7 @@ public class AzureStt extends SttEngine {
             );
             if (null != translateSource) {
                 translateSourceKey = translateSource.getTag();
+                setSourceLanguageHint(translateSource.getTitle());
 
                 if ("zh-Hans".equals(translateSourceKey)) {
                     transcribeSourceKey = "zh-CN";
@@ -88,6 +89,7 @@ public class AzureStt extends SttEngine {
                 );
                 if (null != translateTarget) {
                     translateTargetKey = translateTarget.getTag();
+                    setTargetLanguageHint(translateTarget.getTitle());
                 }
             }
         } else {
@@ -97,6 +99,7 @@ public class AzureStt extends SttEngine {
             );
             if (null != transcribeSource) {
                 transcribeSourceKey = transcribeSource.getTag();
+                setSourceLanguageHint(transcribeSource.getTitle());
             }
         }
     }

@@ -24,6 +24,7 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageView;
+import android.widget.SeekBar;
 import android.widget.TextView;
 
 import com.airbnb.lottie.LottieAnimationView;
@@ -35,6 +36,7 @@ import com.jueyuantech.glasses.util.LogUtil;
 import com.jueyuantech.glasses.util.MmkvUtil;
 import com.jueyuantech.venussdk.VNConstant;
 import com.jueyuantech.venussdk.VNCommon;
+import com.jueyuantech.venussdk.bean.FontConfig;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -45,6 +47,8 @@ public class SttActivity extends AppCompatActivity implements View.OnClickListen
     private TextView mTitleTv;
     private LottieAnimationView mAudioTrackLav;
     private RecyclerView mChatRcv;
+    private SeekBar mFontSizeSeekBar;
+    private TextView mFontSizeTv;
 
     private ChatMessageBean mCurrentMessage;
     private ChatAdapter mChatAdapter;
@@ -95,6 +99,31 @@ public class SttActivity extends AppCompatActivity implements View.OnClickListen
         });
 
         mAudioTrackLav = findViewById(R.id.lav_audio_track);
+
+        mFontSizeTv = findViewById(R.id.tv_font_size);
+        mFontSizeSeekBar = findViewById(R.id.seekBar_font_size);
+        mFontSizeSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                int fontSize = progress + 10;
+                mFontSizeTv.setText(String.valueOf(fontSize));
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+                int fontSize = seekBar.getProgress() + 10;
+                FontConfig fontConfig = new FontConfig();
+                fontConfig.setWeight(fontSize);
+                fontConfig.setRowSpace(8);
+                fontConfig.setWordSpace(1);
+                VNCommon.setFontConfig(venusApp, fontConfig, null);
+            }
+        });
 
         // FIXME TTSHelper to SttWorker
         ttsHelper = new TTSHelper(this);

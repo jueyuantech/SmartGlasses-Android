@@ -30,6 +30,7 @@ import com.jueyuantech.glasses.util.LogUtil;
 import com.jueyuantech.glasses.util.ToastUtil;
 import com.jueyuantech.venussdk.VNConstant;
 import com.jueyuantech.venussdk.VNCommon;
+import com.jueyuantech.venussdk.VNOTA;
 import com.jueyuantech.venussdk.listener.VNOtaServiceListener;
 
 import java.io.File;
@@ -40,7 +41,7 @@ public class DeviceOtaActivity extends AppCompatActivity implements View.OnClick
 
     private static final int MIN_BATTERY_LEVEL_FOR_OTA = 40;
 
-    private ImageView mBackIv;
+    private ImageView mBackIv, mHelpIv;
     private Button mDownloadBtn, mUpgradeBtn;
     private RelativeLayout mVersionInfoRl;
     private TextView mVersionNameTv;
@@ -48,6 +49,13 @@ public class DeviceOtaActivity extends AppCompatActivity implements View.OnClick
     private RelativeLayout mProgressContainerRl;
     private TextView mProgressTv;
     private SeekBar mProgressSkb;
+    private RelativeLayout mDebugButtonsContainerRl;
+    
+    // 调试按钮
+    private Button mDebugInitBtn, mDebugConnectBtn, mDebugDisconnectBtn;
+    private Button mDebugStartBtn, mDebugStopBtn, mDebugRefreshBtn;
+    // 通用调试按钮
+    private Button mDebugConnectCommonBtn, mDebugDisconnectCommonBtn, mDebugRefreshCommonBtn;
 
     private String user;
     private String filePath;
@@ -97,6 +105,9 @@ public class DeviceOtaActivity extends AppCompatActivity implements View.OnClick
 
         mBackIv = findViewById(R.id.iv_back);
         mBackIv.setOnClickListener(this);
+        
+        mHelpIv = findViewById(R.id.iv_help);
+        mHelpIv.setOnClickListener(this);
 
         mDownloadBtn = findViewById(R.id.btn_download);
         mDownloadBtn.setOnClickListener(this);
@@ -114,6 +125,9 @@ public class DeviceOtaActivity extends AppCompatActivity implements View.OnClick
                 return true;
             }
         });
+        
+        // 初始化调试按钮
+        initDebugButtons();
     }
 
     @Override
@@ -133,11 +147,48 @@ public class DeviceOtaActivity extends AppCompatActivity implements View.OnClick
                     finish();
                 }
                 break;
+            case R.id.iv_help:
+                // 切换调试按钮容器的显示和隐藏
+                if (mDebugButtonsContainerRl.getVisibility() == View.VISIBLE) {
+                    mDebugButtonsContainerRl.setVisibility(View.GONE);
+                } else {
+                    mDebugButtonsContainerRl.setVisibility(View.VISIBLE);
+                }
+                break;
             case R.id.btn_download:
                 downloadFirmware();
                 break;
             case R.id.btn_upgrade:
                 upgrade();
+                break;
+            // 调试按钮点击事件
+            case R.id.btn_debug_init:
+                debugInit();
+                break;
+            case R.id.btn_debug_connect:
+                debugConnect();
+                break;
+            case R.id.btn_debug_disconnect:
+                debugDisconnect();
+                break;
+            case R.id.btn_debug_start:
+                debugStart();
+                break;
+            case R.id.btn_debug_stop:
+                debugStop();
+                break;
+            case R.id.btn_debug_refresh:
+                debugRefreshStatus();
+                break;
+            // 通用调试按钮点击事件
+            case R.id.btn_debug_connect_common:
+                debugConnectCommon();
+                break;
+            case R.id.btn_debug_disconnect_common:
+                debugDisconnectCommon();
+                break;
+            case R.id.btn_debug_refresh_common:
+                debugRefreshCommonStatus();
                 break;
         }
     }
@@ -297,12 +348,12 @@ public class DeviceOtaActivity extends AppCompatActivity implements View.OnClick
             LogUtil.i("bth");
             otaUser = VNConstant.Ota.User.BTH;
         }
-        VNCommon.setOtaServiceListener(venusOtaServiceListener);
-        VNCommon.initOta(
+        VNOTA.setOtaServiceListener(venusOtaServiceListener);
+        VNOTA.initOta(
                 DeviceManager.getInstance().getBoundDevice(),
                 filePath,
                 otaUser);
-        VNCommon.startOta();
+        VNOTA.connect(DeviceManager.getInstance().getBoundDevice());
     }
 
     private void showSuccessDialog() {
@@ -334,13 +385,14 @@ public class DeviceOtaActivity extends AppCompatActivity implements View.OnClick
         public void onConnected() {
             LogUtil.mark();
             isUpgrading = true;
+            VNOTA.startOta();
         }
 
         @Override
         public void onDisconnected() {
             LogUtil.mark();
             isUpgrading = false;
-            DeviceManager.getInstance().setAutoConnect(true);
+            //DeviceManager.getInstance().setAutoConnect(true);
             runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
@@ -352,9 +404,13 @@ public class DeviceOtaActivity extends AppCompatActivity implements View.OnClick
 
         @Override
         public void onSuccess() {
+            LogUtil.mark();
             isUpgrading = false;
+
+            VNOTA.disconnect();
             DeviceManager.getInstance().removeDeviceInfo();
             DeviceManager.getInstance().setAutoConnect(true);
+
             runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
@@ -366,7 +422,11 @@ public class DeviceOtaActivity extends AppCompatActivity implements View.OnClick
         @Override
         public void onError(int errCode, String message) {
             LogUtil.mark();
+            isUpgrading = false;
+
+            VNOTA.disconnect();
             DeviceManager.getInstance().setAutoConnect(true);
+
             refreshUI(message);
             String originalMsg = message;
             if (VNConstant.Ota.ErrorCode.IMAGE_SIZE_ERROR == errCode) {
@@ -404,5 +464,152 @@ public class DeviceOtaActivity extends AppCompatActivity implements View.OnClick
     private void processDownloadFinished() {
         mDownloadBtn.setVisibility(View.GONE);
         mUpgradeBtn.setVisibility(View.VISIBLE);
+    }
+
+    /**
+     * 初始化调试按钮
+     */
+    private void initDebugButtons() {
+        // 初始化调试按钮容器并设置为隐藏
+        mDebugButtonsContainerRl = findViewById(R.id.rl_container_debug_buttons);
+        mDebugButtonsContainerRl.setVisibility(View.GONE);
+        
+        mDebugInitBtn = findViewById(R.id.btn_debug_init);
+        mDebugConnectBtn = findViewById(R.id.btn_debug_connect);
+        mDebugDisconnectBtn = findViewById(R.id.btn_debug_disconnect);
+        mDebugStartBtn = findViewById(R.id.btn_debug_start);
+        mDebugStopBtn = findViewById(R.id.btn_debug_stop);
+        mDebugRefreshBtn = findViewById(R.id.btn_debug_refresh);
+        
+        // 初始化通用调试按钮
+        mDebugConnectCommonBtn = findViewById(R.id.btn_debug_connect_common);
+        mDebugDisconnectCommonBtn = findViewById(R.id.btn_debug_disconnect_common);
+        mDebugRefreshCommonBtn = findViewById(R.id.btn_debug_refresh_common);
+        
+        mDebugInitBtn.setOnClickListener(this);
+        mDebugConnectBtn.setOnClickListener(this);
+        mDebugDisconnectBtn.setOnClickListener(this);
+        mDebugStartBtn.setOnClickListener(this);
+        mDebugStopBtn.setOnClickListener(this);
+        mDebugRefreshBtn.setOnClickListener(this);
+        
+        // 设置通用调试按钮点击事件
+        mDebugConnectCommonBtn.setOnClickListener(this);
+        mDebugDisconnectCommonBtn.setOnClickListener(this);
+        mDebugRefreshCommonBtn.setOnClickListener(this);
+    }
+    
+    /**
+     * 调试功能 - 初始化
+     */
+    private void debugInit() {
+        if (TextUtils.isEmpty(user) || TextUtils.isEmpty(filePath)) {
+            ToastUtil.toast(getApplicationContext(), "请先选择固件文件");
+            return;
+        }
+        
+        if (!isConfigReady()) {
+            return;
+        }
+        
+        int otaUser = VNConstant.Ota.User.FIRMWARE;
+        if ("firmware".equals(user)) {
+            LogUtil.i("firmware");
+            otaUser = VNConstant.Ota.User.FIRMWARE;
+        } else if ("bth".equals(user)) {
+            LogUtil.i("bth");
+            otaUser = VNConstant.Ota.User.BTH;
+        }
+        
+        VNOTA.setOtaServiceListener(venusOtaServiceListener);
+        VNOTA.initOta(
+                DeviceManager.getInstance().getBoundDevice(),
+                filePath,
+                otaUser);
+        
+        refreshUI("初始化完成");
+    }
+    
+    /**
+     * 调试功能 - 连接
+     */
+    private void debugConnect() {
+        if (!VNOTA.isConnected()) {
+            VNOTA.connect(DeviceManager.getInstance().getBoundDevice());
+            refreshUI("正在连接...");
+        } else {
+            refreshUI("已连接");
+        }
+    }
+    
+    /**
+     * 调试功能 - 断开连接
+     */
+    private void debugDisconnect() {
+        if (VNOTA.isConnected()) {
+            VNOTA.disconnect();
+            refreshUI("已断开连接");
+        } else {
+            refreshUI("未连接");
+        }
+    }
+    
+    /**
+     * 调试功能 - 开始
+     */
+    private void debugStart() {
+        VNOTA.startOta();
+        refreshUI("开始OTA");
+    }
+    
+    /**
+     * 调试功能 - 停止
+     */
+    private void debugStop() {
+        VNOTA.stopOta();
+        refreshUI("停止OTA");
+    }
+    
+    /**
+     * 调试功能 - 刷新连接状态
+     */
+    private void debugRefreshStatus() {
+        boolean isConnected = VNOTA.isConnected();
+        refreshUI("连接状态: " + (isConnected ? "已连接" : "未连接"));
+    }
+    
+    /**
+     * 调试功能 - 连接通用
+     */
+    private void debugConnectCommon() {
+        if (!VNCommon.isConnected()) {
+            // 使用通用方式连接，可以根据实际情况修改
+            VNCommon.connect(DeviceManager.getInstance().getBoundDevice());
+            refreshUI("正在通用连接...");
+        } else {
+            refreshUI("已通用连接");
+        }
+    }
+    
+    /**
+     * 调试功能 - 断开通用连接
+     */
+    private void debugDisconnectCommon() {
+        if (VNCommon.isConnected()) {
+            // 使用通用方式断开连接，可以根据实际情况修改
+            DeviceManager.getInstance().setAutoConnect(false);
+            VNCommon.disconnect();
+            refreshUI("已断开通用连接");
+        } else {
+            refreshUI("未通用连接");
+        }
+    }
+    
+    /**
+     * 调试功能 - 刷新通用连接状态
+     */
+    private void debugRefreshCommonStatus() {
+        boolean isConnected = VNCommon.isConnected();
+        refreshUI("通用连接状态: " + (isConnected ? "已连接" : "未连接"));
     }
 }

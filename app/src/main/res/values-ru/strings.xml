@@ -152,7 +152,9 @@
     <string name="func_trans">Перевод</string>
     <string name="func_touch_panel">Тачпад</string>
     <string name="func_nav">Навигация</string>
+    <string name="func_prompter_legacy">Телепромптер(Legacy)</string>
     <string name="func_prompter">Телепромптер</string>
+    <string name="func_reader">Reader</string>
     <string name="func_ai">Голосовой ассистент</string>
     <string name="func_book">Чтение</string>
 
@@ -274,6 +276,8 @@
     <string name="permission_dialog_map_content">Используется для определения местоположения, навигации, погоды, голосовых сервисов и других функций.</string>
     <string name="permission_dialog_prompter_title">Пожалуйста, включите разрешение на доступ к файлам</string>
     <string name="permission_dialog_prompter_content">Доступ к файлам на телефоне для загрузки текстовых документов и настройки функций.</string>
+    <string name="permission_dialog_reader_title">Пожалуйста, включите разрешение на доступ к файлам</string>
+    <string name="permission_dialog_reader_content">Доступ к файлам на телефоне для загрузки текстовых документов и настройки функций.</string>
     <string name="permission_dialog_notification_title">Пожалуйста, включите разрешение на использование уведомлений</string>
     <string name="permission_dialog_notification_content">Используется для передачи уведомлений на AR-очки.</string>
 
@@ -284,6 +288,17 @@
     <string name="title_app_settings_mic_directional">Режим записи звука</string>
     <string name="title_app_settings_mic_directional_omni">Оmnинаправленный</string>
     <string name="title_app_settings_mic_directional_front">Направленный</string>
+    <string name="title_app_settings_auto_sleep">Auto Sleep</string>
+    <string name="title_app_settings_auto_sleep_never">Never</string>
+    <string name="title_app_settings_auto_sleep_3min">3 minutes</string>
+    <string name="title_app_settings_auto_sleep_5min">5 minutes</string>
+    <string name="summery_auto_sleep">Auto sleep after no operation</string>
+    <string name="title_app_settings_auto_poweroff">Auto Poweroff</string>
+    <string name="title_app_settings_auto_poweroff_never">Never</string>
+    <string name="title_app_settings_auto_poweroff_10min">10 minutes</string>
+    <string name="title_app_settings_auto_poweroff_30min">30 minutes</string>
+    <string name="title_app_settings_auto_poweroff_60min">60 minutes</string>
+    <string name="summery_auto_poweroff">Auto Poweroff after no operation</string>
     <string name="title_app_settings_touchpad_enabled">Тачпад</string>
     <string name="title_app_settings_protocol_ver">Версия протокола</string>
     <string name="title_app_settings_stt">STT-двигатель</string>

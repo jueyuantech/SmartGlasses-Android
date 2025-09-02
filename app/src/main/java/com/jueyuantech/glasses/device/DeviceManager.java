@@ -25,8 +25,15 @@ import com.amap.api.navi.AmapNaviPage;
 import com.amap.api.navi.AmapNaviParams;
 import com.amap.api.navi.AmapNaviType;
 import com.amap.api.navi.AmapPageType;
+import com.jueyuantech.glasses.CustomCActivity;
+import com.jueyuantech.glasses.CustomDActivity;
+import com.jueyuantech.glasses.CustomEActivity;
+import com.jueyuantech.glasses.CustomFActivity;
 import com.jueyuantech.glasses.PrompterActivity;
+import com.jueyuantech.glasses.PrompterLegacyActivity;
+import com.jueyuantech.glasses.ReaderActivity;
 import com.jueyuantech.glasses.RecorderActivity;
+import com.jueyuantech.glasses.Spark40Activity;
 import com.jueyuantech.glasses.amap.NaviActivity;
 import com.jueyuantech.glasses.stt.SttWorker;
 import com.jueyuantech.glasses.util.LogUtil;
@@ -447,11 +454,42 @@ public class DeviceManager {
                     LogUtil.i("MAP");
                     toMapAct();
                     break;
+                case VNConstant.View.AI:
+                    LogUtil.i("AI");
+                    toAIAct();
+                    break;
                 case VNConstant.View.PROMPTER:
                     LogUtil.i("PROMPTER");
                     toPrompterAct();
                     break;
+                case VNConstant.View.READER:
+                    LogUtil.i("READER");
+                    toReaderAct();
+                    break;
+                case VNConstant.View.CUSTOM_C:
+                    LogUtil.i("CUSTOM_C");
+                    toCustomCAct();
+                    break;
+                case VNConstant.View.CUSTOM_D:
+                    LogUtil.i("CUSTOM_D");
+                    toCustomDAct();
+                    break;
+                case VNConstant.View.CUSTOM_E:
+                    LogUtil.i("CUSTOM_E");
+                    toCustomEAct();
+                    break;
+                case VNConstant.View.CUSTOM_F:
+                    LogUtil.i("CUSTOM_F");
+                    toCustomFAct();
+                    break;
+                default:
+                    LogUtil.i("VIEW UNKNOWN");
             }
+        }
+
+        @Override
+        public void onTouchEvent(int event) {
+            LogUtil.i("TouchEvent " + event);
         }
 
         @Override
@@ -514,12 +552,68 @@ public class DeviceManager {
                 NaviActivity.class);
     }
 
+    private void toAIAct() {
+        Intent aiIntent = new Intent(mContext, Spark40Activity.class);
+        aiIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        aiIntent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+        aiIntent.putExtra("ENTER_FROM_VENUS", true);
+        mContext.startActivity(aiIntent);
+    }
+
+    private void toPrompterLegacyAct() {
+        Intent prompterLegacyIntent = new Intent(mContext, PrompterLegacyActivity.class);
+        prompterLegacyIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        prompterLegacyIntent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+        prompterLegacyIntent.putExtra("ENTER_FROM_VENUS", true);
+        mContext.startActivity(prompterLegacyIntent);
+    }
+
     private void toPrompterAct() {
         Intent prompterIntent = new Intent(mContext, PrompterActivity.class);
         prompterIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         prompterIntent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
         prompterIntent.putExtra("ENTER_FROM_VENUS", true);
         mContext.startActivity(prompterIntent);
+    }
+
+    private void toReaderAct() {
+        Intent readerIntent = new Intent(mContext, ReaderActivity.class);
+        readerIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        readerIntent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+        readerIntent.putExtra("ENTER_FROM_VENUS", true);
+        mContext.startActivity(readerIntent);
+    }
+
+    private void toCustomCAct() {
+        Intent customCIntent = new Intent(mContext, CustomCActivity.class);
+        customCIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        customCIntent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+        customCIntent.putExtra("ENTER_FROM_VENUS", true);
+        mContext.startActivity(customCIntent);
+    }
+
+    private void toCustomDAct() {
+        Intent customDIntent = new Intent(mContext, CustomDActivity.class);
+        customDIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        customDIntent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+        customDIntent.putExtra("ENTER_FROM_VENUS", true);
+        mContext.startActivity(customDIntent);
+    }
+
+    private void toCustomEAct() {
+        Intent customEIntent = new Intent(mContext, CustomEActivity.class);
+        customEIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        customEIntent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+        customEIntent.putExtra("ENTER_FROM_VENUS", true);
+        mContext.startActivity(customEIntent);
+    }
+
+    private void toCustomFAct() {
+        Intent customFIntent = new Intent(mContext, CustomFActivity.class);
+        customFIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        customFIntent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+        customFIntent.putExtra("ENTER_FROM_VENUS", true);
+        mContext.startActivity(customFIntent);
     }
 
     private void exitAllVenusApp() {

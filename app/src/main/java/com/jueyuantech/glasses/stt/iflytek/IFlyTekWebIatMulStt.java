@@ -37,7 +37,7 @@ import okhttp3.WebSocketListener;
 import okio.ByteString;
 
 public class IFlyTekWebIatMulStt extends SttEngine {
-    private static final String BASE_URL = "https://iat.cn-huabei-1.xf-yun.com/v1"; // 注意多语种识别，也支持中文音频
+    private static final String BASE_URL = ""; // 注意多语种识别，也支持中文音频
 
     private Gson gson = new Gson();
 
@@ -72,6 +72,7 @@ public class IFlyTekWebIatMulStt extends SttEngine {
             );
             if (null != transcribeSource) {
                 transcribeSourceKey = transcribeSource.getTag();
+                setSourceLanguageHint(transcribeSource.getTitle());
             }
         }
     }
@@ -83,7 +84,7 @@ public class IFlyTekWebIatMulStt extends SttEngine {
 
     @Override
     public String getServiceId() {
-        return "9B4D2E8F1A3C5D7E9F0A1B2C4D6E8F0A";
+        return "";
     }
 
     @Override

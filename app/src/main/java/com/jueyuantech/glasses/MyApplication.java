@@ -23,9 +23,8 @@ import com.jueyuantech.glasses.stt.SttWorker;
 import com.jueyuantech.glasses.util.MmkvUtil;
 import com.iflytek.cloud.Setting;
 import com.iflytek.cloud.SpeechUtility;
-import com.jueyuantech.venussdk.VNConstant;
 import com.jueyuantech.venussdk.VNOptions;
-import com.jueyuantech.venussdk.VNCommon;
+import com.jueyuantech.venussdk.VNSDK;
 import com.tencent.mmkv.MMKV;
 
 import java.io.File;
@@ -60,7 +59,7 @@ public class MyApplication extends Application {
         VNOptions options = new VNOptions();
         //options.setAppId("");
         options.setHeartbeatEnabled(heartbeat == HEARTBEAT_ENABLED);
-        VNCommon.init(mContext, options);
+        VNSDK.init(mContext, options);
 
         DeviceManager.init(mContext);
         UserManager.init(mContext);

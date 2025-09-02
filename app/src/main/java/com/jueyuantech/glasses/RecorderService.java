@@ -260,9 +260,9 @@ public class RecorderService extends Service implements SttEngine.OnSttListener 
         switchSilenceState(true);
         int simplified = (int) MmkvUtil.decode(MMKV_SIMPLIFIED_MODE_KEY, SIMPLIFIED_MODE_DEFAULT);
         if (simplified == SIMPLIFIED_MODE_ENABLED) {
-            VNCommon.setMaxLine(venusApp, 3, null);
+            //VNCommon.setMaxLine(venusApp, 3, null);
         } else {
-            VNCommon.setMaxLine(venusApp, 6, null);
+            //VNCommon.setMaxLine(venusApp, 6, null);
         }
         int textMode = (int) MmkvUtil.decode(MMKV_TEXT_MODE_KEY, TEXT_MODE_DEFAULT);
         VNCommon.setTextMode(venusApp, textMode, null);
@@ -449,11 +449,7 @@ public class RecorderService extends Service implements SttEngine.OnSttListener 
         sttInfo.setActionType(type);
         sttInfo.setMsgType(VNConstant.SttInfo.MsgType.STT);
 
-        if (STT_FUNC_TRANSCRIBE.equals(func)) {
-            VNCommon.updateTranscribe(sttInfo, null);
-        } else if (STT_FUNC_TRANSLATE.equals(func)) {
-            VNCommon.updateTranslate(sttInfo, null);
-        }
+        VNCommon.updateSttInfo(venusApp, sttInfo, null);
     }
 
     private void initAudioInput() {

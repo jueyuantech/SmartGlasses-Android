@@ -55,6 +55,7 @@ public class IFlyTekStt extends SttEngine {
             );
             if (null != transcribeSource) {
                 transcribeSourceKey = transcribeSource.getTag();
+                setSourceLanguageHint(transcribeSource.getTitle());
             }
         }
     }

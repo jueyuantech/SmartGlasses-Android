@@ -82,10 +82,11 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     private RelativeLayout mTouchPanelRl;
     private RelativeLayout mDeviceSettingRl;
     private RelativeLayout mFuncMapRl;
+    private RelativeLayout mFuncPrompterLegacyRl;
     private RelativeLayout mFuncPrompterRl;
+    private RelativeLayout mFuncReaderRl;
     private RelativeLayout mFuncNotificationRl;
     private RelativeLayout mFuncAiRl;
-    private RelativeLayout mFuncBookRl;
     private RelativeLayout mDeviceBoundContainerRl;
     private RelativeLayout mBtStateContainerRl;
     private ImageView mBtStateIv;
@@ -154,9 +155,17 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         mFuncMapRl.setOnClickListener(this);
         mFuncMapRl.setOnTouchListener(this);
 
+        mFuncPrompterLegacyRl = findViewById(R.id.rl_func_prompter_legacy);
+        mFuncPrompterLegacyRl.setOnClickListener(this);
+        mFuncPrompterLegacyRl.setOnTouchListener(this);
+
         mFuncPrompterRl = findViewById(R.id.rl_func_prompter);
         mFuncPrompterRl.setOnClickListener(this);
         mFuncPrompterRl.setOnTouchListener(this);
+
+        mFuncReaderRl = findViewById(R.id.rl_func_reader);
+        mFuncReaderRl.setOnClickListener(this);
+        mFuncReaderRl.setOnTouchListener(this);
 
         mFuncNotificationRl = findViewById(R.id.rl_container_notification_push);
         mFuncNotificationRl.setOnClickListener(this);
@@ -168,10 +177,6 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         mFuncAiRl = findViewById(R.id.rl_func_ai);
         mFuncAiRl.setOnClickListener(this);
         mFuncAiRl.setOnTouchListener(this);
-
-        mFuncBookRl = findViewById(R.id.rl_func_book);
-        mFuncBookRl.setOnClickListener(this);
-        mFuncBookRl.setOnTouchListener(this);
 
         mTouchPanelRl = findViewById(R.id.rl_container_touch_panel);
         mTouchPanelRl.setOnClickListener(this);
@@ -293,6 +298,29 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                     }, PERMISSION_REQUEST_CODE_MAP);
                 }
                 break;
+            case R.id.rl_func_prompter_legacy:
+                if (redirectToBindingIfUnbind()) {
+                    return;
+                }
+                if (showSthIfNoConnected()) {
+                    return;
+                }
+                if (showSthIfBusy()) {
+                    return;
+                }
+                if (isPrompterPermissionGranted()) {
+                    toPrompterLegacyAct();
+                } else {
+                    showPermissionTip(
+                            getString(R.string.permission_dialog_prompter_title),
+                            getString(R.string.permission_dialog_prompter_content)
+                    );
+                    requestPermissions(new String[]{
+                            android.Manifest.permission.READ_EXTERNAL_STORAGE,
+                            android.Manifest.permission.WRITE_EXTERNAL_STORAGE
+                    }, PERMISSION_REQUEST_CODE_PROMPTER_LEGACY);
+                }
+                break;
             case R.id.rl_func_prompter:
                 if (redirectToBindingIfUnbind()) {
                     return;
@@ -314,6 +342,29 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                             android.Manifest.permission.READ_EXTERNAL_STORAGE,
                             android.Manifest.permission.WRITE_EXTERNAL_STORAGE
                     }, PERMISSION_REQUEST_CODE_PROMPTER);
+                }
+                break;
+            case R.id.rl_func_reader:
+                if (redirectToBindingIfUnbind()) {
+                    return;
+                }
+                if (showSthIfNoConnected()) {
+                    return;
+                }
+                if (showSthIfBusy()) {
+                    return;
+                }
+                if (isReaderPermissionGranted()) {
+                    toReaderAct();
+                } else {
+                    showPermissionTip(
+                            getString(R.string.permission_dialog_reader_title),
+                            getString(R.string.permission_dialog_reader_content)
+                    );
+                    requestPermissions(new String[]{
+                            android.Manifest.permission.READ_EXTERNAL_STORAGE,
+                            android.Manifest.permission.WRITE_EXTERNAL_STORAGE
+                    }, PERMISSION_REQUEST_CODE_READER);
                 }
                 break;
             case R.id.rl_container_notification_push:
@@ -340,9 +391,6 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                             Manifest.permission.RECORD_AUDIO
                     }, PERMISSION_REQUEST_CODE_ASSISTANT);
                 }
-                break;
-            case R.id.rl_func_book:
-                ToastUtil.toast(this, R.string.tips_coming);
                 break;
             case R.id.rl_container_touch_panel:
                 if (redirectToBindingIfUnbind()) {
@@ -521,11 +569,27 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         */
     }
 
+    private boolean isReaderPermissionGranted() {
+        // FIXME get file by ACTION_GET_CONTENT is granted always?
+        return true;
+
+        /*
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            return ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED
+                    || ActivityCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED;
+        } else {
+            return true;
+        }
+        */
+    }
+
     private static final int PERMISSION_REQUEST_CODE_DISCOVER = 1;
     private static final int PERMISSION_REQUEST_CODE_STT = 2;
     private static final int PERMISSION_REQUEST_CODE_ASSISTANT = 3;
     private static final int PERMISSION_REQUEST_CODE_MAP = 4;
+    private static final int PERMISSION_REQUEST_CODE_PROMPTER_LEGACY = 105;
     private static final int PERMISSION_REQUEST_CODE_PROMPTER = 5;
+    private static final int PERMISSION_REQUEST_CODE_READER = 6;
 
     private void requestDiscoverPermissions() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
@@ -579,9 +643,23 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                     showGrantPermissionDialog(requestCode);
                 }
                 break;
+            case PERMISSION_REQUEST_CODE_PROMPTER_LEGACY:
+                if (granted) {
+                    toPrompterLegacyAct();
+                } else {
+                    showGrantPermissionDialog(requestCode);
+                }
+                break;
             case PERMISSION_REQUEST_CODE_PROMPTER:
                 if (granted) {
                     toPrompterAct();
+                } else {
+                    showGrantPermissionDialog(requestCode);
+                }
+                break;
+            case PERMISSION_REQUEST_CODE_READER:
+                if (granted) {
+                    toReaderAct();
                 } else {
                     showGrantPermissionDialog(requestCode);
                 }
@@ -607,9 +685,14 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                 titleResId = R.string.permission_dialog_map_title;
                 contentResId = R.string.permission_dialog_map_content;
                 break;
+            case PERMISSION_REQUEST_CODE_PROMPTER_LEGACY:
             case PERMISSION_REQUEST_CODE_PROMPTER:
                 titleResId = R.string.permission_dialog_prompter_title;
                 contentResId = R.string.permission_dialog_prompter_content;
+                break;
+            case PERMISSION_REQUEST_CODE_READER:
+                titleResId = R.string.permission_dialog_reader_title;
+                contentResId = R.string.permission_dialog_reader_content;
                 break;
             default:
                 titleResId = R.string.permission_dialog_discover_title;
@@ -812,9 +895,19 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                 NaviActivity.class);
     }
 
+    private void toPrompterLegacyAct() {
+        Intent prompterLegacyIntent = new Intent(this, PrompterLegacyActivity.class);
+        startActivity(prompterLegacyIntent);
+    }
+
     private void toPrompterAct() {
         Intent prompterIntent = new Intent(this, PrompterActivity.class);
         startActivity(prompterIntent);
+    }
+
+    private void toReaderAct() {
+        Intent readerIntent = new Intent(this, ReaderActivity.class);
+        startActivity(readerIntent);
     }
 
     private void toNotificationConfigAct() {
@@ -873,12 +966,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         @Override
         public void onViewChanged(int venusView) {
             if (VNConstant.View.HOME == venusView) {
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        mSttPreviewTv.setText("");
-                    }
-                });
+                mSttPreviewTv.setText("");
             }
         }
     };

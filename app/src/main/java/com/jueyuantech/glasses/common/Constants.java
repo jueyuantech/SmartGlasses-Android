@@ -12,6 +12,7 @@ public class Constants {
     public final static String STT_ENGINE_AISPEECH = "AiSpeech";
     public final static String STT_ENGINE_IFLYTEK = "IFlyTek";
     public final static String STT_ENGINE_IFLYTEK_WEB_ASR = "IFlyTekWebAsr";
+    public final static String STT_ENGINE_IFLYTEK_WEB_NIU_ASR = "IFlyTekWebNiuAsr";
     public final static String STT_ENGINE_IFLYTEK_WEB_IAT_MUL = "IFlyTekWebIatMul";
     public final static String STT_ENGINE_AZURE = "Azure";
     public final static String STT_ENGINE_AZURE_WESTUS = "AzureWestUS";

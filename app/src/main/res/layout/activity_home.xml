@@ -337,6 +337,30 @@
                     </RelativeLayout>
 
                     <RelativeLayout
+                        android:id="@+id/rl_func_reader"
+                        android:layout_width="match_parent"
+                        android:layout_height="70dp"
+                        android:background="@drawable/bg_btn_func_switch">
+
+                        <ImageView
+                            android:id="@+id/iv_reader"
+                            android:layout_width="35dp"
+                            android:layout_height="35dp"
+                            android:layout_centerVertical="true"
+                            android:layout_marginHorizontal="15dp"
+                            android:src="@drawable/baseline_menu_book_24" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_toEndOf="@id/iv_reader"
+                            android:text="@string/func_reader"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                            android:textStyle="bold" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
                         android:id="@+id/rl_container_notification_push"
                         android:layout_width="match_parent"
                         android:layout_height="70dp"
@@ -406,26 +430,25 @@
                     </RelativeLayout>
 
                     <RelativeLayout
-                        android:id="@+id/rl_func_book"
+                        android:id="@+id/rl_func_prompter_legacy"
                         android:layout_width="match_parent"
                         android:layout_height="70dp"
-                        android:background="@drawable/bg_btn_func_switch"
-                        android:visibility="gone">
+                        android:background="@drawable/bg_btn_func_switch">
 
                         <ImageView
-                            android:id="@+id/iv_book"
+                            android:id="@+id/iv_prompter_legacy"
                             android:layout_width="35dp"
                             android:layout_height="35dp"
                             android:layout_centerVertical="true"
                             android:layout_marginHorizontal="15dp"
-                            android:src="@mipmap/ic_venus_app_book_selected" />
+                            android:src="@mipmap/ic_prompter" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_centerVertical="true"
-                            android:layout_toEndOf="@id/iv_book"
-                            android:text="@string/func_book"
+                            android:layout_toEndOf="@id/iv_prompter_legacy"
+                            android:text="@string/func_prompter_legacy"
                             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                             android:textStyle="bold" />
                     </RelativeLayout>

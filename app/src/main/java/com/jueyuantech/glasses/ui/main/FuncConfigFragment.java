@@ -14,8 +14,13 @@ import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 
+import com.google.android.material.bottomsheet.BottomSheetBehavior;
+import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import com.jueyuantech.glasses.R;
+
+import android.app.Dialog;
+import android.widget.FrameLayout;
 import com.jueyuantech.glasses.bean.LanguageTag;
 import com.jueyuantech.glasses.stt.SttConfigManager;
 
@@ -82,6 +87,28 @@ public class FuncConfigFragment extends BottomSheetDialogFragment implements Vie
         setStyle(STYLE_NORMAL, R.style.FuncConfigDialog);
 
         mSttConfigManager = SttConfigManager.getInstance();
+    }
+
+    @Override
+    public Dialog onCreateDialog(Bundle savedInstanceState) {
+        Dialog dialog = super.onCreateDialog(savedInstanceState);
+        
+        dialog.setOnShowListener(dialogInterface -> {
+            BottomSheetDialog bottomSheetDialog = (BottomSheetDialog) dialog;
+            FrameLayout bottomSheet = bottomSheetDialog.findViewById(com.google.android.material.R.id.design_bottom_sheet);
+            
+            if (bottomSheet != null) {
+                BottomSheetBehavior<FrameLayout> behavior = BottomSheetBehavior.from(bottomSheet);
+                // 设置为展开状态
+                behavior.setState(BottomSheetBehavior.STATE_EXPANDED);
+                // 禁用拖拽关闭
+                behavior.setDraggable(false);
+                // 设置跳过折叠状态
+                behavior.setSkipCollapsed(true);
+            }
+        });
+        
+        return dialog;
     }
 
     @Override

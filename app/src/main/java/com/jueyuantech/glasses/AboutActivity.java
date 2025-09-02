@@ -17,7 +17,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.jueyuantech.glasses.util.ToastUtil;
-import com.jueyuantech.venussdk.VNCommon;
+import com.jueyuantech.venussdk.VNSDK;
 import com.jueyuantech.venussdk.bean.VNVersionInfo;
 
 public class AboutActivity extends AppCompatActivity implements View.OnClickListener {
@@ -95,7 +95,7 @@ public class AboutActivity extends AppCompatActivity implements View.OnClickList
     }
 
     private void showSdkVersion() {
-        VNVersionInfo versionInfo = VNCommon.getVersionInfo();
+        VNVersionInfo versionInfo = VNSDK.getVersionInfo();
         String sdkVersion = versionInfo.getBuildType() + " "
                 + versionInfo.getName() + " "
                 + versionInfo.getCode() + " "

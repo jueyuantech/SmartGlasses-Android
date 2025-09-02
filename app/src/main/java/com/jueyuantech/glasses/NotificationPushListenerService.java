@@ -28,21 +28,7 @@ public class NotificationPushListenerService extends NotificationListenerService
     @Override
     public void onNotificationPosted(StatusBarNotification sbn) {
         // TODO Auto-generated method stub
-        Bundle extras = sbn.getNotification().extras;
-
-        int id = sbn.getId();
-        LogUtil.i("Notification id " + id);
         String packageName = sbn.getPackageName();
-        LogUtil.i("Notification packageName " + packageName);
-        String title = extras.getString(Notification.EXTRA_TITLE);
-        LogUtil.i("Notification title " + title);
-        String text = extras.getString(Notification.EXTRA_TEXT);
-        LogUtil.i("Notification text " + text);
-        String sbnStr = sbn.toString();
-        LogUtil.i("Notification sbnStr " + sbnStr);
-
-        String notifyStr = sbn.getNotification().toString();
-        LogUtil.i("Notification notifyStr " + notifyStr);
 
         if (!NotificationPushManager.getInstance().isPushEnable()) {
             return;
@@ -52,11 +38,25 @@ public class NotificationPushListenerService extends NotificationListenerService
             return;
         }
 
+        Bundle extras = sbn.getNotification().extras;
+        int id = sbn.getId();
+        String title = extras.getString(Notification.EXTRA_TITLE);
+        String text = extras.getString(Notification.EXTRA_TEXT);
+        long postTime = sbn.getPostTime();
+        LogUtil.i("Notification - id: " + id + ", packageName: " + packageName + ", title: " + title + ", text: " + text + ", postTime: " + postTime);
+
+        String sbnStr = sbn.toString();
+        LogUtil.i("Notification sbnStr " + sbnStr);
+        String notifyStr = sbn.getNotification().toString();
+        LogUtil.i("Notification notifyStr " + notifyStr);
+
         VNNotificationInfo notificationInfo = new VNNotificationInfo();
         notificationInfo.setId(sbn.getId());
         notificationInfo.setTitle(title);
         notificationInfo.setMsg(text);
         notificationInfo.setPostTime(sbn.getPostTime() / 1000);
+        notificationInfo.setType(0);
+        notificationInfo.setDuration(3);
 
         //Bitmap bitmap = getBitmapFromVectorDrawable(this, R.drawable.outline_doorbell_24);
         Bitmap appIconBmp = AppUtil.getAppIcon(getApplicationContext(), packageName);

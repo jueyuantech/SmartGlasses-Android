@@ -45,8 +45,8 @@ import okhttp3.WebSocketListener;
 import okio.ByteString;
 
 public class IFlyTekWebAsrStt extends SttEngine {
-    private static final String BASE_URL_TRANSCRIBE = "https://iat-api.xfyun.cn/v2/iat";
-    private static final String BASE_URL_TRANSLATE = "https://itrans.xf-yun.com/v1/its";
+    private static final String BASE_URL_TRANSCRIBE = "";
+    private static final String BASE_URL_TRANSLATE = "";
 
     private Gson gson = new Gson();
 
@@ -92,11 +92,16 @@ public class IFlyTekWebAsrStt extends SttEngine {
             );
             if (null != translateSource) {
                 translateSourceKey = translateSource.getTag();
+                setSourceLanguageHint(translateSource.getTitle());
 
                 if ("cn".equals(translateSourceKey)) {
-                    transcribeSourceKey = "zh-cn";
+                    transcribeSourceKey = "zh_cn";
                 } else if ("en".equals(translateSourceKey)) {
-                    transcribeSourceKey = "en-us";
+                    transcribeSourceKey = "en_us";
+                } else if ("ja".equals(translateSourceKey)) {
+                    transcribeSourceKey = "ja_jp";
+                } else if ("ko".equals(translateSourceKey)) {
+                    transcribeSourceKey = "ko_kr";
                 }
 
                 LanguageTag translateTarget = SttConfigManager.getInstance().getTargetLanTag(
@@ -106,6 +111,7 @@ public class IFlyTekWebAsrStt extends SttEngine {
                 );
                 if (null != translateTarget) {
                     translateTargetKey = translateTarget.getTag();
+                    setTargetLanguageHint(translateTarget.getTitle());
                 }
             }
         } else {
@@ -115,6 +121,7 @@ public class IFlyTekWebAsrStt extends SttEngine {
             );
             if (null != transcribeSource) {
                 transcribeSourceKey = transcribeSource.getTag();
+                setSourceLanguageHint(transcribeSource.getTitle());
             }
         }
     }
@@ -126,7 +133,7 @@ public class IFlyTekWebAsrStt extends SttEngine {
 
     @Override
     public String getServiceId() {
-        return "4F6D8A2C1E3B5D7F9A1B2C4D6E8F0A12";
+        return "";
     }
 
     @Override

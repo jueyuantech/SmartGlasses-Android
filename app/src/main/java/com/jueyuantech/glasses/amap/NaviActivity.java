@@ -217,6 +217,35 @@ public class NaviActivity extends AmapRouteActivity {
         }
     }
 
+    /**
+     * 将秒数格式化为时间字符串
+     * @param totalSeconds 总秒数
+     * @return 格式化后的时间字符串，例如：1小时30分钟、45分钟、1分钟
+     */
+    private String formatTimeFromSeconds(int totalSeconds) {
+        if (totalSeconds <= 0) {
+            return "0分钟";
+        }
+        
+        int hours = totalSeconds / 3600;
+        int minutes = (totalSeconds % 3600) / 60;
+        
+        // 不到1分钟的，显示为1分钟
+        if (hours == 0 && minutes == 0) {
+            return "1分钟";
+        }
+        
+        StringBuilder result = new StringBuilder();
+        if (hours > 0) {
+            result.append(hours).append("小时");
+        }
+        if (minutes > 0 || hours > 0) {
+            result.append(minutes).append("分钟");
+        }
+        
+        return result.toString();
+    }
+
     private byte[] getVenusBmpBytes(Bitmap bitmap) {
         if (null == bitmap) {
             return new byte[0];
@@ -336,9 +365,12 @@ public class NaviActivity extends AmapRouteActivity {
             navInfo.setCurStepRetainDistance(formatDistance(naviInfo.getCurStepRetainDistance()));
             navInfo.setNextRoadName(naviInfo.getNextRoadName());
             navInfo.setSpeed(String.format("%.1f", mCurSpeed) + " km/h");
+            navInfo.setRemainDistance(formatDistance(naviInfo.getPathRetainDistance()));
+            navInfo.setRemainTime(formatTimeFromSeconds(naviInfo.getPathRetainTime()));
+            navInfo.setNavMode(1);
 
             updateNavInfo(navInfo);
-            updateHealthInfo();
+            //updateHealthInfo();
 
             mLastIconType = navInfo.getIconType();
         }

@@ -5,7 +5,7 @@ import android.os.Parcelable;
 
 public class PrompterConfig implements Parcelable {
 
-    public static final Parcelable.Creator<PrompterConfig> CREATOR = new Parcelable.Creator<PrompterConfig>() {
+    public static final Creator<PrompterConfig> CREATOR = new Creator<PrompterConfig>() {
         public PrompterConfig createFromParcel(Parcel var1) {
             return new PrompterConfig(var1);
         }
@@ -15,36 +15,26 @@ public class PrompterConfig implements Parcelable {
         }
     };
 
-    private int displayRows;
-    private boolean showPrevious;
+    private boolean customFontSize;
     private int fontSize;
-    private boolean autoLoadHistory;
+    private boolean showContext;
 
     public PrompterConfig() {
 
     }
 
     public PrompterConfig(Parcel var1) {
-        this.displayRows = var1.readInt();
-        this.showPrevious = var1.readByte() != 0;
+        this.customFontSize = var1.readByte() != 0;
         this.fontSize = var1.readInt();
-        this.autoLoadHistory = var1.readByte() != 0;
+        this.showContext = var1.readByte() != 0;
     }
 
-    public int getDisplayRows() {
-        return displayRows;
+    public boolean isCustomFontSize() {
+        return customFontSize;
     }
 
-    public void setDisplayRows(int displayRows) {
-        this.displayRows = displayRows;
-    }
-
-    public boolean isShowPrevious() {
-        return showPrevious;
-    }
-
-    public void setShowPrevious(boolean showPrevious) {
-        this.showPrevious = showPrevious;
+    public void setCustomFontSize(boolean customFontSize) {
+        this.customFontSize = customFontSize;
     }
 
     public int getFontSize() {
@@ -55,20 +45,19 @@ public class PrompterConfig implements Parcelable {
         this.fontSize = fontSize;
     }
 
-    public boolean isAutoLoadHistory() {
-        return autoLoadHistory;
+    public boolean isShowContext() {
+        return showContext;
     }
 
-    public void setAutoLoadHistory(boolean autoLoadHistory) {
-        this.autoLoadHistory = autoLoadHistory;
+    public void setShowContext(boolean showContext) {
+        this.showContext = showContext;
     }
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeInt(this.displayRows);
-        dest.writeByte((byte) (this.showPrevious ? 1 : 0));
+        dest.writeByte((byte) (this.customFontSize ? 1 : 0));
         dest.writeInt(this.fontSize);
-        dest.writeByte((byte) (this.autoLoadHistory ? 1 : 0));
+        dest.writeByte((byte) (this.showContext ? 1 : 0));
     }
 
     @Override

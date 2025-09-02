@@ -23,8 +23,8 @@ android {
         applicationId = "com.jueyuantech.glasses"
         minSdk = 24
         targetSdk = 33
-        versionCode = 6
-        versionName = "1.1.6" + "_" + getGitCommitVersion()
+        versionCode = 9
+        versionName = "1.2.2" + "_" + getGitCommitVersion()
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
@@ -125,7 +125,7 @@ dependencies {
 
     implementation ("com.googlecode.libphonenumber:libphonenumber:8.13.5")
 
-    implementation(files("libs/VNCommon_v1.6.3_34a83e9_release.aar"))
+    implementation(files("libs/VenusSDK_v1.8.1_1ae897f_release.aar"))
 }
 
 fun getGitCommitCount(): Int {

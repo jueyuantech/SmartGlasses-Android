@@ -24,6 +24,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
     private RelativeLayout mDevicesContainerRl;
     private RelativeLayout mPermissionContainerRl;
     private RelativeLayout mBackgroundPermissionContainerRl;
+    private RelativeLayout mGuideContainerRl;
     private RelativeLayout mFeedbackContainerRl;
     private RelativeLayout mAboutContainerRl;
 
@@ -51,6 +52,8 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         mPermissionContainerRl.setOnClickListener(this);
         mBackgroundPermissionContainerRl = findViewById(R.id.rl_container_background_permission);
         mBackgroundPermissionContainerRl.setOnClickListener(this);
+        mGuideContainerRl = findViewById(R.id.rl_container_guide);
+        mGuideContainerRl.setOnClickListener(this);
         mFeedbackContainerRl = findViewById(R.id.rl_container_feedback);
         mFeedbackContainerRl.setOnClickListener(this);
         mAccountContainerRl = findViewById(R.id.rl_container_account);
@@ -91,6 +94,9 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
                 break;
             case R.id.rl_container_background_permission:
                 toBackgroundPermissionAct();
+                break;
+            case R.id.rl_container_guide:
+                toGuideAct();
                 break;
             case R.id.rl_container_feedback:
                 if (UserManager.getInstance().isLoggedIn()) {
@@ -133,6 +139,11 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
     private void toBackgroundPermissionAct() {
         Intent backgroundPermissionIntent = new Intent(this, BackgroundPermissionActivity.class);
         startActivity(backgroundPermissionIntent);
+    }
+
+    private void toGuideAct() {
+        Intent guideIntent = new Intent(this, GuideActivity.class);
+        startActivity(guideIntent);
     }
 
     private void toFeedbackAct() {

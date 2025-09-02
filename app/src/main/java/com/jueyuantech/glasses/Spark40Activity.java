@@ -140,6 +140,13 @@ public class Spark40Activity extends VenusAppBaseActivity implements View.OnClic
     }
 
     @Override
+    protected void onResume() {
+        super.onResume();
+
+        setVenusConfig();
+    }
+
+    @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.ib_record:
@@ -188,7 +195,7 @@ public class Spark40Activity extends VenusAppBaseActivity implements View.OnClic
 
     @Override
     protected void notifyVenusEnter() {
-        VNCommon.setView(VNConstant.View.TRANSCRIBE, null);
+        VNCommon.setView(VNConstant.View.AI, null);
     }
 
     @Override
@@ -199,6 +206,10 @@ public class Spark40Activity extends VenusAppBaseActivity implements View.OnClic
     @Override
     protected void notifyExitFromVenus() {
         finish();
+    }
+
+    private void setVenusConfig() {
+        VNCommon.setTextMode(VNConstant.View.AI, VNConstant.SttConfig.TextMode.CURRENT_AND_HISTORICAL, null);
     }
 
     private void showRecordingDialog() {
@@ -227,13 +238,13 @@ public class Spark40Activity extends VenusAppBaseActivity implements View.OnClic
         });
     }
 
-    private void sendText(int type, String transcribeStr, String translateStr) {
+    private void updateInfo(int area, int type, String transcribeStr, String translateStr) {
         VNSttInfo sttInfo = new VNSttInfo();
         sttInfo.setTranscribe(transcribeStr);
-        sttInfo.setTranslate(translateStr);
+        sttInfo.setArea(area);
         sttInfo.setActionType(type);
         sttInfo.setMsgType(VNConstant.SttInfo.MsgType.STT);
-        VNCommon.updateTranscribe(sttInfo, null);
+        VNCommon.updateSttInfo(VNConstant.View.AI, sttInfo, null);
     }
 
     private void initSDK() {
@@ -314,14 +325,14 @@ public class Spark40Activity extends VenusAppBaseActivity implements View.OnClic
                     mCurrentMessage = new ChatMessageBean(ChatMessageBean.TYPE_RECEIVED, getString(R.string.app_name), "", msg);
                     mChatAdapter.addData(mCurrentMessage);
 
-                    sendText(MSG_TYPE_NEW, msg, "");
+                    updateInfo(0, MSG_TYPE_NEW, msg, "");
                 } else if (MSG_TYPE_UPDATE == type) {
                     if (null != mCurrentMessage) {
                         mCurrentMessage.content = msg;
                         mCurrentMessage.isHint = false;
                         mChatAdapter.updateData();
 
-                        sendText(MSG_TYPE_UPDATE, mCurrentMessage.content, "");
+                        updateInfo(0, MSG_TYPE_UPDATE, mCurrentMessage.content, "");
                     }
                 } else if (MSG_TYPE_APPEND == type) {
                     if (null != mCurrentMessage) {
@@ -329,7 +340,7 @@ public class Spark40Activity extends VenusAppBaseActivity implements View.OnClic
                         mCurrentMessage.isHint = false;
                         mChatAdapter.updateData();
 
-                        sendText(MSG_TYPE_UPDATE, mCurrentMessage.content, "");
+                        updateInfo(0, MSG_TYPE_UPDATE, mCurrentMessage.content, "");
                     }
                 }
 
@@ -350,7 +361,7 @@ public class Spark40Activity extends VenusAppBaseActivity implements View.OnClic
     }
 
     private void showRecognizeResult(int type, String msg) {
-        sendText(type, msg, "");
+        updateInfo(1, type, msg, "");
         runOnUiThread(new Runnable() {
             @Override
             public void run() {

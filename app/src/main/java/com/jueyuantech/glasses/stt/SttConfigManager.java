@@ -230,8 +230,65 @@ public class SttConfigManager {
         return newTag;
     }
 
+    /**
+     * 创建目标语言列表，排除指定的源语言标签
+     * @param excludeTag 要排除的源语言标签
+     * @return 包含所有其他翻译语言标签的列表
+     */
+    private static List<LanguageTag> createTargetListExcluding(LanguageTag excludeTag) {
+        List<LanguageTag> targetList = new ArrayList<>();
+        
+        // 所有可用的翻译语言标签
+        LanguageTag[] allTranslateTags = {
+            IFLYTEKWEBNIUASR_TRANSLATE_LAN_TAG_ZH,
+            IFLYTEKWEBNIUASR_TRANSLATE_LAN_TAG_ZH_TW,
+            IFLYTEKWEBNIUASR_TRANSLATE_LAN_TAG_EN,
+            IFLYTEKWEBNIUASR_TRANSLATE_LAN_TAG_JA,
+            IFLYTEKWEBNIUASR_TRANSLATE_LAN_TAG_KO,
+            IFLYTEKWEBNIUASR_TRANSLATE_LAN_TAG_IT,
+            IFLYTEKWEBNIUASR_TRANSLATE_LAN_TAG_DE,
+            IFLYTEKWEBNIUASR_TRANSLATE_LAN_TAG_RU,
+            IFLYTEKWEBNIUASR_TRANSLATE_LAN_TAG_FR,
+            IFLYTEKWEBNIUASR_TRANSLATE_LAN_TAG_FIL,
+            IFLYTEKWEBNIUASR_TRANSLATE_LAN_TAG_HA,
+            IFLYTEKWEBNIUASR_TRANSLATE_LAN_TAG_NL,
+            IFLYTEKWEBNIUASR_TRANSLATE_LAN_TAG_CS,
+            IFLYTEKWEBNIUASR_TRANSLATE_LAN_TAG_RO,
+            IFLYTEKWEBNIUASR_TRANSLATE_LAN_TAG_MS,
+            // IFLYTEKWEBNIUASR_TRANSLATE_LAN_TAG_BN,
+            IFLYTEKWEBNIUASR_TRANSLATE_LAN_TAG_PT,
+            IFLYTEKWEBNIUASR_TRANSLATE_LAN_TAG_SV,
+            IFLYTEKWEBNIUASR_TRANSLATE_LAN_TAG_SW,
+            // IFLYTEKWEBNIUASR_TRANSLATE_LAN_TAG_TA,
+            IFLYTEKWEBNIUASR_TRANSLATE_LAN_TAG_TH,
+            IFLYTEKWEBNIUASR_TRANSLATE_LAN_TAG_TR,
+            IFLYTEKWEBNIUASR_TRANSLATE_LAN_TAG_UR,
+            IFLYTEKWEBNIUASR_TRANSLATE_LAN_TAG_UK,
+            IFLYTEKWEBNIUASR_TRANSLATE_LAN_TAG_UZ,
+            IFLYTEKWEBNIUASR_TRANSLATE_LAN_TAG_ES,
+            IFLYTEKWEBNIUASR_TRANSLATE_LAN_TAG_EL,
+            // IFLYTEKWEBNIUASR_TRANSLATE_LAN_TAG_HI,
+            IFLYTEKWEBNIUASR_TRANSLATE_LAN_TAG_ID,
+            IFLYTEKWEBNIUASR_TRANSLATE_LAN_TAG_VI,
+            IFLYTEKWEBNIUASR_TRANSLATE_LAN_TAG_AR,
+            IFLYTEKWEBNIUASR_TRANSLATE_LAN_TAG_BG,
+            IFLYTEKWEBNIUASR_TRANSLATE_LAN_TAG_PL,
+            IFLYTEKWEBNIUASR_TRANSLATE_LAN_TAG_FA
+        };
+        
+        // 添加所有标签，但排除指定的源语言标签
+        for (LanguageTag tag : allTranslateTags) {
+            if (!tag.getTag().equals(excludeTag.getTag())) {
+                targetList.add(copyTag(tag));
+            }
+        }
+        
+        return targetList;
+    }
+
 
     private static LanguageTag AZURE_TRANSCRIBE_LAN_TAG_ZH = new LanguageTag("zh-CN", "Chinese", "China", "Mainland China, simplified characters", "正在听...", "中文");
+    private static LanguageTag AZURE_TRANSCRIBE_LAN_TAG_ZH_TW = new LanguageTag("zh-TW", "", "", "", "正在聽...", "中文（繁体）");
     private static LanguageTag AZURE_TRANSCRIBE_LAN_TAG_EN = new LanguageTag("en-US", "English", "United States", "US English", "Listening...", "English");
     private static LanguageTag AZURE_TRANSCRIBE_LAN_TAG_JA = new LanguageTag("ja-JP", "Japanese", "Japan", "Japanese (Japan)", "聞いています...", "日本語");
     private static LanguageTag AZURE_TRANSCRIBE_LAN_TAG_KO = new LanguageTag("ko-KR", "Korean", "Korea", "Korean (Korea)", "듣고 있어요...", "한국어");
@@ -243,16 +300,17 @@ public class SttConfigManager {
     private static LanguageTag AZURE_TRANSCRIBE_LAN_TAG_PT = new LanguageTag("pt-BR", "Portuguese", "Brazil", "Portuguese (Brazil)", "Ouvindo...", "português(Brasil)");
 
     private static LanguageTag AZURE_TRANSLATE_LAN_TAG_ZH = new LanguageTag("zh-Hans", "", "", "", "正在听...", "中文");
+    private static LanguageTag AZURE_TRANSLATE_LAN_TAG_ZH_TW = new LanguageTag("zh-Hant", "", "", "", "正在聽...", "中文（繁体）");
     private static LanguageTag AZURE_TRANSLATE_LAN_TAG_EN = new LanguageTag("en", "", "", "", "Listening...", "English");
     private static LanguageTag AZURE_TRANSLATE_LAN_TAG_JA = new LanguageTag("ja", "", "", "", "聞いています...", "日本語");
-    private static LanguageTag AZURE_TRANSLATE_LAN_TAG_KO = new LanguageTag("ko", "", "", "", "Listening...", "한국어");
-    private static LanguageTag AZURE_TRANSLATE_LAN_TAG_RU = new LanguageTag("ru", "", "", "", "Listening...", "Русский");
-    private static LanguageTag AZURE_TRANSLATE_LAN_TAG_DE = new LanguageTag("de", "", "", "", "Listening...", "Deutsch");
-    private static LanguageTag AZURE_TRANSLATE_LAN_TAG_FR = new LanguageTag("fr", "", "", "", "Listening...", "Français");
-    private static LanguageTag AZURE_TRANSLATE_LAN_TAG_ES = new LanguageTag("es", "", "", "", "Listening...", "Español");
-    private static LanguageTag AZURE_TRANSLATE_LAN_TAG_IT = new LanguageTag("it", "", "", "", "Listening...", "italiano");
-    private static LanguageTag AZURE_TRANSLATE_LAN_TAG_PT = new LanguageTag("pt", "", "", "", "Listening...", "Português");
-    private static LanguageTag AZURE_TRANSLATE_LAN_TAG_AR = new LanguageTag("ar", "", "", "", "Listening...", "العربية");
+    private static LanguageTag AZURE_TRANSLATE_LAN_TAG_KO = new LanguageTag("ko", "", "", "", "듣고 있어요...", "한국어");
+    private static LanguageTag AZURE_TRANSLATE_LAN_TAG_RU = new LanguageTag("ru", "", "", "", "Слушаю...", "Русский");
+    private static LanguageTag AZURE_TRANSLATE_LAN_TAG_DE = new LanguageTag("de", "", "", "", "Hre...", "Deutsch");
+    private static LanguageTag AZURE_TRANSLATE_LAN_TAG_FR = new LanguageTag("fr", "", "", "", "coute...", "Français");
+    private static LanguageTag AZURE_TRANSLATE_LAN_TAG_ES = new LanguageTag("es", "", "", "", "Escuchando...", "Español");
+    private static LanguageTag AZURE_TRANSLATE_LAN_TAG_IT = new LanguageTag("it", "", "", "", "Ascoltando...", "italiano");
+    private static LanguageTag AZURE_TRANSLATE_LAN_TAG_PT = new LanguageTag("pt", "", "", "", "Ouvindo...", "Português");
+    private static LanguageTag AZURE_TRANSLATE_LAN_TAG_AR = new LanguageTag("ar", "", "", "", "أستمع...", "العربية");
 
     private static LanguageTag IFLYTEK_TRANSCRIBE_LAN_TAG_ZH = new LanguageTag("cn", "", "", "", "正在听...", "中文");
     private static LanguageTag IFLYTEK_TRANSCRIBE_LAN_TAG_JA = new LanguageTag("ja", "", "", "", "聞いています...", "日本語");
@@ -261,12 +319,85 @@ public class SttConfigManager {
     private static LanguageTag IFLYTEK_TRANSCRIBE_LAN_TAG_ZH_CANTONESE = new LanguageTag("cn_cantonese", "", "", "", "正在听...", "广东话");
 
     private static LanguageTag IFLYTEKWEBASR_TRANSCRIBE_LAN_TAG_ZH = new LanguageTag("zh_cn", "", "", "", "正在听...", "中文");
+    private static LanguageTag IFLYTEKWEBASR_TRANSCRIBE_LAN_TAG_ZH_TW = new LanguageTag("zh_tw", "", "", "", "正在聽...", "中文（繁体）");
     private static LanguageTag IFLYTEKWEBASR_TRANSCRIBE_LAN_TAG_EN = new LanguageTag("en_us", "", "", "", "Listening...", "English");
+    private static LanguageTag IFLYTEKWEBASR_TRANSCRIBE_LAN_TAG_KO = new LanguageTag("ko_kr", "", "", "", "듣고 있어요...", "한국어");
+    private static LanguageTag IFLYTEKWEBASR_TRANSCRIBE_LAN_TAG_JA = new LanguageTag("ja_jp", "", "", "", "聞いています...", "日本語");
 
     private static LanguageTag IFLYTEKWEBASR_TRANSLATE_LAN_TAG_ZH = new LanguageTag("cn", "", "", "", "正在听...", "中文");
     private static LanguageTag IFLYTEKWEBASR_TRANSLATE_LAN_TAG_EN = new LanguageTag("en", "", "", "", "Listening...", "English");
     private static LanguageTag IFLYTEKWEBASR_TRANSLATE_LAN_TAG_JA = new LanguageTag("ja", "", "", "", "聞いています...", "日本語");
-    private static LanguageTag IFLYTEKWEBASR_TRANSLATE_LAN_TAG_KO = new LanguageTag("ko", "", "", "", "Listening...", "한국어");
+    private static LanguageTag IFLYTEKWEBASR_TRANSLATE_LAN_TAG_KO = new LanguageTag("ko", "", "", "", "듣고 있어요...", "한국어");
+
+    private static LanguageTag IFLYTEKWEBNIUASR_TRANSCRIBE_LAN_TAG_ZH = new LanguageTag("zh_cn", "", "", "", "正在听...", "中文");
+    private static LanguageTag IFLYTEKWEBNIUASR_TRANSCRIBE_LAN_TAG_ZH_TW = new LanguageTag("zh_tw", "", "", "", "正在聽...", "中文（繁体）");
+    private static LanguageTag IFLYTEKWEBNIUASR_TRANSCRIBE_LAN_TAG_EN = new LanguageTag("en_us", "", "", "", "Listening...", "English");
+    private static LanguageTag IFLYTEKWEBNIUASR_TRANSCRIBE_LAN_TAG_KO = new LanguageTag("ko_kr", "", "", "", "듣고 있어요...", "한국어");
+    private static LanguageTag IFLYTEKWEBNIUASR_TRANSCRIBE_LAN_TAG_JA = new LanguageTag("ja_jp", "", "", "", "聞いています...", "日本語");
+    private static LanguageTag IFLYTEKWEBNIUASR_TRANSCRIBE_LAN_TAG_IT = new LanguageTag("it_IT", "", "", "", "Ascoltando...", "Italiano");
+    private static LanguageTag IFLYTEKWEBNIUASR_TRANSCRIBE_LAN_TAG_DE = new LanguageTag("de_DE", "", "", "", "Hörend...", "Deutsch");
+    private static LanguageTag IFLYTEKWEBNIUASR_TRANSCRIBE_LAN_TAG_RU = new LanguageTag("ru-ru", "", "", "", "Слушаю...", "Русский");
+    private static LanguageTag IFLYTEKWEBNIUASR_TRANSCRIBE_LAN_TAG_FR = new LanguageTag("fr_fr", "", "", "", "Écoute...", "Français");
+    private static LanguageTag IFLYTEKWEBNIUASR_TRANSCRIBE_LAN_TAG_FIL = new LanguageTag("fil_PH", "", "", "", "Nakikinig...", "Filipino");
+    private static LanguageTag IFLYTEKWEBNIUASR_TRANSCRIBE_LAN_TAG_HA = new LanguageTag("ha_NG", "", "", "", "Sauraron...", "Hausa");
+    private static LanguageTag IFLYTEKWEBNIUASR_TRANSCRIBE_LAN_TAG_NL = new LanguageTag("nl_NL", "", "", "", "Luisteren...", "Nederlands");
+    private static LanguageTag IFLYTEKWEBNIUASR_TRANSCRIBE_LAN_TAG_CS = new LanguageTag("cs_CZ", "", "", "", "Poslouchám...", "Čeština");
+    private static LanguageTag IFLYTEKWEBNIUASR_TRANSCRIBE_LAN_TAG_RO = new LanguageTag("ro_ro", "", "", "", "Ascult...", "Română");
+    private static LanguageTag IFLYTEKWEBNIUASR_TRANSCRIBE_LAN_TAG_MS = new LanguageTag("ms_MY", "", "", "", "Mendengar...", "Bahasa Melayu");
+    // private static LanguageTag IFLYTEKWEBNIUASR_TRANSCRIBE_LAN_TAG_BN = new LanguageTag("bn_BD", "", "", "", "শুনছি...", "বাংলা");
+    private static LanguageTag IFLYTEKWEBNIUASR_TRANSCRIBE_LAN_TAG_PT = new LanguageTag("pt_PT", "", "", "", "Ouvindo...", "Português");
+    private static LanguageTag IFLYTEKWEBNIUASR_TRANSCRIBE_LAN_TAG_SV = new LanguageTag("sv_SE", "", "", "", "Lyssnar...", "Svenska");
+    private static LanguageTag IFLYTEKWEBNIUASR_TRANSCRIBE_LAN_TAG_SW = new LanguageTag("sw_KE", "", "", "", "Kusikiliza...", "Kiswahili");
+    // private static LanguageTag IFLYTEKWEBNIUASR_TRANSCRIBE_LAN_TAG_TA = new LanguageTag("ta_in", "", "", "", "கேட்கிறேன்...", "தமிழ்");
+    private static LanguageTag IFLYTEKWEBNIUASR_TRANSCRIBE_LAN_TAG_TH = new LanguageTag("th_TH", "", "", "", "กำลังฟัง...", "ไทย");
+    private static LanguageTag IFLYTEKWEBNIUASR_TRANSCRIBE_LAN_TAG_TR = new LanguageTag("tr_TR", "", "", "", "Dinliyorum...", "Türkçe");
+    private static LanguageTag IFLYTEKWEBNIUASR_TRANSCRIBE_LAN_TAG_UR = new LanguageTag("ur_IN", "", "", "", "سن رہا ہوں...", "اردو");
+    private static LanguageTag IFLYTEKWEBNIUASR_TRANSCRIBE_LAN_TAG_UK = new LanguageTag("uk_UA", "", "", "", "Слухаю...", "Українська");
+    private static LanguageTag IFLYTEKWEBNIUASR_TRANSCRIBE_LAN_TAG_UZ = new LanguageTag("uz_UZ", "", "", "", "Eshitmoqda...", "O'zbek");
+    private static LanguageTag IFLYTEKWEBNIUASR_TRANSCRIBE_LAN_TAG_ES = new LanguageTag("es_es", "", "", "", "Escuchando...", "Español");
+    private static LanguageTag IFLYTEKWEBNIUASR_TRANSCRIBE_LAN_TAG_EL = new LanguageTag("el_GR", "", "", "", "Ακούω...", "Ελληνικά");
+    // private static LanguageTag IFLYTEKWEBNIUASR_TRANSCRIBE_LAN_TAG_HI = new LanguageTag("hi_in", "", "", "", "सुन रहा हूं...", "हिन्दी");
+    private static LanguageTag IFLYTEKWEBNIUASR_TRANSCRIBE_LAN_TAG_ID = new LanguageTag("id_ID", "", "", "", "Mendengarkan...", "Bahasa Indonesia");
+    private static LanguageTag IFLYTEKWEBNIUASR_TRANSCRIBE_LAN_TAG_VI = new LanguageTag("vi_VN", "", "", "", "Đang nghe...", "Tiếng Việt");
+    private static LanguageTag IFLYTEKWEBNIUASR_TRANSCRIBE_LAN_TAG_AR = new LanguageTag("ar_il", "", "", "", "أستمع...", "العربية");
+    private static LanguageTag IFLYTEKWEBNIUASR_TRANSCRIBE_LAN_TAG_BG = new LanguageTag("bg_bg", "", "", "", "Слушам...", "Български");
+    private static LanguageTag IFLYTEKWEBNIUASR_TRANSCRIBE_LAN_TAG_PL = new LanguageTag("pl_pl", "", "", "", "Słucham...", "Polski");
+    private static LanguageTag IFLYTEKWEBNIUASR_TRANSCRIBE_LAN_TAG_FA = new LanguageTag("fa_IR", "", "", "", "گوش می‌دهم...", "فارسی");
+
+    private static LanguageTag IFLYTEKWEBNIUASR_TRANSLATE_LAN_TAG_ZH = new LanguageTag("cn", "", "", "", "正在听...", "中文");
+    private static LanguageTag IFLYTEKWEBNIUASR_TRANSLATE_LAN_TAG_ZH_TW = new LanguageTag("cht", "", "", "", "正在聽...", "中文（繁体）");
+    private static LanguageTag IFLYTEKWEBNIUASR_TRANSLATE_LAN_TAG_EN = new LanguageTag("en", "", "", "", "Listening...", "English");
+    private static LanguageTag IFLYTEKWEBNIUASR_TRANSLATE_LAN_TAG_JA = new LanguageTag("ja", "", "", "", "聞いています...", "日本語");
+    private static LanguageTag IFLYTEKWEBNIUASR_TRANSLATE_LAN_TAG_KO = new LanguageTag("ko", "", "", "", "듣고 있어요...", "한국어");
+    private static LanguageTag IFLYTEKWEBNIUASR_TRANSLATE_LAN_TAG_IT = new LanguageTag("it", "", "", "", "Ascoltando...", "Italiano");
+    private static LanguageTag IFLYTEKWEBNIUASR_TRANSLATE_LAN_TAG_DE = new LanguageTag("de", "", "", "", "Hörend...", "Deutsch");
+    private static LanguageTag IFLYTEKWEBNIUASR_TRANSLATE_LAN_TAG_RU = new LanguageTag("ru", "", "", "", "Слушаю...", "Русский");
+    private static LanguageTag IFLYTEKWEBNIUASR_TRANSLATE_LAN_TAG_FR = new LanguageTag("fr", "", "", "", "Écoute...", "Français");
+    private static LanguageTag IFLYTEKWEBNIUASR_TRANSLATE_LAN_TAG_FIL = new LanguageTag("fil", "", "", "", "Nakikinig...", "Filipino");
+    private static LanguageTag IFLYTEKWEBNIUASR_TRANSLATE_LAN_TAG_HA = new LanguageTag("ha", "", "", "", "Sauraron...", "Hausa");
+    private static LanguageTag IFLYTEKWEBNIUASR_TRANSLATE_LAN_TAG_NL = new LanguageTag("nl", "", "", "", "Luisteren...", "Nederlands");
+    private static LanguageTag IFLYTEKWEBNIUASR_TRANSLATE_LAN_TAG_CS = new LanguageTag("cs", "", "", "", "Poslouchám...", "Čeština");
+    private static LanguageTag IFLYTEKWEBNIUASR_TRANSLATE_LAN_TAG_RO = new LanguageTag("ro", "", "", "", "Ascult...", "Română");
+    private static LanguageTag IFLYTEKWEBNIUASR_TRANSLATE_LAN_TAG_MS = new LanguageTag("ms", "", "", "", "Mendengar...", "Bahasa Melayu");
+    // private static LanguageTag IFLYTEKWEBNIUASR_TRANSLATE_LAN_TAG_BN = new LanguageTag("bn", "", "", "", "শুনছি...", "বাংলা");
+    private static LanguageTag IFLYTEKWEBNIUASR_TRANSLATE_LAN_TAG_PT = new LanguageTag("pt", "", "", "", "Ouvindo...", "Português");
+    private static LanguageTag IFLYTEKWEBNIUASR_TRANSLATE_LAN_TAG_SV = new LanguageTag("sv", "", "", "", "Lyssnar...", "Svenska");
+    private static LanguageTag IFLYTEKWEBNIUASR_TRANSLATE_LAN_TAG_SW = new LanguageTag("sw", "", "", "", "Kusikiliza...", "Kiswahili");
+    // private static LanguageTag IFLYTEKWEBNIUASR_TRANSLATE_LAN_TAG_TA = new LanguageTag("ta", "", "", "", "கேட்கிறேன்...", "தமிழ்");
+    private static LanguageTag IFLYTEKWEBNIUASR_TRANSLATE_LAN_TAG_TH = new LanguageTag("th", "", "", "", "กำลังฟัง...", "ไทย");
+    private static LanguageTag IFLYTEKWEBNIUASR_TRANSLATE_LAN_TAG_TR = new LanguageTag("tr", "", "", "", "Dinliyorum...", "Türkçe");
+    private static LanguageTag IFLYTEKWEBNIUASR_TRANSLATE_LAN_TAG_UR = new LanguageTag("ur", "", "", "", "سن رہا ہوں...", "اردو");
+    private static LanguageTag IFLYTEKWEBNIUASR_TRANSLATE_LAN_TAG_UK = new LanguageTag("uk", "", "", "", "Слухаю...", "Українська");
+    private static LanguageTag IFLYTEKWEBNIUASR_TRANSLATE_LAN_TAG_UZ = new LanguageTag("uz", "", "", "", "Eshitmoqda...", "O'zbek");
+    private static LanguageTag IFLYTEKWEBNIUASR_TRANSLATE_LAN_TAG_ES = new LanguageTag("es", "", "", "", "Escuchando...", "Español");
+    private static LanguageTag IFLYTEKWEBNIUASR_TRANSLATE_LAN_TAG_EL = new LanguageTag("el", "", "", "", "Ακούω...", "Ελληνικά");
+    // private static LanguageTag IFLYTEKWEBNIUASR_TRANSLATE_LAN_TAG_HI = new LanguageTag("hi", "", "", "", "सुन रहा हूँ...", "हिन्दी");
+    private static LanguageTag IFLYTEKWEBNIUASR_TRANSLATE_LAN_TAG_ID = new LanguageTag("id", "", "", "", "Mendengarkan...", "Bahasa Indonesia");
+    private static LanguageTag IFLYTEKWEBNIUASR_TRANSLATE_LAN_TAG_VI = new LanguageTag("vi", "", "", "", "Đang nghe...", "Tiếng Việt");
+    private static LanguageTag IFLYTEKWEBNIUASR_TRANSLATE_LAN_TAG_AR = new LanguageTag("ar", "", "", "", "أستمع...", "العربية");
+    private static LanguageTag IFLYTEKWEBNIUASR_TRANSLATE_LAN_TAG_BG = new LanguageTag("bg", "", "", "", "Слушам...", "Български");
+    private static LanguageTag IFLYTEKWEBNIUASR_TRANSLATE_LAN_TAG_PL = new LanguageTag("pl", "", "", "", "Słucham...", "Polski");
+    private static LanguageTag IFLYTEKWEBNIUASR_TRANSLATE_LAN_TAG_FA = new LanguageTag("fa", "", "", "", "گوش می‌دهم...", "فارسی");
 
     private static LanguageTag IFLYTEKWEBIATMUL_TRANSCRIBE_LAN_TAG_AUTO = new LanguageTag("auto", "", "", "", "正在听...", "自动识别");
 
@@ -282,6 +413,7 @@ public class SttConfigManager {
 
         List<LanguageTag> azureTranscribeList = new ArrayList<>();
         azureTranscribeList.add(copyTag(AZURE_TRANSCRIBE_LAN_TAG_ZH));
+        azureTranscribeList.add(copyTag(AZURE_TRANSCRIBE_LAN_TAG_ZH_TW));
         azureTranscribeList.add(copyTag(AZURE_TRANSCRIBE_LAN_TAG_EN));
         azureTranscribeList.add(copyTag(AZURE_TRANSCRIBE_LAN_TAG_JA));
         azureTranscribeList.add(copyTag(AZURE_TRANSCRIBE_LAN_TAG_KO));
@@ -313,6 +445,7 @@ public class SttConfigManager {
         LanguageTag azureTranslateSource_en = copyTag(AZURE_TRANSCRIBE_LAN_TAG_EN);
         List<LanguageTag> azureTranslateSource_en_targetList = new ArrayList<>();
         azureTranslateSource_en_targetList.add(copyTag(AZURE_TRANSLATE_LAN_TAG_ZH));
+        azureTranslateSource_en_targetList.add(copyTag(AZURE_TRANSLATE_LAN_TAG_ZH_TW));
         azureTranslateSource_en_targetList.add(copyTag(AZURE_TRANSLATE_LAN_TAG_JA));
         azureTranslateSource_en_targetList.add(copyTag(AZURE_TRANSLATE_LAN_TAG_KO));
         azureTranslateSource_en_targetList.add(copyTag(AZURE_TRANSLATE_LAN_TAG_RU));
@@ -328,6 +461,7 @@ public class SttConfigManager {
         LanguageTag azureTranslateSource_ja = copyTag(AZURE_TRANSCRIBE_LAN_TAG_JA);
         List<LanguageTag> azureTranslateSource_ja_targetList = new ArrayList<>();
         azureTranslateSource_ja_targetList.add(copyTag(AZURE_TRANSLATE_LAN_TAG_ZH));
+        azureTranslateSource_ja_targetList.add(copyTag(AZURE_TRANSLATE_LAN_TAG_ZH_TW));
         azureTranslateSource_ja_targetList.add(copyTag(AZURE_TRANSLATE_LAN_TAG_EN));
         setSelected(azureTranslateSource_ja_targetList, AZURE_TRANSLATE_LAN_TAG_ZH);
         azureTranslateSource_ja.setTarget(azureTranslateSource_ja_targetList);
@@ -335,6 +469,7 @@ public class SttConfigManager {
         LanguageTag azureTranslateSource_ko = copyTag(AZURE_TRANSCRIBE_LAN_TAG_KO);
         List<LanguageTag> azureTranslateSource_ko_targetList = new ArrayList<>();
         azureTranslateSource_ko_targetList.add(copyTag(AZURE_TRANSLATE_LAN_TAG_ZH));
+        azureTranslateSource_ko_targetList.add(copyTag(AZURE_TRANSLATE_LAN_TAG_ZH_TW));
         azureTranslateSource_ko_targetList.add(copyTag(AZURE_TRANSLATE_LAN_TAG_EN));
         setSelected(azureTranslateSource_ko_targetList, AZURE_TRANSLATE_LAN_TAG_ZH);
         azureTranslateSource_ko.setTarget(azureTranslateSource_ko_targetList);
@@ -670,7 +805,10 @@ public class SttConfigManager {
 
         List<LanguageTag> IFlyTekWebAsrTranscribeList = new ArrayList<>();
         IFlyTekWebAsrTranscribeList.add(copyTag(IFLYTEKWEBASR_TRANSCRIBE_LAN_TAG_ZH));
+        IFlyTekWebAsrTranscribeList.add(copyTag(IFLYTEKWEBASR_TRANSCRIBE_LAN_TAG_ZH_TW));
         IFlyTekWebAsrTranscribeList.add(copyTag(IFLYTEKWEBASR_TRANSCRIBE_LAN_TAG_EN));
+        IFlyTekWebAsrTranscribeList.add(copyTag(IFLYTEKWEBASR_TRANSCRIBE_LAN_TAG_JA));
+        IFlyTekWebAsrTranscribeList.add(copyTag(IFLYTEKWEBASR_TRANSCRIBE_LAN_TAG_KO));
         setSelected(IFlyTekWebAsrTranscribeList, IFLYTEKWEBASR_TRANSCRIBE_LAN_TAG_ZH);
 
         List<LanguageTag> IFlyTekWebAsrTranslateList = new ArrayList<>();
@@ -691,8 +829,26 @@ public class SttConfigManager {
         setSelected(IFlyTekWebAsrTranslateSource_en_targetList, IFLYTEKWEBASR_TRANSLATE_LAN_TAG_ZH);
         IFlyTekWebAsrTranslateSource_en.setTarget(IFlyTekWebAsrTranslateSource_en_targetList);
 
+        LanguageTag IFlyTekWebAsrTranslateSource_ja = copyTag(IFLYTEKWEBASR_TRANSLATE_LAN_TAG_JA);
+        List<LanguageTag> IFlyTekWebAsrTranslateSource_ja_targetList = new ArrayList<>();
+        IFlyTekWebAsrTranslateSource_ja_targetList.add(copyTag(IFLYTEKWEBASR_TRANSLATE_LAN_TAG_ZH));
+        IFlyTekWebAsrTranslateSource_ja_targetList.add(copyTag(IFLYTEKWEBASR_TRANSLATE_LAN_TAG_EN));
+        IFlyTekWebAsrTranslateSource_ja_targetList.add(copyTag(IFLYTEKWEBASR_TRANSLATE_LAN_TAG_KO));
+        setSelected(IFlyTekWebAsrTranslateSource_ja_targetList, IFLYTEKWEBASR_TRANSLATE_LAN_TAG_ZH);
+        IFlyTekWebAsrTranslateSource_ja.setTarget(IFlyTekWebAsrTranslateSource_ja_targetList);
+
+        LanguageTag IFlyTekWebAsrTranslateSource_ko = copyTag(IFLYTEKWEBASR_TRANSLATE_LAN_TAG_KO);
+        List<LanguageTag> IFlyTekWebAsrTranslateSource_ko_targetList = new ArrayList<>();
+        IFlyTekWebAsrTranslateSource_ko_targetList.add(copyTag(IFLYTEKWEBASR_TRANSLATE_LAN_TAG_ZH));
+        IFlyTekWebAsrTranslateSource_ko_targetList.add(copyTag(IFLYTEKWEBASR_TRANSLATE_LAN_TAG_EN));
+        IFlyTekWebAsrTranslateSource_ko_targetList.add(copyTag(IFLYTEKWEBASR_TRANSLATE_LAN_TAG_JA));
+        setSelected(IFlyTekWebAsrTranslateSource_ko_targetList, IFLYTEKWEBASR_TRANSLATE_LAN_TAG_ZH);
+        IFlyTekWebAsrTranslateSource_ko.setTarget(IFlyTekWebAsrTranslateSource_ko_targetList);
+
         IFlyTekWebAsrTranslateList.add(IFlyTekWebAsrTranslateSource_cn);
         IFlyTekWebAsrTranslateList.add(IFlyTekWebAsrTranslateSource_en);
+        IFlyTekWebAsrTranslateList.add(IFlyTekWebAsrTranslateSource_ja);
+        IFlyTekWebAsrTranslateList.add(IFlyTekWebAsrTranslateSource_ko);
         setSelected(IFlyTekWebAsrTranslateList, IFlyTekWebAsrTranslateSource_cn);
 
         IFlyTekWebAsrConfig.setName("IFlyTekWebAsr");
@@ -701,6 +857,261 @@ public class SttConfigManager {
 
         configs.add(IFlyTekWebAsrConfig);
         /* IFlyTek Web Asr END */
+
+        /* IFlyTek Web Niu Asr START */
+        SttLanguageConfig IFlyTekWebNiuAsrConfig = new SttLanguageConfig();
+
+        List<LanguageTag> IFlyTekWebNiuAsrTranscribeList = new ArrayList<>();
+        IFlyTekWebNiuAsrTranscribeList.add(copyTag(IFLYTEKWEBNIUASR_TRANSCRIBE_LAN_TAG_ZH));
+        IFlyTekWebNiuAsrTranscribeList.add(copyTag(IFLYTEKWEBNIUASR_TRANSCRIBE_LAN_TAG_ZH_TW));
+        IFlyTekWebNiuAsrTranscribeList.add(copyTag(IFLYTEKWEBNIUASR_TRANSCRIBE_LAN_TAG_EN));
+        IFlyTekWebNiuAsrTranscribeList.add(copyTag(IFLYTEKWEBNIUASR_TRANSCRIBE_LAN_TAG_KO));
+        IFlyTekWebNiuAsrTranscribeList.add(copyTag(IFLYTEKWEBNIUASR_TRANSCRIBE_LAN_TAG_JA));
+        IFlyTekWebNiuAsrTranscribeList.add(copyTag(IFLYTEKWEBNIUASR_TRANSCRIBE_LAN_TAG_IT));
+        IFlyTekWebNiuAsrTranscribeList.add(copyTag(IFLYTEKWEBNIUASR_TRANSCRIBE_LAN_TAG_DE));
+        IFlyTekWebNiuAsrTranscribeList.add(copyTag(IFLYTEKWEBNIUASR_TRANSCRIBE_LAN_TAG_RU));
+        IFlyTekWebNiuAsrTranscribeList.add(copyTag(IFLYTEKWEBNIUASR_TRANSCRIBE_LAN_TAG_FR));
+        IFlyTekWebNiuAsrTranscribeList.add(copyTag(IFLYTEKWEBNIUASR_TRANSCRIBE_LAN_TAG_FIL));
+        IFlyTekWebNiuAsrTranscribeList.add(copyTag(IFLYTEKWEBNIUASR_TRANSCRIBE_LAN_TAG_HA));
+        IFlyTekWebNiuAsrTranscribeList.add(copyTag(IFLYTEKWEBNIUASR_TRANSCRIBE_LAN_TAG_NL));
+        IFlyTekWebNiuAsrTranscribeList.add(copyTag(IFLYTEKWEBNIUASR_TRANSCRIBE_LAN_TAG_CS));
+        IFlyTekWebNiuAsrTranscribeList.add(copyTag(IFLYTEKWEBNIUASR_TRANSCRIBE_LAN_TAG_RO));
+        IFlyTekWebNiuAsrTranscribeList.add(copyTag(IFLYTEKWEBNIUASR_TRANSCRIBE_LAN_TAG_MS));
+        // IFlyTekWebNiuAsrTranscribeList.add(copyTag(IFLYTEKWEBNIUASR_TRANSCRIBE_LAN_TAG_BN));
+        IFlyTekWebNiuAsrTranscribeList.add(copyTag(IFLYTEKWEBNIUASR_TRANSCRIBE_LAN_TAG_PT));
+        IFlyTekWebNiuAsrTranscribeList.add(copyTag(IFLYTEKWEBNIUASR_TRANSCRIBE_LAN_TAG_SV));
+        IFlyTekWebNiuAsrTranscribeList.add(copyTag(IFLYTEKWEBNIUASR_TRANSCRIBE_LAN_TAG_SW));
+        // IFlyTekWebNiuAsrTranscribeList.add(copyTag(IFLYTEKWEBNIUASR_TRANSCRIBE_LAN_TAG_TA));
+        IFlyTekWebNiuAsrTranscribeList.add(copyTag(IFLYTEKWEBNIUASR_TRANSCRIBE_LAN_TAG_TH));
+        IFlyTekWebNiuAsrTranscribeList.add(copyTag(IFLYTEKWEBNIUASR_TRANSCRIBE_LAN_TAG_TR));
+        IFlyTekWebNiuAsrTranscribeList.add(copyTag(IFLYTEKWEBNIUASR_TRANSCRIBE_LAN_TAG_UR));
+        IFlyTekWebNiuAsrTranscribeList.add(copyTag(IFLYTEKWEBNIUASR_TRANSCRIBE_LAN_TAG_UK));
+        IFlyTekWebNiuAsrTranscribeList.add(copyTag(IFLYTEKWEBNIUASR_TRANSCRIBE_LAN_TAG_UZ));
+        IFlyTekWebNiuAsrTranscribeList.add(copyTag(IFLYTEKWEBNIUASR_TRANSCRIBE_LAN_TAG_ES));
+        IFlyTekWebNiuAsrTranscribeList.add(copyTag(IFLYTEKWEBNIUASR_TRANSCRIBE_LAN_TAG_EL));
+        // IFlyTekWebNiuAsrTranscribeList.add(copyTag(IFLYTEKWEBNIUASR_TRANSCRIBE_LAN_TAG_HI));
+        IFlyTekWebNiuAsrTranscribeList.add(copyTag(IFLYTEKWEBNIUASR_TRANSCRIBE_LAN_TAG_ID));
+        IFlyTekWebNiuAsrTranscribeList.add(copyTag(IFLYTEKWEBNIUASR_TRANSCRIBE_LAN_TAG_VI));
+        IFlyTekWebNiuAsrTranscribeList.add(copyTag(IFLYTEKWEBNIUASR_TRANSCRIBE_LAN_TAG_AR));
+        IFlyTekWebNiuAsrTranscribeList.add(copyTag(IFLYTEKWEBNIUASR_TRANSCRIBE_LAN_TAG_BG));
+        IFlyTekWebNiuAsrTranscribeList.add(copyTag(IFLYTEKWEBNIUASR_TRANSCRIBE_LAN_TAG_PL));
+        IFlyTekWebNiuAsrTranscribeList.add(copyTag(IFLYTEKWEBNIUASR_TRANSCRIBE_LAN_TAG_FA));
+        setSelected(IFlyTekWebNiuAsrTranscribeList, IFLYTEKWEBNIUASR_TRANSCRIBE_LAN_TAG_ZH);
+
+        List<LanguageTag> IFlyTekWebNiuAsrTranslateList = new ArrayList<>();
+
+        LanguageTag IFlyTekWebNiuAsrTranslateSource_cn = copyTag(IFLYTEKWEBNIUASR_TRANSLATE_LAN_TAG_ZH);
+        List<LanguageTag> IFlyTekWebNiuAsrTranslateSource_cn_targetList = createTargetListExcluding(IFLYTEKWEBNIUASR_TRANSLATE_LAN_TAG_ZH);
+        setSelected(IFlyTekWebNiuAsrTranslateSource_cn_targetList, IFLYTEKWEBNIUASR_TRANSLATE_LAN_TAG_EN);
+        IFlyTekWebNiuAsrTranslateSource_cn.setTarget(IFlyTekWebNiuAsrTranslateSource_cn_targetList);
+
+        LanguageTag IFlyTekWebNiuAsrTranslateSource_cn_tw = copyTag(IFLYTEKWEBNIUASR_TRANSLATE_LAN_TAG_ZH_TW);
+        List<LanguageTag> IFlyTekWebNiuAsrTranslateSource_cn_tw_targetList = createTargetListExcluding(IFLYTEKWEBNIUASR_TRANSLATE_LAN_TAG_ZH_TW);
+        setSelected(IFlyTekWebNiuAsrTranslateSource_cn_tw_targetList, IFLYTEKWEBNIUASR_TRANSLATE_LAN_TAG_EN);
+        IFlyTekWebNiuAsrTranslateSource_cn_tw.setTarget(IFlyTekWebNiuAsrTranslateSource_cn_tw_targetList);
+
+        LanguageTag IFlyTekWebNiuAsrTranslateSource_en = copyTag(IFLYTEKWEBNIUASR_TRANSLATE_LAN_TAG_EN);
+        List<LanguageTag> IFlyTekWebNiuAsrTranslateSource_en_targetList = createTargetListExcluding(IFLYTEKWEBNIUASR_TRANSLATE_LAN_TAG_EN);
+        setSelected(IFlyTekWebNiuAsrTranslateSource_en_targetList, IFLYTEKWEBNIUASR_TRANSLATE_LAN_TAG_ZH);
+        IFlyTekWebNiuAsrTranslateSource_en.setTarget(IFlyTekWebNiuAsrTranslateSource_en_targetList);
+
+        LanguageTag IFlyTekWebNiuAsrTranslateSource_ko = copyTag(IFLYTEKWEBNIUASR_TRANSLATE_LAN_TAG_KO);
+        List<LanguageTag> IFlyTekWebNiuAsrTranslateSource_ko_targetList = createTargetListExcluding(IFLYTEKWEBNIUASR_TRANSLATE_LAN_TAG_KO);
+        setSelected(IFlyTekWebNiuAsrTranslateSource_ko_targetList, IFLYTEKWEBNIUASR_TRANSLATE_LAN_TAG_ZH);
+        IFlyTekWebNiuAsrTranslateSource_ko.setTarget(IFlyTekWebNiuAsrTranslateSource_ko_targetList);
+
+        LanguageTag IFlyTekWebNiuAsrTranslateSource_ja = copyTag(IFLYTEKWEBNIUASR_TRANSLATE_LAN_TAG_JA);
+        List<LanguageTag> IFlyTekWebNiuAsrTranslateSource_ja_targetList = createTargetListExcluding(IFLYTEKWEBNIUASR_TRANSLATE_LAN_TAG_JA);
+        setSelected(IFlyTekWebNiuAsrTranslateSource_ja_targetList, IFLYTEKWEBNIUASR_TRANSLATE_LAN_TAG_ZH);
+        IFlyTekWebNiuAsrTranslateSource_ja.setTarget(IFlyTekWebNiuAsrTranslateSource_ja_targetList);
+
+        LanguageTag IFlyTekWebNiuAsrTranslateSource_it = copyTag(IFLYTEKWEBNIUASR_TRANSLATE_LAN_TAG_IT);
+        List<LanguageTag> IFlyTekWebNiuAsrTranslateSource_it_targetList = createTargetListExcluding(IFLYTEKWEBNIUASR_TRANSLATE_LAN_TAG_IT);
+        setSelected(IFlyTekWebNiuAsrTranslateSource_it_targetList, IFLYTEKWEBNIUASR_TRANSLATE_LAN_TAG_ZH);
+        IFlyTekWebNiuAsrTranslateSource_it.setTarget(IFlyTekWebNiuAsrTranslateSource_it_targetList);
+
+        LanguageTag IFlyTekWebNiuAsrTranslateSource_de = copyTag(IFLYTEKWEBNIUASR_TRANSLATE_LAN_TAG_DE);
+        List<LanguageTag> IFlyTekWebNiuAsrTranslateSource_de_targetList = createTargetListExcluding(IFLYTEKWEBNIUASR_TRANSLATE_LAN_TAG_DE);
+        setSelected(IFlyTekWebNiuAsrTranslateSource_de_targetList, IFLYTEKWEBNIUASR_TRANSLATE_LAN_TAG_ZH);
+        IFlyTekWebNiuAsrTranslateSource_de.setTarget(IFlyTekWebNiuAsrTranslateSource_de_targetList);
+
+        LanguageTag IFlyTekWebNiuAsrTranslateSource_ru = copyTag(IFLYTEKWEBNIUASR_TRANSLATE_LAN_TAG_RU);
+        List<LanguageTag> IFlyTekWebNiuAsrTranslateSource_ru_targetList = createTargetListExcluding(IFLYTEKWEBNIUASR_TRANSLATE_LAN_TAG_RU);
+        setSelected(IFlyTekWebNiuAsrTranslateSource_ru_targetList, IFLYTEKWEBNIUASR_TRANSLATE_LAN_TAG_ZH);
+        IFlyTekWebNiuAsrTranslateSource_ru.setTarget(IFlyTekWebNiuAsrTranslateSource_ru_targetList);
+
+        LanguageTag IFlyTekWebNiuAsrTranslateSource_fr = copyTag(IFLYTEKWEBNIUASR_TRANSLATE_LAN_TAG_FR);
+        List<LanguageTag> IFlyTekWebNiuAsrTranslateSource_fr_targetList = createTargetListExcluding(IFLYTEKWEBNIUASR_TRANSLATE_LAN_TAG_FR);
+        setSelected(IFlyTekWebNiuAsrTranslateSource_fr_targetList, IFLYTEKWEBNIUASR_TRANSLATE_LAN_TAG_ZH);
+        IFlyTekWebNiuAsrTranslateSource_fr.setTarget(IFlyTekWebNiuAsrTranslateSource_fr_targetList);
+
+        LanguageTag IFlyTekWebNiuAsrTranslateSource_fil = copyTag(IFLYTEKWEBNIUASR_TRANSLATE_LAN_TAG_FIL);
+        List<LanguageTag> IFlyTekWebNiuAsrTranslateSource_fil_targetList = createTargetListExcluding(IFLYTEKWEBNIUASR_TRANSLATE_LAN_TAG_FIL);
+        setSelected(IFlyTekWebNiuAsrTranslateSource_fil_targetList, IFLYTEKWEBNIUASR_TRANSLATE_LAN_TAG_ZH);
+        IFlyTekWebNiuAsrTranslateSource_fil.setTarget(IFlyTekWebNiuAsrTranslateSource_fil_targetList);
+
+        LanguageTag IFlyTekWebNiuAsrTranslateSource_ha = copyTag(IFLYTEKWEBNIUASR_TRANSLATE_LAN_TAG_HA);
+        List<LanguageTag> IFlyTekWebNiuAsrTranslateSource_ha_targetList = createTargetListExcluding(IFLYTEKWEBNIUASR_TRANSLATE_LAN_TAG_HA);
+        setSelected(IFlyTekWebNiuAsrTranslateSource_ha_targetList, IFLYTEKWEBNIUASR_TRANSLATE_LAN_TAG_ZH);
+        IFlyTekWebNiuAsrTranslateSource_ha.setTarget(IFlyTekWebNiuAsrTranslateSource_ha_targetList);
+
+        LanguageTag IFlyTekWebNiuAsrTranslateSource_nl = copyTag(IFLYTEKWEBNIUASR_TRANSLATE_LAN_TAG_NL);
+        List<LanguageTag> IFlyTekWebNiuAsrTranslateSource_nl_targetList = createTargetListExcluding(IFLYTEKWEBNIUASR_TRANSLATE_LAN_TAG_NL);
+        setSelected(IFlyTekWebNiuAsrTranslateSource_nl_targetList, IFLYTEKWEBNIUASR_TRANSLATE_LAN_TAG_ZH);
+        IFlyTekWebNiuAsrTranslateSource_nl.setTarget(IFlyTekWebNiuAsrTranslateSource_nl_targetList);
+
+        LanguageTag IFlyTekWebNiuAsrTranslateSource_cs = copyTag(IFLYTEKWEBNIUASR_TRANSLATE_LAN_TAG_CS);
+        List<LanguageTag> IFlyTekWebNiuAsrTranslateSource_cs_targetList = createTargetListExcluding(IFLYTEKWEBNIUASR_TRANSLATE_LAN_TAG_CS);
+        setSelected(IFlyTekWebNiuAsrTranslateSource_cs_targetList, IFLYTEKWEBNIUASR_TRANSLATE_LAN_TAG_ZH);
+        IFlyTekWebNiuAsrTranslateSource_cs.setTarget(IFlyTekWebNiuAsrTranslateSource_cs_targetList);
+
+        LanguageTag IFlyTekWebNiuAsrTranslateSource_ro = copyTag(IFLYTEKWEBNIUASR_TRANSLATE_LAN_TAG_RO);
+        List<LanguageTag> IFlyTekWebNiuAsrTranslateSource_ro_targetList = createTargetListExcluding(IFLYTEKWEBNIUASR_TRANSLATE_LAN_TAG_RO);
+        setSelected(IFlyTekWebNiuAsrTranslateSource_ro_targetList, IFLYTEKWEBNIUASR_TRANSLATE_LAN_TAG_ZH);
+        IFlyTekWebNiuAsrTranslateSource_ro.setTarget(IFlyTekWebNiuAsrTranslateSource_ro_targetList);
+
+        LanguageTag IFlyTekWebNiuAsrTranslateSource_ms = copyTag(IFLYTEKWEBNIUASR_TRANSLATE_LAN_TAG_MS);
+        List<LanguageTag> IFlyTekWebNiuAsrTranslateSource_ms_targetList = createTargetListExcluding(IFLYTEKWEBNIUASR_TRANSLATE_LAN_TAG_MS);
+        setSelected(IFlyTekWebNiuAsrTranslateSource_ms_targetList, IFLYTEKWEBNIUASR_TRANSLATE_LAN_TAG_ZH);
+        IFlyTekWebNiuAsrTranslateSource_ms.setTarget(IFlyTekWebNiuAsrTranslateSource_ms_targetList);
+
+        // LanguageTag IFlyTekWebNiuAsrTranslateSource_bn = copyTag(IFLYTEKWEBNIUASR_TRANSLATE_LAN_TAG_BN);
+        // List<LanguageTag> IFlyTekWebNiuAsrTranslateSource_bn_targetList = createTargetListExcluding(IFLYTEKWEBNIUASR_TRANSLATE_LAN_TAG_BN);
+        // setSelected(IFlyTekWebNiuAsrTranslateSource_bn_targetList, IFLYTEKWEBNIUASR_TRANSLATE_LAN_TAG_ZH);
+        // IFlyTekWebNiuAsrTranslateSource_bn.setTarget(IFlyTekWebNiuAsrTranslateSource_bn_targetList);
+
+        LanguageTag IFlyTekWebNiuAsrTranslateSource_pt = copyTag(IFLYTEKWEBNIUASR_TRANSLATE_LAN_TAG_PT);
+        List<LanguageTag> IFlyTekWebNiuAsrTranslateSource_pt_targetList = createTargetListExcluding(IFLYTEKWEBNIUASR_TRANSLATE_LAN_TAG_PT);
+        setSelected(IFlyTekWebNiuAsrTranslateSource_pt_targetList, IFLYTEKWEBNIUASR_TRANSLATE_LAN_TAG_ZH);
+        IFlyTekWebNiuAsrTranslateSource_pt.setTarget(IFlyTekWebNiuAsrTranslateSource_pt_targetList);
+
+        LanguageTag IFlyTekWebNiuAsrTranslateSource_sv = copyTag(IFLYTEKWEBNIUASR_TRANSLATE_LAN_TAG_SV);
+        List<LanguageTag> IFlyTekWebNiuAsrTranslateSource_sv_targetList = createTargetListExcluding(IFLYTEKWEBNIUASR_TRANSLATE_LAN_TAG_SV);
+        setSelected(IFlyTekWebNiuAsrTranslateSource_sv_targetList, IFLYTEKWEBNIUASR_TRANSLATE_LAN_TAG_ZH);
+        IFlyTekWebNiuAsrTranslateSource_sv.setTarget(IFlyTekWebNiuAsrTranslateSource_sv_targetList);
+
+        LanguageTag IFlyTekWebNiuAsrTranslateSource_sw = copyTag(IFLYTEKWEBNIUASR_TRANSLATE_LAN_TAG_SW);
+        List<LanguageTag> IFlyTekWebNiuAsrTranslateSource_sw_targetList = createTargetListExcluding(IFLYTEKWEBNIUASR_TRANSLATE_LAN_TAG_SW);
+        setSelected(IFlyTekWebNiuAsrTranslateSource_sw_targetList, IFLYTEKWEBNIUASR_TRANSLATE_LAN_TAG_ZH);
+        IFlyTekWebNiuAsrTranslateSource_sw.setTarget(IFlyTekWebNiuAsrTranslateSource_sw_targetList);
+
+        // LanguageTag IFlyTekWebNiuAsrTranslateSource_ta = copyTag(IFLYTEKWEBNIUASR_TRANSLATE_LAN_TAG_TA);
+        // List<LanguageTag> IFlyTekWebNiuAsrTranslateSource_ta_targetList = createTargetListExcluding(IFLYTEKWEBNIUASR_TRANSLATE_LAN_TAG_TA);
+        // setSelected(IFlyTekWebNiuAsrTranslateSource_ta_targetList, IFLYTEKWEBNIUASR_TRANSLATE_LAN_TAG_ZH);
+        // IFlyTekWebNiuAsrTranslateSource_ta.setTarget(IFlyTekWebNiuAsrTranslateSource_ta_targetList);
+
+        LanguageTag IFlyTekWebNiuAsrTranslateSource_th = copyTag(IFLYTEKWEBNIUASR_TRANSLATE_LAN_TAG_TH);
+        List<LanguageTag> IFlyTekWebNiuAsrTranslateSource_th_targetList = createTargetListExcluding(IFLYTEKWEBNIUASR_TRANSLATE_LAN_TAG_TH);
+        setSelected(IFlyTekWebNiuAsrTranslateSource_th_targetList, IFLYTEKWEBNIUASR_TRANSLATE_LAN_TAG_ZH);
+        IFlyTekWebNiuAsrTranslateSource_th.setTarget(IFlyTekWebNiuAsrTranslateSource_th_targetList);
+
+        LanguageTag IFlyTekWebNiuAsrTranslateSource_tr = copyTag(IFLYTEKWEBNIUASR_TRANSLATE_LAN_TAG_TR);
+        List<LanguageTag> IFlyTekWebNiuAsrTranslateSource_tr_targetList = createTargetListExcluding(IFLYTEKWEBNIUASR_TRANSLATE_LAN_TAG_TR);
+        setSelected(IFlyTekWebNiuAsrTranslateSource_tr_targetList, IFLYTEKWEBNIUASR_TRANSLATE_LAN_TAG_ZH);
+        IFlyTekWebNiuAsrTranslateSource_tr.setTarget(IFlyTekWebNiuAsrTranslateSource_tr_targetList);
+
+        LanguageTag IFlyTekWebNiuAsrTranslateSource_ur = copyTag(IFLYTEKWEBNIUASR_TRANSLATE_LAN_TAG_UR);
+        List<LanguageTag> IFlyTekWebNiuAsrTranslateSource_ur_targetList = createTargetListExcluding(IFLYTEKWEBNIUASR_TRANSLATE_LAN_TAG_UR);
+        setSelected(IFlyTekWebNiuAsrTranslateSource_ur_targetList, IFLYTEKWEBNIUASR_TRANSLATE_LAN_TAG_ZH);
+        IFlyTekWebNiuAsrTranslateSource_ur.setTarget(IFlyTekWebNiuAsrTranslateSource_ur_targetList);
+
+        LanguageTag IFlyTekWebNiuAsrTranslateSource_uk = copyTag(IFLYTEKWEBNIUASR_TRANSLATE_LAN_TAG_UK);
+        List<LanguageTag> IFlyTekWebNiuAsrTranslateSource_uk_targetList = createTargetListExcluding(IFLYTEKWEBNIUASR_TRANSLATE_LAN_TAG_UK);
+        setSelected(IFlyTekWebNiuAsrTranslateSource_uk_targetList, IFLYTEKWEBNIUASR_TRANSLATE_LAN_TAG_ZH);
+        IFlyTekWebNiuAsrTranslateSource_uk.setTarget(IFlyTekWebNiuAsrTranslateSource_uk_targetList);
+
+        LanguageTag IFlyTekWebNiuAsrTranslateSource_uz = copyTag(IFLYTEKWEBNIUASR_TRANSLATE_LAN_TAG_UZ);
+        List<LanguageTag> IFlyTekWebNiuAsrTranslateSource_uz_targetList = createTargetListExcluding(IFLYTEKWEBNIUASR_TRANSLATE_LAN_TAG_UZ);
+        setSelected(IFlyTekWebNiuAsrTranslateSource_uz_targetList, IFLYTEKWEBNIUASR_TRANSLATE_LAN_TAG_ZH);
+        IFlyTekWebNiuAsrTranslateSource_uz.setTarget(IFlyTekWebNiuAsrTranslateSource_uz_targetList);
+
+        LanguageTag IFlyTekWebNiuAsrTranslateSource_es = copyTag(IFLYTEKWEBNIUASR_TRANSLATE_LAN_TAG_ES);
+        List<LanguageTag> IFlyTekWebNiuAsrTranslateSource_es_targetList = createTargetListExcluding(IFLYTEKWEBNIUASR_TRANSLATE_LAN_TAG_ES);
+        setSelected(IFlyTekWebNiuAsrTranslateSource_es_targetList, IFLYTEKWEBNIUASR_TRANSLATE_LAN_TAG_ZH);
+        IFlyTekWebNiuAsrTranslateSource_es.setTarget(IFlyTekWebNiuAsrTranslateSource_es_targetList);
+
+        LanguageTag IFlyTekWebNiuAsrTranslateSource_el = copyTag(IFLYTEKWEBNIUASR_TRANSLATE_LAN_TAG_EL);
+        List<LanguageTag> IFlyTekWebNiuAsrTranslateSource_el_targetList = createTargetListExcluding(IFLYTEKWEBNIUASR_TRANSLATE_LAN_TAG_EL);
+        setSelected(IFlyTekWebNiuAsrTranslateSource_el_targetList, IFLYTEKWEBNIUASR_TRANSLATE_LAN_TAG_ZH);
+        IFlyTekWebNiuAsrTranslateSource_el.setTarget(IFlyTekWebNiuAsrTranslateSource_el_targetList);
+
+        // LanguageTag IFlyTekWebNiuAsrTranslateSource_hi = copyTag(IFLYTEKWEBNIUASR_TRANSLATE_LAN_TAG_HI);
+        // List<LanguageTag> IFlyTekWebNiuAsrTranslateSource_hi_targetList = createTargetListExcluding(IFLYTEKWEBNIUASR_TRANSLATE_LAN_TAG_HI);
+        // setSelected(IFlyTekWebNiuAsrTranslateSource_hi_targetList, IFLYTEKWEBNIUASR_TRANSLATE_LAN_TAG_ZH);
+        // IFlyTekWebNiuAsrTranslateSource_hi.setTarget(IFlyTekWebNiuAsrTranslateSource_hi_targetList);
+
+        LanguageTag IFlyTekWebNiuAsrTranslateSource_id = copyTag(IFLYTEKWEBNIUASR_TRANSLATE_LAN_TAG_ID);
+        List<LanguageTag> IFlyTekWebNiuAsrTranslateSource_id_targetList = createTargetListExcluding(IFLYTEKWEBNIUASR_TRANSLATE_LAN_TAG_ID);
+        setSelected(IFlyTekWebNiuAsrTranslateSource_id_targetList, IFLYTEKWEBNIUASR_TRANSLATE_LAN_TAG_ZH);
+        IFlyTekWebNiuAsrTranslateSource_id.setTarget(IFlyTekWebNiuAsrTranslateSource_id_targetList);
+
+        LanguageTag IFlyTekWebNiuAsrTranslateSource_vi = copyTag(IFLYTEKWEBNIUASR_TRANSLATE_LAN_TAG_VI);
+        List<LanguageTag> IFlyTekWebNiuAsrTranslateSource_vi_targetList = createTargetListExcluding(IFLYTEKWEBNIUASR_TRANSLATE_LAN_TAG_VI);
+        setSelected(IFlyTekWebNiuAsrTranslateSource_vi_targetList, IFLYTEKWEBNIUASR_TRANSLATE_LAN_TAG_ZH);
+        IFlyTekWebNiuAsrTranslateSource_vi.setTarget(IFlyTekWebNiuAsrTranslateSource_vi_targetList);
+
+        LanguageTag IFlyTekWebNiuAsrTranslateSource_ar = copyTag(IFLYTEKWEBNIUASR_TRANSLATE_LAN_TAG_AR);
+        List<LanguageTag> IFlyTekWebNiuAsrTranslateSource_ar_targetList = createTargetListExcluding(IFLYTEKWEBNIUASR_TRANSLATE_LAN_TAG_AR);
+        setSelected(IFlyTekWebNiuAsrTranslateSource_ar_targetList, IFLYTEKWEBNIUASR_TRANSLATE_LAN_TAG_ZH);
+        IFlyTekWebNiuAsrTranslateSource_ar.setTarget(IFlyTekWebNiuAsrTranslateSource_ar_targetList);
+
+        LanguageTag IFlyTekWebNiuAsrTranslateSource_bg = copyTag(IFLYTEKWEBNIUASR_TRANSLATE_LAN_TAG_BG);
+        List<LanguageTag> IFlyTekWebNiuAsrTranslateSource_bg_targetList = createTargetListExcluding(IFLYTEKWEBNIUASR_TRANSLATE_LAN_TAG_BG);
+        setSelected(IFlyTekWebNiuAsrTranslateSource_bg_targetList, IFLYTEKWEBNIUASR_TRANSLATE_LAN_TAG_ZH);
+        IFlyTekWebNiuAsrTranslateSource_bg.setTarget(IFlyTekWebNiuAsrTranslateSource_bg_targetList);
+
+        LanguageTag IFlyTekWebNiuAsrTranslateSource_pl = copyTag(IFLYTEKWEBNIUASR_TRANSLATE_LAN_TAG_PL);
+        List<LanguageTag> IFlyTekWebNiuAsrTranslateSource_pl_targetList = createTargetListExcluding(IFLYTEKWEBNIUASR_TRANSLATE_LAN_TAG_PL);
+        setSelected(IFlyTekWebNiuAsrTranslateSource_pl_targetList, IFLYTEKWEBNIUASR_TRANSLATE_LAN_TAG_ZH);
+        IFlyTekWebNiuAsrTranslateSource_pl.setTarget(IFlyTekWebNiuAsrTranslateSource_pl_targetList);
+
+        LanguageTag IFlyTekWebNiuAsrTranslateSource_fa = copyTag(IFLYTEKWEBNIUASR_TRANSLATE_LAN_TAG_FA);
+        List<LanguageTag> IFlyTekWebNiuAsrTranslateSource_fa_targetList = createTargetListExcluding(IFLYTEKWEBNIUASR_TRANSLATE_LAN_TAG_FA);
+        setSelected(IFlyTekWebNiuAsrTranslateSource_fa_targetList, IFLYTEKWEBNIUASR_TRANSLATE_LAN_TAG_ZH);
+        IFlyTekWebNiuAsrTranslateSource_fa.setTarget(IFlyTekWebNiuAsrTranslateSource_fa_targetList);
+
+        IFlyTekWebNiuAsrTranslateList.add(IFlyTekWebNiuAsrTranslateSource_cn);
+        IFlyTekWebNiuAsrTranslateList.add(IFlyTekWebNiuAsrTranslateSource_cn_tw);
+        IFlyTekWebNiuAsrTranslateList.add(IFlyTekWebNiuAsrTranslateSource_en);
+        IFlyTekWebNiuAsrTranslateList.add(IFlyTekWebNiuAsrTranslateSource_ko);
+        IFlyTekWebNiuAsrTranslateList.add(IFlyTekWebNiuAsrTranslateSource_ja);
+        IFlyTekWebNiuAsrTranslateList.add(IFlyTekWebNiuAsrTranslateSource_it);
+        IFlyTekWebNiuAsrTranslateList.add(IFlyTekWebNiuAsrTranslateSource_de);
+        IFlyTekWebNiuAsrTranslateList.add(IFlyTekWebNiuAsrTranslateSource_ru);
+        IFlyTekWebNiuAsrTranslateList.add(IFlyTekWebNiuAsrTranslateSource_fr);
+        IFlyTekWebNiuAsrTranslateList.add(IFlyTekWebNiuAsrTranslateSource_fil);
+        IFlyTekWebNiuAsrTranslateList.add(IFlyTekWebNiuAsrTranslateSource_ha);
+        IFlyTekWebNiuAsrTranslateList.add(IFlyTekWebNiuAsrTranslateSource_nl);
+        IFlyTekWebNiuAsrTranslateList.add(IFlyTekWebNiuAsrTranslateSource_cs);
+        IFlyTekWebNiuAsrTranslateList.add(IFlyTekWebNiuAsrTranslateSource_ro);
+        IFlyTekWebNiuAsrTranslateList.add(IFlyTekWebNiuAsrTranslateSource_ms);
+        // IFlyTekWebNiuAsrTranslateList.add(IFlyTekWebNiuAsrTranslateSource_bn);
+        IFlyTekWebNiuAsrTranslateList.add(IFlyTekWebNiuAsrTranslateSource_pt);
+        IFlyTekWebNiuAsrTranslateList.add(IFlyTekWebNiuAsrTranslateSource_sv);
+        IFlyTekWebNiuAsrTranslateList.add(IFlyTekWebNiuAsrTranslateSource_sw);
+        // IFlyTekWebNiuAsrTranslateList.add(IFlyTekWebNiuAsrTranslateSource_ta);
+        IFlyTekWebNiuAsrTranslateList.add(IFlyTekWebNiuAsrTranslateSource_th);
+        IFlyTekWebNiuAsrTranslateList.add(IFlyTekWebNiuAsrTranslateSource_tr);
+        IFlyTekWebNiuAsrTranslateList.add(IFlyTekWebNiuAsrTranslateSource_ur);
+        IFlyTekWebNiuAsrTranslateList.add(IFlyTekWebNiuAsrTranslateSource_uk);
+        IFlyTekWebNiuAsrTranslateList.add(IFlyTekWebNiuAsrTranslateSource_uz);
+        IFlyTekWebNiuAsrTranslateList.add(IFlyTekWebNiuAsrTranslateSource_es);
+        IFlyTekWebNiuAsrTranslateList.add(IFlyTekWebNiuAsrTranslateSource_el);
+        // IFlyTekWebNiuAsrTranslateList.add(IFlyTekWebNiuAsrTranslateSource_hi);
+        IFlyTekWebNiuAsrTranslateList.add(IFlyTekWebNiuAsrTranslateSource_id);
+        IFlyTekWebNiuAsrTranslateList.add(IFlyTekWebNiuAsrTranslateSource_vi);
+        IFlyTekWebNiuAsrTranslateList.add(IFlyTekWebNiuAsrTranslateSource_ar);
+        IFlyTekWebNiuAsrTranslateList.add(IFlyTekWebNiuAsrTranslateSource_bg);
+        IFlyTekWebNiuAsrTranslateList.add(IFlyTekWebNiuAsrTranslateSource_pl);
+        IFlyTekWebNiuAsrTranslateList.add(IFlyTekWebNiuAsrTranslateSource_fa);
+        setSelected(IFlyTekWebNiuAsrTranslateList, IFlyTekWebNiuAsrTranslateSource_cn);
+
+        IFlyTekWebNiuAsrConfig.setName("IFlyTekWebNiuAsr");
+        IFlyTekWebNiuAsrConfig.setTranscribe(IFlyTekWebNiuAsrTranscribeList);
+        IFlyTekWebNiuAsrConfig.setTranslate(IFlyTekWebNiuAsrTranslateList);
+
+        configs.add(IFlyTekWebNiuAsrConfig);
+        /* IFlyTek Web Niu Asr END */
 
         /* IFlyTek Web IatMul START */
         SttLanguageConfig IFlyTekWebIatMulConfig = new SttLanguageConfig();

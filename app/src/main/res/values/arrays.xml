@@ -15,8 +15,6 @@
         <item>"español（Spain）"</item>
         <item>"Tiếng Việt"</item>
         <item>"ภาษาไทย"</item>
-        <item>"中文（简体）"</item>
-        <item>"English"</item>
     </string-array>
 
     <string-array name="language_config_key">
@@ -33,8 +31,6 @@
         <item>"es-ES"</item>
         <item>"vi"</item>
         <item>"th"</item>
-        <item>"zh-rCN"</item>
-        <item>"en"</item>
     </string-array>
     <!-- Language end -->
 
@@ -86,6 +82,36 @@
     </integer-array>
     <!-- Mic Directional end -->
 
+    <!-- Auto Sleep start -->
+    <string-array name="auto_sleep_config_title">
+        <item>@string/title_app_settings_auto_sleep_never</item>
+        <item>@string/title_app_settings_auto_sleep_3min</item>
+        <item>@string/title_app_settings_auto_sleep_5min</item>
+    </string-array>
+
+    <integer-array name="auto_sleep_config_key">
+        <item>0</item>
+        <item>180</item>
+        <item>300</item>
+    </integer-array>
+    <!-- Auto Sleep end -->
+
+    <!-- Auto Poweroff start -->
+    <string-array name="auto_poweroff_config_title">
+        <item>@string/title_app_settings_auto_poweroff_never</item>
+        <item>@string/title_app_settings_auto_poweroff_10min</item>
+        <item>@string/title_app_settings_auto_poweroff_30min</item>
+        <item>@string/title_app_settings_auto_poweroff_60min</item>
+    </string-array>
+
+    <integer-array name="auto_poweroff_config_key">
+        <item>0</item>
+        <item>600</item>
+        <item>1800</item>
+        <item>3600</item>
+    </integer-array>
+    <!-- Auto Poweroff end -->
+
     <!-- Prompter FontSize start -->
     <integer-array name="prompter_font_size_config_key">
         <item>11</item>
@@ -102,6 +128,7 @@
         <item>"AiSpeech"</item>
         <item>"IFlyTek"</item>
         <item>"IFlyTekWebAsr"</item>
+        <item>"IFlyTekWebNiuAsr"</item>
         <item>"IFlyTekWebIatMul"</item>
         <item>"Mock"</item>
     </string-array>
@@ -113,6 +140,7 @@
         <item>"AiSpeech"</item>
         <item>"IFlyTek"</item>
         <item>"IFlyTekWebAsr"</item>
+        <item>"IFlyTekWebNiuAsr"</item>
         <item>"IFlyTekWebIatMul"</item>
         <item>"Mock"</item>
     </string-array>

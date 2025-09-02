@@ -145,6 +145,11 @@
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
+            android:name=".GuideActivity"
+            android:configChanges="keyboard|keyboardHidden"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
             android:name=".FeedbackActivity"
             android:configChanges="keyboard|keyboardHidden"
             android:exported="false"
@@ -160,7 +165,17 @@
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
+            android:name=".PrompterLegacyActivity"
+            android:configChanges="keyboard|keyboardHidden"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
             android:name=".PrompterActivity"
+            android:configChanges="keyboard|keyboardHidden"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ReaderActivity"
             android:configChanges="keyboard|keyboardHidden"
             android:exported="false"
             android:screenOrientation="portrait" />
@@ -216,6 +231,26 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".ExhibitActivity"
+            android:configChanges="keyboard|keyboardHidden"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".CustomCActivity"
+            android:configChanges="keyboard|keyboardHidden"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".CustomDActivity"
+            android:configChanges="keyboard|keyboardHidden"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".CustomEActivity"
+            android:configChanges="keyboard|keyboardHidden"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".CustomFActivity"
             android:configChanges="keyboard|keyboardHidden"
             android:exported="false"
             android:screenOrientation="portrait" />

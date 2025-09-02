@@ -248,8 +248,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
                     android:background="@drawable/ripple_effect"
-                    android:clickable="true"
-                    android:visibility="gone">
+                    android:clickable="true">
 
                     <TextView
                         android:layout_width="wrap_content"

@@ -36,6 +36,7 @@ import androidx.appcompat.widget.SwitchCompat;
 import com.google.gson.Gson;
 import com.jueyuantech.glasses.bean.LatestFwInfo;
 import com.jueyuantech.glasses.device.DeviceManager;
+import com.jueyuantech.glasses.stt.SttConfigManager;
 import com.jueyuantech.glasses.stt.SttWorker;
 import com.jueyuantech.glasses.util.LogUtil;
 import com.jueyuantech.glasses.util.MmkvUtil;
@@ -51,6 +52,11 @@ public class DeviceConfigActivity extends AppCompatActivity implements View.OnCl
 
     private String[] LANGUAGE_CONFIG_TITLE;
     private String[] LANGUAGE_CONFIG_KEY;
+
+    private String[] AUTO_SLEEP_CONFIG_TITLE;
+    private int[] AUTO_SLEEP_CONFIG_KEY;
+    private String[] AUTO_POWEROFF_CONFIG_TITLE;
+    private int[] AUTO_POWEROFF_CONFIG_KEY;
 
     private TextView mFontSizeSmallBtn;
     private TextView mFontSizeMediumBtn;
@@ -79,10 +85,14 @@ public class DeviceConfigActivity extends AppCompatActivity implements View.OnCl
     private SwitchCompat mWearDetectionEnabledSwitchBtn;
     private SwitchCompat mTouchpadEnabledSwitchBtn;
     private SwitchCompat mIdleDetectionEnabledSwitchBtn;
-    private RelativeLayout mLanguageRl, mTextModeRl, mTransShowModeRl, mAudioInputRl, mMicDirectionalRl;
-    private TextView mLanguageTv, mTextModeTv, mTransShowModeTv, mAudioInputTv, mMicDirectionalTv;
+    private RelativeLayout mLanguageRl, mTextModeRl, mTransShowModeRl, mAudioInputRl, mMicDirectionalRl, mSttEngineRl, mAutoSleepRl, mAutoPoweroffRl;
+    private TextView mLanguageTv, mTextModeTv, mTransShowModeTv, mAudioInputTv, mMicDirectionalTv, mSttEngineTv, mAutoSleepTv, mAutoPoweroffTv;
     private RelativeLayout mMenuRl;
     private RelativeLayout mFuncDeviceDemoRl;
+    private RelativeLayout mFuncCustomCRl;
+    private RelativeLayout mFuncCustomDRl;
+    private RelativeLayout mFuncCustomERl;
+    private RelativeLayout mFuncCustomFRl;
     private TextView mDeviceNameTv;
 
     private static final int MSG_SYSTEM_CONFIG_GET = 3;
@@ -113,6 +123,11 @@ public class DeviceConfigActivity extends AppCompatActivity implements View.OnCl
         LANGUAGE_CONFIG_TITLE = getResources().getStringArray(R.array.language_config_title);
         LANGUAGE_CONFIG_KEY = getResources().getStringArray(R.array.language_config_key);
 
+        AUTO_SLEEP_CONFIG_TITLE = getResources().getStringArray(R.array.auto_sleep_config_title);
+        AUTO_SLEEP_CONFIG_KEY = getResources().getIntArray(R.array.auto_sleep_config_key);
+        AUTO_POWEROFF_CONFIG_TITLE = getResources().getStringArray(R.array.auto_poweroff_config_title);
+        AUTO_POWEROFF_CONFIG_KEY = getResources().getIntArray(R.array.auto_poweroff_config_key);
+
         mFontSizeSmallBtn = findViewById(R.id.tv_font_size_small);
         mFontSizeSmallBtn.setOnClickListener(this);
         mFontSizeMediumBtn = findViewById(R.id.tv_font_size_medium);
@@ -140,10 +155,24 @@ public class DeviceConfigActivity extends AppCompatActivity implements View.OnCl
         mAudioInputRl.setOnClickListener(this);
         mMicDirectionalRl = findViewById(R.id.rl_container_mic_directional);
         mMicDirectionalRl.setOnClickListener(this);
+        mSttEngineRl = findViewById(R.id.rl_container_stt_engine);
+        mSttEngineRl.setOnClickListener(this);
+        mAutoSleepRl = findViewById(R.id.rl_container_auto_sleep);
+        mAutoSleepRl.setOnClickListener(this);
+        mAutoPoweroffRl = findViewById(R.id.rl_container_auto_poweroff);
+        mAutoPoweroffRl.setOnClickListener(this);
         mMenuRl = findViewById(R.id.rl_container_menu);
         mMenuRl.setOnClickListener(this);
         mFuncDeviceDemoRl = findViewById(R.id.rl_container_exhibit);
         mFuncDeviceDemoRl.setOnClickListener(this);
+        mFuncCustomCRl = findViewById(R.id.rl_container_custom_c);
+        mFuncCustomCRl.setOnClickListener(this);
+        mFuncCustomDRl = findViewById(R.id.rl_container_custom_d);
+        mFuncCustomDRl.setOnClickListener(this);
+        mFuncCustomERl = findViewById(R.id.rl_container_custom_e);
+        mFuncCustomERl.setOnClickListener(this);
+        mFuncCustomFRl = findViewById(R.id.rl_container_custom_f);
+        mFuncCustomFRl.setOnClickListener(this);
 
         mBrightnessTv = findViewById(R.id.tv_brightness);
         mBrightnessDecreaseTv = findViewById(R.id.tv_brightness_decrease);
@@ -162,6 +191,9 @@ public class DeviceConfigActivity extends AppCompatActivity implements View.OnCl
         mTransShowModeTv = findViewById(R.id.tv_trans_show_mode);
         mAudioInputTv = findViewById(R.id.tv_audio_input);
         mMicDirectionalTv = findViewById(R.id.tv_mic_directional);
+        mSttEngineTv = findViewById(R.id.tv_stt_engine);
+        mAutoSleepTv = findViewById(R.id.tv_auto_sleep);
+        mAutoPoweroffTv = findViewById(R.id.tv_auto_poweroff);
 
         mBrightnessSkb = findViewById(R.id.skb_brightness);
         mBrightnessSkb.setMax(255);
@@ -271,6 +303,7 @@ public class DeviceConfigActivity extends AppCompatActivity implements View.OnCl
         refreshTransShowMode();
         refreshAudioInput();
         refreshMicDirectional();
+        refreshSttEngine();
 
         updateDeviceState();
         initDevice();
@@ -319,11 +352,32 @@ public class DeviceConfigActivity extends AppCompatActivity implements View.OnCl
                     showMicDirectionalConfigDialog();
                 }
                 break;
+            case R.id.rl_container_stt_engine:
+                showSttEngineConfigDialog();
+                break;
+            case R.id.rl_container_auto_sleep:
+                showAutoSleepConfigDialog();
+                break;
+            case R.id.rl_container_auto_poweroff:
+                showAutoPoweroffConfigDialog();
+                break;
             case R.id.rl_container_menu:
                 toHomeMenuConfig();
                 break;
             case R.id.rl_container_exhibit:
                 toExhibitAct();
+                break;
+            case R.id.rl_container_custom_c:
+                toCustomCAct();
+                break;
+            case R.id.rl_container_custom_d:
+                toCustomDAct();
+                break;
+            case R.id.rl_container_custom_e:
+                toCustomEAct();
+                break;
+            case R.id.rl_container_custom_f:
+                toCustomFAct();
                 break;
             case R.id.tv_font_size_small:
                 setFontSize(FONT_SIZE_SMALL);
@@ -553,53 +607,77 @@ public class DeviceConfigActivity extends AppCompatActivity implements View.OnCl
             @Override
             public void onSuccess(VNSystemConfig systemConfig) {
                 LogUtil.i(gson.toJson(systemConfig));
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        try {
-                            if (null != systemConfig.getBrightness()) {
-                                mBrightnessSkb.setProgress(systemConfig.getBrightness());
-                                mBrightnessTv.setText(String.valueOf(systemConfig.getBrightness()));
-                            }
 
-                            if (null != systemConfig.getAutoBrightnessEnabled()) {
-                                mAutoBrightnessEnabledSwitchBtn.setChecked(1 == systemConfig.getAutoBrightnessEnabled());
-                            }
-
-                            if (null != systemConfig.getFontSize()) {
-                                refreshFontSize(systemConfig.getFontSize());
-                            }
-
-                            if (null != systemConfig.getLanguage()) {
-                                refreshLanguageTitle(systemConfig.getLanguage());
-                            }
-
-                            if (null != systemConfig.getNotificationEnabled()) {
-                                mDeviceNotificationEnabledSwitchBtn.setChecked(1 == systemConfig.getNotificationEnabled());
-                            }
-
-                            if (null != systemConfig.getWearDetectionEnabled()) {
-                                mWearDetectionEnabledSwitchBtn.setChecked(1 == systemConfig.getWearDetectionEnabled());
-                            }
-
-                            if (null != systemConfig.getTouchpadEnabled()) {
-                                mTouchpadEnabledSwitchBtn.setChecked(1 == systemConfig.getTouchpadEnabled());
-                            }
-
-                            if (null != systemConfig.getIdleDetectionEnabled()) {
-                                mIdleDetectionEnabledSwitchBtn.setChecked(1 == systemConfig.getIdleDetectionEnabled());
-                            }
-
-                            //mFontSizeSkb.setProgress(systemConfig.getFontSize());
-                            //mFontSizeTv.setText(String.valueOf(systemConfig.getFontSize()));
-
-                            //mRowSpaceSkb.setProgress(systemConfig.getRowSpace());
-                            //mRowSpaceTv.setText(String.valueOf(systemConfig.getRowSpace()));
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
+                try {
+                    if (null != systemConfig.getBrightness()) {
+                        mBrightnessSkb.setProgress(systemConfig.getBrightness());
+                        mBrightnessTv.setText(String.valueOf(systemConfig.getBrightness()));
                     }
-                });
+
+                    if (null != systemConfig.getAutoBrightnessEnabled()) {
+                        mAutoBrightnessEnabledSwitchBtn.setChecked(1 == systemConfig.getAutoBrightnessEnabled());
+                    }
+
+                    if (null != systemConfig.getFontSize()) {
+                        refreshFontSize(systemConfig.getFontSize());
+                    }
+
+                    if (null != systemConfig.getLanguage()) {
+                        refreshLanguageTitle(systemConfig.getLanguage());
+                    }
+
+                    if (null != systemConfig.getNotificationEnabled()) {
+                        mDeviceNotificationEnabledSwitchBtn.setChecked(1 == systemConfig.getNotificationEnabled());
+                    }
+
+                    if (null != systemConfig.getInactivityTimeout()) {
+                        int inactivityTimeout = systemConfig.getInactivityTimeout();
+
+                        String displayText = "";
+                        for (int i = 0; i < AUTO_SLEEP_CONFIG_KEY.length; i++) {
+                            if (AUTO_SLEEP_CONFIG_KEY[i] == inactivityTimeout) {
+                                displayText = AUTO_SLEEP_CONFIG_TITLE[i];
+                                break;
+                            }
+                        }
+
+                        mAutoSleepTv.setText(displayText);
+                    }
+
+                    if (null != systemConfig.getPoweroffTimeout()) {
+                        int poweroffTimeout = systemConfig.getPoweroffTimeout();
+
+                        String displayText = "";
+                        for (int i = 0; i < AUTO_POWEROFF_CONFIG_KEY.length; i++) {
+                            if (AUTO_POWEROFF_CONFIG_KEY[i] == poweroffTimeout) {
+                                displayText = AUTO_POWEROFF_CONFIG_TITLE[i];
+                                break;
+                            }
+                        }
+
+                        mAutoPoweroffTv.setText(displayText);
+                    }
+
+                    if (null != systemConfig.getWearDetectionEnabled()) {
+                        mWearDetectionEnabledSwitchBtn.setChecked(1 == systemConfig.getWearDetectionEnabled());
+                    }
+
+                    if (null != systemConfig.getTouchpadEnabled()) {
+                        mTouchpadEnabledSwitchBtn.setChecked(1 == systemConfig.getTouchpadEnabled());
+                    }
+
+                    if (null != systemConfig.getIdleDetectionEnabled()) {
+                        mIdleDetectionEnabledSwitchBtn.setChecked(1 == systemConfig.getIdleDetectionEnabled());
+                    }
+
+                    //mFontSizeSkb.setProgress(systemConfig.getFontSize());
+                    //mFontSizeTv.setText(String.valueOf(systemConfig.getFontSize()));
+
+                    //mRowSpaceSkb.setProgress(systemConfig.getRowSpace());
+                    //mRowSpaceTv.setText(String.valueOf(systemConfig.getRowSpace()));
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
 
             @Override
@@ -678,20 +756,20 @@ public class DeviceConfigActivity extends AppCompatActivity implements View.OnCl
     }
 
     private void getFontSize() {
-        VNCommon.getFontSize(null);
+        // TODO
     }
 
     private void setFontSize(int fontSize) {
-        VNCommon.setFontSize(fontSize, null);
+        // TODO
         getSystemConfig();
     }
 
     private void getRowSpace() {
-        VNCommon.getRowSpace(null);
+        // TODO
     }
 
     private void setRowSpace(int rowSpace) {
-        VNCommon.setRowSpace(rowSpace, null);
+        // TODO
     }
 
     private void toHomeMenuConfig() {
@@ -703,6 +781,26 @@ public class DeviceConfigActivity extends AppCompatActivity implements View.OnCl
     private void toExhibitAct() {
         Intent exhibitIntent = new Intent(this, ExhibitActivity.class);
         startActivity(exhibitIntent);
+    }
+
+    private void toCustomCAct() {
+        Intent customCIntent = new Intent(this, CustomCActivity.class);
+        startActivity(customCIntent);
+    }
+
+    private void toCustomDAct() {
+        Intent customDIntent = new Intent(this, CustomDActivity.class);
+        startActivity(customDIntent);
+    }
+
+    private void toCustomEAct() {
+        Intent customEIntent = new Intent(this, CustomEActivity.class);
+        startActivity(customEIntent);
+    }
+
+    private void toCustomFAct() {
+        Intent customFIntent = new Intent(this, CustomFActivity.class);
+        startActivity(customFIntent);
     }
 
     private void toDeviceOtaAct(LatestFwInfo latestFwInfo) {
@@ -744,4 +842,63 @@ public class DeviceConfigActivity extends AppCompatActivity implements View.OnCl
 
         }
     };
+
+    private void refreshSttEngine() {
+        String sttEngine = SttConfigManager.getInstance().getEngine();
+        mSttEngineTv.setText(sttEngine);
+    }
+
+    private void showSttEngineConfigDialog() {
+        SttEngineConfigFragment sttEngineConfigFragment = new SttEngineConfigFragment();
+        sttEngineConfigFragment.setListener(new SttEngineConfigFragment.Listener() {
+            @Override
+            public void onDestroyView() {
+                String sttEngineAfter = SttConfigManager.getInstance().getEngine();
+                mSttEngineTv.setText(sttEngineAfter);
+
+                ToastUtil.toast(getApplicationContext(), getString(R.string.tips_switched, sttEngineAfter));
+            }
+        });
+        sttEngineConfigFragment.show(getSupportFragmentManager(), "sttEngineConfig");
+    }
+
+    private void showAutoSleepConfigDialog() {
+        String autoSleepStr = mAutoSleepTv.getText().toString();
+        int autoSleepKey = 0; // 默认值为0（Never）
+        for (int i = 0; i < AUTO_SLEEP_CONFIG_TITLE.length; i++) {
+            if (AUTO_SLEEP_CONFIG_TITLE[i].equals(autoSleepStr)) {
+                autoSleepKey = AUTO_SLEEP_CONFIG_KEY[i];
+                break;
+            }
+        }
+
+        AutoSleepConfigFragment autoSleepConfigFragment = new AutoSleepConfigFragment(autoSleepKey);
+        autoSleepConfigFragment.setListener(new AutoSleepConfigFragment.Listener() {
+            @Override
+            public void onDestroyView() {
+                getSystemConfig();
+            }
+        });
+        autoSleepConfigFragment.show(getSupportFragmentManager(), "autoSleepConfig");
+    }
+
+    private void showAutoPoweroffConfigDialog() {
+        String autoPoweroffStr = mAutoPoweroffTv.getText().toString();
+        int autoPoweroffKey = 0; // 默认值为0（Never）
+        for (int i = 0; i < AUTO_POWEROFF_CONFIG_TITLE.length; i++) {
+            if (AUTO_POWEROFF_CONFIG_TITLE[i].equals(autoPoweroffStr)) {
+                autoPoweroffKey = AUTO_POWEROFF_CONFIG_KEY[i];
+                break;
+            }
+        }
+
+        AutoPoweroffConfigFragment autoPoweroffConfigFragment = new AutoPoweroffConfigFragment(autoPoweroffKey);
+        autoPoweroffConfigFragment.setListener(new AutoPoweroffConfigFragment.Listener() {
+            @Override
+            public void onDestroyView() {
+                getSystemConfig();
+            }
+        });
+        autoPoweroffConfigFragment.show(getSupportFragmentManager(), "autoPoweroffConfig");
+    }
 }

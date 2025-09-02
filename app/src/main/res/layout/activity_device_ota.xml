@@ -136,14 +136,142 @@
             android:thumbOffset="0dp" />
     </RelativeLayout>
 
+    <!-- 调试按钮容器 -->
+    <RelativeLayout
+        android:id="@+id/rl_container_debug_buttons"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/rl_container_header"
+        android:layout_marginHorizontal="35dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/bg_body"
+        android:padding="10dp">
+
+        <TextView
+            android:id="@+id/tv_debug_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="调试控制"
+            android:textStyle="bold"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:layout_marginBottom="10dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_debug_title"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <Button
+                android:id="@+id/btn_debug_init"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="初始化"
+                android:layout_margin="2dp"
+                android:textSize="12sp" />
+
+            <Button
+                android:id="@+id/btn_debug_connect"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="连接"
+                android:layout_margin="2dp"
+                android:textSize="12sp" />
+
+            <Button
+                android:id="@+id/btn_debug_disconnect"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="断开连接"
+                android:layout_margin="2dp"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_debug_title"
+            android:layout_marginTop="50dp"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <Button
+                android:id="@+id/btn_debug_start"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="开始"
+                android:layout_margin="2dp"
+                android:textSize="12sp" />
+
+            <Button
+                android:id="@+id/btn_debug_stop"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="停止"
+                android:layout_margin="2dp"
+                android:textSize="12sp" />
+
+            <Button
+                android:id="@+id/btn_debug_refresh"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="刷新连接状态"
+                android:layout_margin="2dp"
+                android:textSize="12sp" />
+        </LinearLayout>
+        
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_debug_title"
+            android:layout_marginTop="100dp"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <Button
+                android:id="@+id/btn_debug_connect_common"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="连接通用"
+                android:layout_margin="2dp"
+                android:textSize="12sp" />
+
+            <Button
+                android:id="@+id/btn_debug_disconnect_common"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="断开通用"
+                android:layout_margin="2dp"
+                android:textSize="12sp" />
+
+            <Button
+                android:id="@+id/btn_debug_refresh_common"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="刷新通用状态"
+                android:layout_margin="2dp"
+                android:textSize="12sp" />
+        </LinearLayout>
+    </RelativeLayout>
+
     <RelativeLayout
         android:id="@+id/rl_container_version_info"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@id/rl_container_progress"
-        android:layout_below="@id/rl_container_header"
+        android:layout_below="@id/rl_container_debug_buttons"
         android:layout_marginHorizontal="35dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="10dp"
         android:background="@drawable/bg_body">
 
         <TextView
